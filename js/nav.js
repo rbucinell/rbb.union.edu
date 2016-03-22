@@ -17,7 +17,7 @@ function initMenu() {
     );
     $('.linkitem').click( function() {
             var link = $('a',$(this));
-            console.log(link);
+            console.log(link.href);
             //link.click();
             window.location.href = link.attr('href');
             return false;
