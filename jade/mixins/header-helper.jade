@@ -3,7 +3,6 @@ mixin createTemplate(menu, pageName, contenturl)
 	head
 		title #{pageName} | Ronald B. Bucinell
 		include ./../head.jade
-		
 	body
 		article#wrapper         
 			//- side navigation menu
@@ -20,5 +19,10 @@ mixin createTemplate(menu, pageName, contenturl)
 					script. 
 						$( "#dadcontent" ).load( "#{contenturl}" );
 					
+			footer#footer
+				.container
+					ul
+						li: i.fa.fa-phone: &nbsp;| (518) 388-6023
+						li: i.fa.fa-envelope-o: &nbsp;| bucinelr@union.edu
 					
 			
