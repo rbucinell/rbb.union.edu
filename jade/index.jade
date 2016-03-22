@@ -1,0 +1,24 @@
+doctype
+// Do not modify this file! It was automatically generated. To change it's content go to content folder
+html
+    head
+        -var pageName = "Homepage"
+        title Ronald B. Bucinell | #{pageName} | Bootstrap
+        include ./head.jade
+        
+    body
+        article#wrapper         
+            //- side navigation menu
+            include ./nav.jade
+            
+            //- main content
+            main.container#main
+                header.page-header
+                    h1 #{pageName}
+                    ul.breadcrumb
+                        li: a(href="#") Homepage
+                        li: a(href="#") Products
+                        li.active Accessories
+                section#dadcontent    
+                    script. 
+                        $( "#dadcontent" ).load( "../content/index.html" );

@@ -1,0 +1,41 @@
+//- Create Page Header
+mixin pageheader(headermain, headersmall, breadcrumbs)
+	#wrapper
+		include ./../nav.jade
+
+		#page-wrapper
+			.container-fluid
+
+				//Page Header
+				.row
+					.col-lg-12
+						h1.page-header #{headermain}<small> #{headersmall} </small>
+
+						ol.breadcrumb
+							each crumb,i in breadcrumbs
+								if( i != breadcrumbs.length - 1 )
+									if(  typeof crumb.url === 'undefined' )
+										li: i(class="fa #{crumb.fa}")  #{crumb.text}
+									else									
+										li: i( class="fa #{crumb.fa}"): a(href="#{crumb.url}")  #{crumb.text}
+								else
+									li(class="active"): i(class="fa #{crumb.fa}")  #{crumb.text}
+
+				block
+
+//- Navigation item
+mixin navitem(title,faicon,link)
+	li: a(href="#{link}")
+		i(class="fa fa-fw #{faicon}")
+		|  #{title}
+
+//- Creates a li for the nav bar that will create a togglable sublist
+mixin navwithsub(title,faicon,listid)
+	-var createid = '#' + listid
+	li
+		a(href="#", data-toggle="collapse", data-target="#{createid}")
+			i(class="fa fa-fw #{faicon}")
+			|  #{title}
+			i.fa.fa-fw.fa-caret-down
+		ul( id="#{listid}", class="collapse")
+			block
