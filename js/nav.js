@@ -1,8 +1,9 @@
 function initMenu() {
-    $('ul#navigation li div ul').hide();
-    //$('ul#navigation ul:first').show();
+    $('ul#navigation li ul').hide();
+
     $('.navitem').click(
         function() {
+            console.log('navitem click');
             var checkElement = $('ul', $(this));
             if((checkElement.is('ul')) && (checkElement.children(1).is(':visible'))) {
                 checkElement.slideUp('normal')
@@ -16,16 +17,13 @@ function initMenu() {
             return true;
         }
     );
+
     $('.linkitem').click( function() {
             var link = $('a',$(this));
-            console.log($(this));
-            console.log(link.attr('href'));
-            //link.click();
             window.location.href = link.attr('href');
             return false;
     });
 }
-
 
 var loc = window.location.href, index = loc.indexOf('#');
 
@@ -49,7 +47,6 @@ $(document).ready(function(){
 		.to($(".social-icons, #main-nav"),0.2,{left:0})
 		.to($("#main"),0.2,{left:250,right:"-=250"},"-=0.2")
         .to($("footer"),0.2,{left:250,right:"-=250"},"-=0.2");
-
 
 	$("a.mobilemenu").on("click",function(){
 		SidebarAnim.play();

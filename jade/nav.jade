@@ -4,7 +4,7 @@ mixin navMenuItem( divclass, display, url )
     li(class="#{divclass}")
         a(href="#{url}")
             div.text #{display}
-                block
+        block
 #sidebar
     a.mobilemenu(href="#sidebar"): i.fa.fa-bars
     #main-nav
@@ -49,8 +49,7 @@ mixin navMenuItem( divclass, display, url )
                             +navMenuItem('linkitem','Select Presentations', "selectpresentations.html")
                             +navMenuItem('linkitem','Addresses/Speeches', "bucaddress.html")
                             +navMenuItem('linkitem','In The News', "bucNews.html") 
-                    +navMenuItem('navitem','Lab','#')                   
-                    li.navitem: a(href="#"): .text Lab
+                    +navMenuItem('navitem','Lab','#')   
                         ul.subnav
                             +navMenuItem('linkitem','Engineering Mechanics', "mechengineerlab.html")
                             +navMenuItem('linkitem','Composite Mfg', "compositelab.html")
