@@ -51,6 +51,7 @@ html,body {
 
 /* Set the fixed height of the footer here */
 #push, #footer {
+    background: #333333;
     color: white;
     height: 45px;
     position: fixed;
@@ -58,10 +59,6 @@ html,body {
     width: 100%;
     left: 250px;
 }
-#footer {
-    background: url(../img/dark_gray_tile.jpg);
-}
-
 #footer li
 {
     float: left;
