@@ -31,6 +31,25 @@ main div.updated {
     height: 20px;
     margin-bottom: 15px;
 }
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #ADADAD;
+}
+.table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+    background-color: #E0E0E0;
+}
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid #923338;
+}
+
+table > thead {
+    color: #ffffff;
+    background: #923338;
+}
+
+.list-group-item {
+    border: 1px solid #923338;
+    background-color: #eeeeee;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */

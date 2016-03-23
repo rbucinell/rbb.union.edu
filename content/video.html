@@ -1,45 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>	
-	<title> Videos | Ronald B. Bucinell, Ph.D., P.E</title>
-	<!--#include virtual="/css/styles.html" -->
-	<link rel="stylesheet" type="text/css" href="css/videomenu.css">
-</head>
-	<body>
-		<!--#include virtual="/topbanner.html" -->
-		<summary> Video Tutorials </summary>
-		<!--#include virtual="/navigation.html" -->	
-			
-		<main>
-		
-			<div id="video_player" class="center">
-				<video id="video" controls width="700px" height="400px">
-					<source id="mp4" src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
-				</video>
-			</div>
-			
-			<div id="videomenu" class="center content-block">
-				<div class="menuheader">
-					<div class="menuhead">Category</div>
-					<div class="menuhead">Topic</div>
-					<div class="menuhead lastmenuhead">Video</div>
-				</div>
-				<div style="clear:both"></div>
-				<div id="vids" class="videomenu">
-					<!--Video Menu will be generated in here via XSL-->
-				</div>
-			</div>
-			
-			<div style="clear:both;height: 100px;"class="content-block">
-				<!-- Just a spacer for dynamic content -->
-			</div>
-			
-			<div class="updated">
-				<!--#config timefmt="%e %B %Y"-->Updated: <!--#echo var="LAST_MODIFIED"-->
-			</div>
-		</main>
-		
-		<!--#include virtual="/js/jslib.html" -->
-		<script type="text/javascript" src="js/video.js"></script>
-	</body>
-</html>
+<div id="video_player" class="center">
+	<video id="video" controls width="700px" height="400px">
+		<source id="mp4" src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
+	</video>
+</div>
+
+<div id="videomenu" class="center content-block">
+	<div class="menuheader">
+		<div class="menuhead">Category</div>
+		<div class="menuhead">Topic</div>
+		<div class="menuhead lastmenuhead">Video</div>
+	</div>
+	<div style="clear:both"></div>
+	<div id="vids" class="videomenu">
+		<!--Video Menu will be generated in here via XSL-->
+	</div>
+</div>
+
+<div style="clear:both;height: 100px;"class="content-block">
+	<!-- Just a spacer for dynamic content -->
+</div>
+
+<div class="updated">
+	<!--#config timefmt="%e %B %Y"-->Updated: <!--#echo var="LAST_MODIFIED"-->
+</div>
