@@ -25,7 +25,7 @@ function rotatePictures()
 }
 
 function changePix(){
-    console.log(image.src);
+    //console.log(image.src);
     $("#profile > div.portrate.hidden-xs").css('background-image', 'url(' + image.src + ')');
 	//document["rotateImage"].src = image.src;
 	cur++;

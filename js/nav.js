@@ -13,11 +13,13 @@ function initMenu() {
                 checkElement.slideDown('normal');
                 return false;
             }
+            return true;
         }
     );
     $('.linkitem').click( function() {
             var link = $('a',$(this));
-            console.log(link.href);
+            console.log($(this));
+            console.log(link.attr('href'));
             //link.click();
             window.location.href = link.attr('href');
             return false;
@@ -25,8 +27,7 @@ function initMenu() {
 }
 
 
-var loc = window.location.href,
-    index = loc.indexOf('#');
+var loc = window.location.href, index = loc.indexOf('#');
 
 if (index > 0) {
   window.location = loc.substring(0, index);
