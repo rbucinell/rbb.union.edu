@@ -1,4 +1,10 @@
 script( type="text/javascript", src="js/nav.js")
+
+mixin navMenuItem( divclass, display, url )
+    li(class="#{divclass}")
+        a(href="#{url}")
+            div.text #{display}
+                block
 #sidebar
     a.mobilemenu(href="#sidebar"): i.fa.fa-bars
     #main-nav
@@ -10,46 +16,46 @@ script( type="text/javascript", src="js/nav.js")
                     h3 Union College
             nav
                 ul#navigation
-                    li.navitem: a(href="#"): .text Homepage        
+                    +navMenuItem('navitem','Homepage','#')
                         ul.subnav
-                            li.linkitem: a(href="index.html"): div.text Homepage
-                            li.linkitem: a(href="http://union.edu"): div.text Union College
-                            li.linkitem: a(href="http://muse.union.edu/me/"): div.text ME Department
-                            li.linkitem: a(href="downloads.html"): div.text Downloads                                    
-                    li.navitem: a(href="#"): .text Education & Experience
+                            +navMenuItem('linkitem','Homepage', "index.html")
+                            +navMenuItem('linkitem','Union College', "http://union.edu")
+                            +navMenuItem('linkitem','ME Department', "http://muse.union.edu/me/")
+                            +navMenuItem('linkitem','Downloads', "downloads.html")  
+                    +navMenuItem('navitem','Education & Experience', "#")
                         ul.subnav
-                            li.linkitem: a(href="education.html"): div.text Education
-                            li.linkitem: a(href="funding.html"): div.text Funding History
-                            li.linkitem: a(href="experience.html"): div.text Experience
-                            li.linkitem: a(href="activities.html"): div.text Activities  
-                    li.navitem: a(href="#"): .text Course Listing
+                            +navMenuItem('linkitem','Education', "education.html")
+                            +navMenuItem('linkitem','Funding History', "funding.html")
+                            +navMenuItem('linkitem','Experience', "experience.html")
+                            +navMenuItem('linkitem','Activities', "activities.html")
+                    +navMenuItem('navitem','Course Listing','#')
                         ul.subnav
-                            li.linkitem: a(href="courselisting.html"): div.text Course Links
-                            li.linkitem: a(href="video.html"): div.text Videos
-                    li.navitem: a(href="#"): .text Sudent Collaborations
+                            +navMenuItem('linkitem','Course Links', "courselisting.html")
+                            +navMenuItem('linkitem','Videos', "video.html")
+                    +navMenuItem('navitem','Sudent Collaborations','#')
                         ul.subnav
-                            li.linkitem: a(href="resources.html"): div.text Resources
-                            li.linkitem: a(href="seniormasters.html"): div.text Senior Projects
-                            li.linkitem: a(href="summerfellowship.html"): div.text Summer Fellowship
-                            li.linkitem: a(href="steinmetz.html"): div.text Steinmetz Symposium
-                            li.linkitem: a(href="ncur.html"): div.text NCUR
-                            li.linkitem: a(href="otherforum.html"): div.text Other Forums
-                            li.linkitem: a(href="unionscholars.html"): div.text Scholars Soph Project
-                            li.linkitem: a(href="masterandoutside.html"): div.text Masters and Outside 
-                    li.navitem: a(href="#"): .text Publications
+                            +navMenuItem('linkitem','Resources', "resources.html")
+                            +navMenuItem('linkitem','Senior Projects', "seniormasters.html")
+                            +navMenuItem('linkitem','Summer Fellowship', "summerfellowship.html")
+                            +navMenuItem('linkitem','Steinmetz Symposium', "steinmetz.html")
+                            +navMenuItem('linkitem','NCUR', "ncur.html")
+                            +navMenuItem('linkitem','Other Forums', "otherforum.html")
+                            +navMenuItem('linkitem','Scholars Soph Project', "unionscholars.html")
+                            +navMenuItem('linkitem','Masters and Outside', "masterandoutside.html") 
+                    +navMenuItem('navitem','Publications','#')
                         ul.subnav
-                            li.linkitem: a(href="bucpub.html"): div.text Publications
-                            li.linkitem: a(href="selectreports.html"): div.text Select Reports
-                            li.linkitem: a(href="selectpresentations.html"): div.text Select Presentations
-                            li.linkitem: a(href="bucaddress.html"): div.text Addresses/Speeches
-                            li.linkitem: a(href="bucNews.html"): div.text In The News  
-                    
+                            +navMenuItem('linkitem','Publications', "bucpub.html")
+                            +navMenuItem('linkitem','Select Reports', "selectreports.html")
+                            +navMenuItem('linkitem','Select Presentations', "selectpresentations.html")
+                            +navMenuItem('linkitem','Addresses/Speeches', "bucaddress.html")
+                            +navMenuItem('linkitem','In The News', "bucNews.html") 
+                    +navMenuItem('navitem','Lab','#')                   
                     li.navitem: a(href="#"): .text Lab
                         ul.subnav
-                            li.linkitem: a(href="mechengineerlab.html"): div.text Engineering Mechanics
-                            li.linkitem: a(href="compositelab.html"): div.text Composite Mfg
-                            li.linkitem: a(href="labprojects.html"): div.text Projects
-                    li.linkiten: a(href="contact.html"): .text Contact
+                            +navMenuItem('linkitem','Engineering Mechanics', "mechengineerlab.html")
+                            +navMenuItem('linkitem','Composite Mfg', "compositelab.html")
+                            +navMenuItem('linkitem','Projects', "labprojects.html")
+                    +navMenuItem('navitem','Contact','contact.html')
     .social-icons
         ul
             li: a(href="/data/PE_Ronald_B_Bucinell_PhD.msg"): i.fa.fa-envelope-o
