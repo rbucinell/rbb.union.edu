@@ -66,8 +66,13 @@ function initVideoMenu()
 	document.getElementById('video').pause();
 };
 
+function intializeDOM()
+{
+	displayResult("content/data/videos.xml","content/data/transforms/video-transform.xsl","vids");
+	initVideoMenu();
+}
+
 //DOM is ready, initialize configuration!
 $(function(){
-	displayResult("../content/data/videos.xml","../content/data/transforms/video-transform.xsl","vids");
-	initVideoMenu();
+	setTimeout(intializeDOM, (1000))
 });

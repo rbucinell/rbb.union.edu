@@ -17,7 +17,7 @@ mixin createTemplate(menu, pageName, contenturl)
 						li.active: a(href="#") #{pageName}
 				section#dadcontent    
 					script. 
-						$( "#dadcontent" ).load( "#{contenturl}" );
+						$(function(){ $( "#dadcontent" ).load( "#{contenturl}" ) });
 					
 			footer#footer
 				.container
