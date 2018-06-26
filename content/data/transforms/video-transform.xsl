@@ -2,22 +2,22 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="html"/>
 <xsl:template match="/">
-  <ul class="C">
+  <ul class="C col-sm-4">
     <xsl:for-each select="videos/Category">
       <li>
         <a href="#"><xsl:value-of select="@name"/></a>
-        
+
         <!--If it contains a topic, then we'll add the ul -->
         <xsl:if test="Topic">
-          <ul class="T">
+          <ul class="T col-sm-4">
             <xsl:for-each select="Topic">
               <li>
-                <a href="#"><xsl:value-of select="@name"/></a>                
+                <a href="#"><xsl:value-of select="@name"/></a>
                 <!--If it contains a video, then we'll add the ul -->
                 <xsl:if test="Video">
-                  <ul class="V">
+                  <ul class="V col-sm-4">
                     <!-- Add the video with the href-->
-                    <xsl:for-each select="Video">                
+                    <xsl:for-each select="Video">
                       <li>
                         <!--Construct the anchor tag-->
 						<xsl:element name="a">
@@ -42,4 +42,3 @@
   </ul>
 </xsl:template>
 </xsl:stylesheet>
-

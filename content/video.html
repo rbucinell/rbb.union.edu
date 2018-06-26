@@ -1,14 +1,95 @@
-<div id="video_player" class="center">
-	<video id="video" controls width="700px" height="400px">
+<style>
+.videomenu {
+margin: 0px;
+width:100%;
+}
+
+.videomenu a {
+text-decoration: none;
+}
+
+.videomenu a:link {
+color: black;
+}
+.videomenu a:visited {
+color: black;
+}
+
+/*Applies to all .C, .T, and .V*/
+.videomenu ul {
+list-style-type: none;
+margin-top: 0px;
+float: left;
+position: absolute;
+padding-left: 0px;
+background: Beige;
+}
+
+.videomenu li {
+margin: 0px;
+}
+
+.C {
+border: 1px solid black;
+margin-left: 0px;
+width: 150px;
+background: Beige;
+}
+
+.T {
+border: 1px solid black;
+margin-left: 0px;
+left: 0px;
+top: -1px;
+display: none;
+margin-left: 150px;
+width: 150px;
+}
+
+.V {
+border: 1px solid black;
+margin-left: 0px;
+left: 0px;
+top: -1px;
+display: none;
+margin-left: 150px;
+width:300px;
+}
+.selected {
+display: block;
+}
+.selected ul {
+display: block;
+}
+
+.menuhead {
+border-left: 1px solid black;
+border-top: 1px solid black;
+background: #ccc;
+display: block;
+float: left;
+}
+
+.lastmenuhead {
+border-right: 1px solid black;
+}
+
+video {	
+	max-width:100%;
+}
+
+</style>
+<div id="video_player" align="center" class="embed-responsive embed-responsive-16by9">
+	<video id="video" controls class="embed-responsive-item">
 		<source id="mp4" src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
 	</video>
 </div>
 
-<div id="videomenu" class="center content-block">
-	<div class="menuheader">
-		<div class="menuhead">Category</div>
-		<div class="menuhead">Topic</div>
-		<div class="menuhead lastmenuhead">Video</div>
+<div id="videomenu" class="container center content-block">
+	<div class="row menuheader">
+		<div class="menuhead col-sm-4">Category</div>
+		<div class="menuhead col-sm-4">Topic</div>
+		<div class="menuhead col-sm-4 lastmenuhead">Video</div>
 	</div>
 	<div style="clear:both"></div>
 	<div id="vids" class="videomenu">
