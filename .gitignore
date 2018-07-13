@@ -1,4 +1,7 @@
+package-lock.json
 *.bat
 head.html
 nav.html
 scripts-footer.html
+node_modules/
+www/
