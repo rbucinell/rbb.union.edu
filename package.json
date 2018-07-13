@@ -1,0 +1,19 @@
+{
+  "name": "rbb.union.edu",
+  "version": "1.0.0",
+  "description": "website source for Ronald. B. Bucinell",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rbucinell/rbb.union.edu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rbucinell/rbb.union.edu/issues"
+  },
+  "homepage": "https://github.com/rbucinell/rbb.union.edu#readme"
+}
