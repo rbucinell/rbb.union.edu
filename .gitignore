@@ -5,3 +5,5 @@ nav.html
 scripts-footer.html
 node_modules/
 www/
+dist/
+.vscode/
