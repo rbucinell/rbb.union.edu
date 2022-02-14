@@ -1,0 +1,27 @@
+//- Create Page Header
+mixin createTemplate(menu, pageName, contenturl)
+	head
+		title #{pageName} | Ronald B. Bucinell
+		include ./../head.pug
+	body
+		article#wrapper
+			//- side navigation menu
+			include ./../nav.pug
+			
+			//- main content
+			main.container#main
+				header.page-header
+					h1 #{pageName}
+					ul.breadcrumb
+						li #{menu}
+						li.active: a(href="#") #{pageName}
+				section#dadcontent    
+					script. 
+						$( "#dadcontent" ).load( "#{contenturl}" );
+					
+			footer#footer
+				.container
+					ul
+						li: i.fa.fa-phone: |  (518) 388-6023
+						li: i.fa.fa-envelope-o: |  bucinelr@union.edu
+		block

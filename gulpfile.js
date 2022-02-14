@@ -38,7 +38,7 @@ gulp.task('css-lib', gulp.series(
 
 // Compile main pug pages into HTML
 gulp.task('build-pug', function(){
-    return gulp.src([`${src}/layouts/**/*.pug`,`!${src}/layouts/partials/*.pug`])
+    return gulp.src([`${src}/layouts/**/*.pug`,`!${src}/layouts/mixins/*.pug`])
         .pipe(pug( { pretty: true } ))
         .pipe( gulp.dest( dest ));
 });
