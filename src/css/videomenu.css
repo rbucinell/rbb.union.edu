@@ -1,0 +1,78 @@
+.videomenu {
+	margin: 0px;
+	width:100%;
+}
+
+.videomenu a {
+	text-decoration: none;
+}
+
+.videomenu a:link {
+	color: black;
+}
+.videomenu a:visited {
+	color: black;
+}
+
+/*Applies to all .C, .T, and .V*/
+.videomenu ul {
+	list-style-type: none;
+	margin-top: 0px;  
+	float: left;
+	position: absolute;
+	padding-left: 0px;
+	background: Beige;
+}
+
+.videomenu li {
+	margin: 0px;
+}
+
+.C {
+	border: 1px solid black;
+	margin-left: 0px;
+	width: 150px;
+	background: Beige;
+}
+
+.T {
+	border: 1px solid black;
+	margin-left: 0px;
+	left: 0px;
+	top: -1px;
+	display: none;
+	margin-left: 150px;
+	width: 150px;
+}
+
+.V {
+	border: 1px solid black;
+	margin-left: 0px;
+	left: 0px;
+	top: -1px;
+	display: none;
+	margin-left: 150px;
+	width:300px;
+}
+.selected {
+	display: block;
+}
+.selected ul {
+	 display: block;   
+}
+
+.menuhead {
+	padding-left: 5px;
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	background: gray;
+	display: block;
+	float: left;
+	width: 150px;
+	height: 20px;
+}
+
+.lastmenuhead {
+	width: 302px;
+	border-right: 1px solid black;
+}

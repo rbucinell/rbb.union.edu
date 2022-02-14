@@ -1,0 +1,98 @@
+.breadcrumb{
+    background-color: #ccc;
+    margin-bottom: 0px;
+}
+.breadcrumb > .active {
+    color: black;
+}
+.breadcrumb > li + li:before {
+    color: black;
+}
+
+.page-header {
+    border-bottom: 1px solid #923338;
+}
+.page-header > h1 {
+    font-weight: 400;
+}
+
+main h2 {
+    color: #923338;
+}
+
+main div.updated {
+    color: #923338;
+    font-style: italic;
+    font-family: Georgia, Serif;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    right: 5px;
+    height: 20px;
+    margin: 20px 0 15px 0;
+}
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #ADADAD;
+}
+.table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+    background-color: #E0E0E0;
+}
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid #923338;
+}
+
+table > thead {
+    color: #ffffff;
+    background: #923338;
+}
+
+.list-group-item {
+    border: 1px solid #923338;
+    background-color: #eeeeee;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrapper {
+    min-height: 100%;
+    height: auto;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push, #footer {
+    background: #333333;
+    color: white;
+    height: 45px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    left: 250px;
+}
+#footer li
+{
+    float: left;
+    width: 33%;
+    padding: 10px;
+    text-align: center;
+    list-style: none;
+}
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 400px) {
+    footer#footer {
+        left: 0px;
+    }
+
+    footer .fa {
+        font-size: small;
+    }
+}

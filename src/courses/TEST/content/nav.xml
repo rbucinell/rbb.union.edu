@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="nav_transform.xsl"?>
+<navigation>
+  <item name="Main">
+    <subitem name="Instructor" target="http://rbb.union.edu.html" external="true" />
+    <subitem name="Union" target="http://www.union.edu.html" external="true" />
+    <subitem name="TEST-101" target="index.html" />
+  </item>
+  <item name="Course">
+    <subitem name="Topics" target="Guidelines.html" />
+  </item>
+  <item name="Homework">
+    <subitem name="Assignments" target="Assignements.html" />
+    <subitem name="Guidelines" target="HGuidelines.html" />
+  </item>
+</navigation>
