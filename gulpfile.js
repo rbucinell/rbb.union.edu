@@ -10,10 +10,22 @@ var src = 'src';
 var dest = 'docs';
 
 var paths = {
-    scripts: [`${src}/js/**/*.js`],
+    scripts: {
+        lib: {
+            in: [
+                `${src}/js/lib/**/*.js`
+            ],
+            out:`lib.min.js`
+        },
+        custom: {
+            in: `${src}/js/rbb/**/*.js`,
+            out:`rbb.min.js`
+        }
+    },
     css : {
         libraries : [`${src}/css/plugins/*.css`],
         custom : [
+            `${src}/css/bootstrap.override.css`,
             `${src}/css/style.css`,
             `${src}/css/videomenu.css`
         ],
@@ -35,6 +47,29 @@ gulp.task('css-lib', gulp.series(
             .pipe( concat('lib.min.css'))
             .pipe( gulp.dest( `${dest}/css/`))
 ));
+gulp.task('minify-css', gulp.series(
+    function(){ return del([paths.css.stylemin]) },
+    () => gulp.src( paths.css.custom )
+        .pipe( cleanCSS() )
+        .pipe( concat('style.min.css'))
+        .pipe( gulp.dest( `${dest}/css/`))
+));
+
+gulp.task('js-lib', gulp.series(
+    () => del( paths.scripts.lib.out),
+    () => gulp.src( paths.scripts.lib.in )
+        .pipe( concat( paths.scripts.lib.out ))
+        .pipe( uglify() )
+        .pipe( gulp.dest( `${dest}/js/`))
+));
+
+gulp.task('js-custom', gulp.series(
+    () => del( paths.scripts.custom.out),
+    () => gulp.src( paths.scripts.custom.in )
+        .pipe( concat( paths.scripts.custom.out ))
+        .pipe( uglify() )
+        .pipe( gulp.dest( `${dest}/js/`))
+));
 
 // Compile main pug pages into HTML
 gulp.task('build-pug', function(){
@@ -47,61 +82,6 @@ gulp.task('copy',function(){
     return gulp.src( paths.copy, { base: src })
         .pipe( gulp.dest( dest ));
 });
-  
-gulp.task('projectlist', function(done){
-    
-    let projects = { "_comments": "DO NOT Modify, this file is dynamically generated"};
-    let path = `${src}/projects/`;
-    fs.readdirSync(path).filter( function(file)
-    {
-        let isDir = fs.statSync(path+file).isDirectory();
-        if( isDir )
-        {
-            var projPath = path+file+"/";
-            projects[file] =  { name: file, path: `projects${file}/`, hasIndex: false };
-            try
-            {
-                var hasIndex = fs.statSync( `${projPath}index.html`).isFile();
-                projects[file].hasIndex = hasIndex;
-            }
-            catch(e){};
-        }
-    });
-    fs.writeFile( `${path}projects.json${JSON.stringify(projects,null,4)}`, (err)=>{
-        if( err ) throw err;
-        console.log( 'projects.json has been saved.');
-    });
-    done();
-})
-
-// Concats the libraries together
-gulp.task('css-lib', gulp.series(
-    function(){ return del([paths.css.libmin]) },
-    () => gulp.src( paths.css.libraries )
-            .pipe( concat('lib.min.css'))
-            .pipe( gulp.dest( `${dest}/css/`))
-));
-
-gulp.task('minify-css', gulp.series(
-    function(){ return del([paths.css.stylemin]) },
-    () => gulp.src( paths.css.custom )
-        .pipe( cleanCSS() )
-        .pipe( concat('style.min.css'))
-        .pipe( gulp.dest( `${dest}/css/`))
-));
-
-gulp.task('cleanjs', done => {
-    return del([dest+'js/']);
-});
-
-gulp.task('compile-js', done =>
-{
-    return gulp.src( paths.scripts )
-        .pipe( uglify() )
-        .pipe( gulp.dest( `${dest}/js/`));
-});
-
-gulp.task('minify-js', gulp.series( 'cleanjs','compile-js'));
 
 function cleanDest()
 {
@@ -113,7 +93,7 @@ exports.cleanDest = cleanDest;
 gulp.task('cleanDest', cleanDest );
 
 // Build replaces html/css/js in dest folder, not modifying assets
-gulp.task( 'build-code',gulp.parallel('build-pug', 'minify-js', 'minify-css', 'css-lib'));
+gulp.task( 'build-code',gulp.parallel('build-pug', 'js-lib', 'js-custom', 'minify-css', 'css-lib'));
 
 // Complete rebuild of the destination folder
 gulp.task('rebuild',gulp.series( cleanDest, gulp.parallel('build-code','copy')));
@@ -124,22 +104,8 @@ gulp.task( 'default', gulp.parallel('build-code'));
 /**
  * Watch Tasks
  */
-
-gulp.task('watch:css', function(){
-    gulp.watch( paths.css.custom, gulp.task('minify-css'));
-});
-
-gulp.task( 'watch:js', function(){
-    gulp.watch( src + 'js/**/*.js', gulp.task('minify-js'));
-});
-
-gulp.task( 'watch:pug' , function(){
-    gulp.watch( [`${src}/layouts/**/*.pug`], gulp.task('build-pug') );
-});
-
-gulp.task('watch', gulp.parallel('watch:css', 'watch:js', 'watch:pug'));
-
-/**
- * Automated bulids
- */
-gulp.task( 'travis' , gulp.series('build-code'), ()=> process.exit(0) );
+gulp.task( 'watch:css',     ()=> gulp.watch( paths.css.custom, gulp.task('minify-css')));
+gulp.task( 'watch:js-lib',  ()=> gulp.watch( paths.scripts.lib.in, gulp.task('js-lib')));
+gulp.task( 'watch:js',      ()=> gulp.watch( paths.scripts.custom.in, gulp.task('js-custom')));
+gulp.task( 'watch:pug',     ()=> gulp.watch( [`${src}/layouts/**/*.pug`], gulp.task('build-pug')));
+gulp.task( 'watch', gulp.parallel('watch:css', 'watch:js-lib','watch:js', 'watch:pug'));
