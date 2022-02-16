@@ -1,3 +1,43 @@
+const delay = 5000;
+
+document.addEventListener('DOMContentLoaded', async ()=> {
+
+	let images = [];
+	let foundMax = false;
+	let cur = 1;	
+	let portrait = document.querySelector("#profile > div.portrate");
+
+	while( true )
+	{
+		if( !foundMax )
+		{
+			let imgResponse = await fetch( `img/rotation/PIC${((cur < 10 ) ? "0" + cur : cur)}.jpg` );
+			if( imgResponse.status === 404 ) 
+				foundMax = true;
+			else
+				images.push(  await imgResponse.blob() );
+		}
+		portrait.style.backgroundImage =  `url(${URL.createObjectURL(images[(cur-1)%images.length])})`;
+		await new Promise(resolve => setTimeout(resolve, delay));
+		cur++;
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 //DAD, just update to the new number of the highest PIC##.jpg
 var number_of_pictures = 50;
 var SECONDS = 3;
@@ -52,3 +92,4 @@ $(function(){
 	
 	updatePortrait();
 });
+*/

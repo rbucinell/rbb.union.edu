@@ -20,7 +20,7 @@ main h2 {
     color: #923338;
 }
 
-main div.updated {
+main section.updated {
     color: #923338;
     font-style: italic;
     font-family: Georgia, Serif;
