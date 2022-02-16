@@ -21,7 +21,7 @@
     "gulp-clean-css": "^3.7.0",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^3.1.0",
-    "gulp-pug": "^3.3.0",
+    "gulp-pug": "^5.0.0",
     "gulp-uglify": "^3.0.0",
     "gulp-watch": "^4.3.11",
     "hint": "^6.1.1"
