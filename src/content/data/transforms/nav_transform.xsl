@@ -39,6 +39,9 @@
 								<xsl:element name="div">
 									<xsl:attribute name="class">text</xsl:attribute>
 										<xsl:value-of select="@name" />
+										<xsl:if test="@external">
+											<i class="fa fa-external-link" style="padding-left:1rem;" aria-hidden="true"></i>
+										</xsl:if>
 								</xsl:element><!--end the div showing menu item-->
 								
 							</xsl:element><!--end anchor linking item -->	
@@ -62,9 +65,9 @@
 			<xsl:attribute name="href">contact.html</xsl:attribute>
 			
 			<xsl:element name="div">
-				<xsl:attribute name="class">text</xsl:attribute>					
-				<xsl:value-of select="Contact" />
-			</xsl:element><!--end the div showing menu category-->				
+				<xsl:attribute name="class">text</xsl:attribute>
+				Contact
+			</xsl:element><!--end the div showing menu category-->
 		</xsl:element><!--end anchor linking category -->
 	</xsl:element>
 	
