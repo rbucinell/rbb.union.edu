@@ -1,10 +1,13 @@
 const gulp      = require('gulp');
-const concat    = require('gulp-concat');
-const uglify    = require('gulp-uglify');
 const cleanCSS  = require('gulp-clean-css');
-const del       = require('del');
+const concat    = require('gulp-concat');
+const debug     = require('gulp-debug');
+var log = require('fancy-log');
 const pug       = require('gulp-pug');
+const uglify    = require('gulp-uglify');
+const del       = require('del');
 const fs        = require('fs');
+const path      = require('path');
 
 var src = 'src';
 var dest = 'docs';
@@ -37,6 +40,7 @@ var paths = {
         `${src}/img/**/*`,
         `${src}/data/**/*`,
         `${src}/content/**/*`,
+        `${src}/courses/**/*`,
     ]
 };
 
@@ -77,6 +81,14 @@ gulp.task('build-pug', function(){
         .pipe(pug( { pretty: true } ))
         .pipe( gulp.dest( dest ));
 });
+gulp.task('build-course-pug', () =>
+    gulp.src([`${src}/courses/**/*.pug`,`!${src}/layouts/mixins/*.pug`])
+        .pipe(debug())
+        .pipe( gulp.dest( `${dest}/${
+            (file)=>path.join(path.dirname(file.path), 'courses')
+        }` ))
+);
+
 
 gulp.task('copy',function(){
     return gulp.src( paths.copy, { base: src })
@@ -93,7 +105,7 @@ exports.cleanDest = cleanDest;
 gulp.task('cleanDest', cleanDest );
 
 // Build replaces html/css/js in dest folder, not modifying assets
-gulp.task( 'build-code',gulp.parallel('build-pug', 'js-lib', 'js-custom', 'minify-css', 'css-lib'));
+gulp.task( 'build-code',gulp.parallel('build-pug', 'build-course-pug', 'js-lib', 'js-custom', 'minify-css', 'css-lib'));
 
 // Complete rebuild of the destination folder
 gulp.task('rebuild',gulp.series( cleanDest, gulp.parallel('build-code','copy')));
@@ -104,8 +116,9 @@ gulp.task( 'default', gulp.parallel('build-code'));
 /**
  * Watch Tasks
  */
-gulp.task( 'watch:css',     ()=> gulp.watch( paths.css.custom, gulp.task('minify-css')));
-gulp.task( 'watch:js-lib',  ()=> gulp.watch( paths.scripts.lib.in, gulp.task('js-lib')));
-gulp.task( 'watch:js',      ()=> gulp.watch( paths.scripts.custom.in, gulp.task('js-custom')));
-gulp.task( 'watch:pug',     ()=> gulp.watch( [`${src}/layouts/**/*.pug`], gulp.task('build-pug')));
-gulp.task( 'watch', gulp.parallel('watch:css', 'watch:js-lib','watch:js', 'watch:pug'));
+gulp.task( 'watch:css',             ()=> gulp.watch( paths.css.custom, gulp.task('minify-css')));
+gulp.task( 'watch:js-lib',          ()=> gulp.watch( paths.scripts.lib.in, gulp.task('js-lib')));
+gulp.task( 'watch:js',              ()=> gulp.watch( paths.scripts.custom.in, gulp.task('js-custom')));
+gulp.task( 'watch:pug',             ()=> gulp.watch( [`${src}/layouts/**/*.pug`], gulp.task('build-pug')));
+gulp.task( 'watch:pug-course',      ()=> gulp.watch( [`${src}/courses/**/*.pug`], gulp.task('build-course-pug')));
+gulp.task( 'watch', gulp.parallel('watch:css', 'watch:js-lib','watch:js', 'watch:pug', 'watch:pug-course'));
