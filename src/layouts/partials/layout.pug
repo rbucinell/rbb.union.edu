@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+    //                                                                                                      
+    // Do not modify this file! It was automatically generated. To change it's content go to content folder 
+    //                                                                                                      
+    block config
+    include ./head.pug 
+    block head
+    include ./mixins.pug
+    body
+        article#wrapper 
+            //- site navigation menu
+            include ./nav.pug
+
+            //- Main content
+            main#main.container
+                header.page-header
+                    h1#pageheader #{ name }
+                    ul.breadcrumb 
+                        li #{menu}
+                        li.active: a(href="#") #{name}
+                section#dadcontent
+                block content
+                section.updated 
+            include ./footer.pug
+        include ./scripts
+        block scripts

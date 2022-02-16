@@ -1,0 +1,38 @@
+script( src="https://code.jquery.com/jquery-1.12.4.min.js", integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ", crossorigin="anonymous")
+script( src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous")
+script( type="text/javascript", src="js/lib.min.js")
+script( type="text/javascript", src="js/rbb.min.js")
+
+script.
+    const event = new Event( 'DadContentLoaded' );
+    /**
+    * String helper function to see if input string 'str' ends with the string 'suffix'
+    **/
+    const endsWith = (str, suffix) => str.indexOf(suffix, str.length - suffix.length) !== -1;
+
+    /**
+    *   Function to format the html list after it is loaded
+    **/
+    function formatListGroup(headerText) {
+        let listOfLI = [...document.querySelectorAll(`.list-group > li`)];
+        console.log(listOfLI)
+        listOfLI.forEach( n => n.classList +='list-group-item')
+        document.querySelector( 'header > h1' ).innerText = `${headerText} (${listOfLI.length})`;
+    }
+    
+    /**
+    *  On DOM LOAD fetch the respective content file to populate the page
+    **/
+    document.addEventListener('DOMContentLoaded', async ()=> {
+        let updateDate = null;
+        fetch( `content/${window.location.pathname.split('/').pop()}` )
+            .then( response => {
+                updateDate = new Date(response.headers.get('Last-Modified')).toDateString();
+                return response.text();
+            })
+            .then( data => {
+                document.querySelector('.updated').innerText = `Updated: ${updateDate}`;
+                document.querySelector('#dadcontent').innerHTML = data;
+                document.dispatchEvent( event );
+            });
+    });

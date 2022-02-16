@@ -1,0 +1,38 @@
+#sidebar
+    a.mobilemenu(href="#sidebar"): i.fa.fa-bars
+    #main-nav
+        #nav-container
+            #profile.clearfix
+                .portrate.hidden-xs
+                .title
+                    h2 Ronald B. Bucinell, Ph.D., P.E.
+                    h3 Union College
+            nav
+                ul#navigation
+    .social-icons
+        ul
+            li: a(href="/data/PE_Ronald_B_Bucinell_PhD.msg"): i.fa.fa-envelope-o
+            li: a(href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"): i.fa.fa-linkedin
+            li: a(href="http://www.researchgate.net/profile/Ronald_Bucinell"): i.ai.ai-researchgate
+script.
+    async function loadXMLDoc(filename)
+    {
+        let response = await fetch(filename);
+        let txt = await response.text();
+        return [new DOMParser().parseFromString( txt, 'application/xml'), response.headers.get('Last-Modified')];
+    }
+
+    async function displayResult( xmlpath, transformpath, outputId )
+    {
+        let [xmlDoc, xmlLastMod] = await loadXMLDoc(xmlpath);
+        let [xslDoc, xslLastMod] = await loadXMLDoc(transformpath);
+        let xsltProcessor = new XSLTProcessor();
+        xsltProcessor.importStylesheet(xslDoc);
+        resultDocument = xsltProcessor.transformToFragment(xmlDoc, document);
+        document.getElementById(outputId).appendChild(resultDocument);
+        document.querySelector('.updated').innerText = `Updated ${new Date(xmlLastMod).toDateString()}`;
+    }
+    document.addEventListener('DOMContentLoaded', async ()=> {
+        await displayResult( "content/data/nav.xml", "content/data/transforms/nav_transform.xsl", "navigation" );
+        initMenu();
+    });

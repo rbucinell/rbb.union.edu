@@ -1,0 +1,9 @@
+extends partials/layout.pug
+block config
+    - const [menu,name] = ['Education & Experience','Funding History'];
+
+block scripts
+    script.
+        document.addEventListener('DadContentLoaded', async ()=> {
+            displayResult("content/data/funding.xml","content/data/transforms/funding-transform.xsl","funding-table");
+        });
