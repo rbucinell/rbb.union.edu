@@ -1,81 +1,202 @@
 extends partials/layout.pug
 block head
-    //- link( rel="stylesheet", href="css/videomenu.css") //currently compiled
+    style.
+        #videoMenu li{
+            background-color: var(--union-light-stone);
+        }
+
+        #videoMenu .panel-heading {
+            background-color: #ccc;
+            color: var(--rbb-black);
+        }
+        #videotable > tbody > tr > td > i {
+            display: none;
+        }
+
+        td.selected {
+            background-color: var(--union-garnet);
+            color:white;
+        }
+
+        #videotable > tbody > tr > td.selected > i{
+            display: block;
+        }
+
 block config
     - const [menu,name] = ['Course Listing', 'Videos']
-
-block scripts
+block content
+    .row.bg-black
+        .col-sm-8.col-sm-offset-2
+            figure#video_player.embed-responsive.embed-responsive-16by9.filePreview
+                iframe#ytv.collapse(type='text/html' width='100%' height='100%' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen='')
+                video#video.collapse.show(controls='')
+    template#listItemTemplate
+        li.list-group-item 
+            span
+            i.fa.fa-arrow-right.pull-right
+    #videoMenu.row.row-no-gutters
+        .col-xs-3.panel
+            .panel-heading: strong Categories
+            ul#category-list.list-group
+        .col-xs-3.panel
+            .panel-heading: strong Topics
+            ul#topic-list.list-group
+        .col-xs-6.panel
+            .panel-heading: strong  Videos
+            ul#video-list.list-group
+block scripts 
     script.
-        /**
-        * Loads a video from the video menu
-        **/
+        let videoXMLDoc = null;
+        let tableBody = document.querySelector('#videotable > tbody');
+        let template = document.querySelector('#listItemTemplate');
+        let categoryList =  document.querySelector('#category-list');
+        let topicList =  document.querySelector('#topic-list');
+        let videoList =  document.querySelector('#video-list');
+
+        function loadCategories()
+        {
+            categoryList.innerHTML = '';
+            videoXMLDoc.querySelectorAll('Category').forEach( c =>{
+                let clone = template.content.cloneNode(true);
+                let li = clone.querySelector('li');
+                li.addEventListener('click', selectCategory);
+                li.querySelector('span').innerText = c.getAttribute('name');
+                categoryList.appendChild( clone );
+            });
+            categoryList.children[0].click();
+        }
+
+        function toggleSelection( li, isSelected )
+        {
+            let icon = li.querySelector('i');
+            if( isSelected )
+            {
+                li.classList.add('selected');
+                icon.classList.remove('text-muted');
+                icon.classList.add('text-garnet');
+            }
+            else 
+            {
+                li.classList.remove('selected');
+                icon.classList.add('text-muted');
+                icon.classList.remove('text-garnet');
+            }
+        }
+
+        function selectCategory( event )
+        {
+            let category = event.currentTarget;
+            if( category.classList.contains('selected'))
+                return;
+            
+            //Clear Selected from all
+            let list = categoryList.querySelectorAll('li');
+            list.forEach( li => toggleSelection(li, false));
+            //Select current
+            
+            toggleSelection(category, true)
+
+            //Populate Topics
+            topicList.innerHTML = '';
+            let xmlCategory = videoXMLDoc.querySelector( `Category[name="${category.innerText}"]`);
+            xmlCategory.querySelectorAll('Topic').forEach( t =>{
+                let clone = template.content.cloneNode(true);
+                let li = clone.querySelector('li');
+                li.addEventListener('click', selectTopic );
+                li.querySelector('span').innerText = t.getAttribute('name');
+                topicList.appendChild(clone );
+            });
+
+            event.stopPropagation();
+            //Select First Topic
+            if(topicList.children[0])
+                topicList.children[0].click();
+        }
+
+        function selectTopic( event )
+        {
+            let topic = event.currentTarget;
+            if( topic.classList.contains('selected'))
+                return;
+            
+            //Clear Selected from all
+            let list = topicList.querySelectorAll('li');
+            list.forEach( li => toggleSelection(li, false));
+            toggleSelection(topic, true)
+
+            //Populate Topics
+            videoList.innerHTML = '';
+            let xmlCategory = videoXMLDoc.querySelector( `Topic[name="${topic.innerText}"]`);
+            xmlCategory.querySelectorAll('Video').forEach( v =>{
+                let clone = template.content.cloneNode(true);
+                let li = clone.querySelector('li');
+                li.addEventListener('click', selectVideo );
+                li.setAttribute('data-link', v.getAttribute('link'));
+                li.querySelector('span').innerText = v.getAttribute('name');
+                let icon = li.querySelector('i');
+                icon.classList.remove('fa-arrow-right');
+                icon.classList.add( 'fa-minus' );
+                videoList.appendChild( clone );
+                toggleSelection(li,false);
+            });
+
+            event.stopPropagation();
+            //Select First Topic
+            //if(videoList.children[0])
+            //    videoList.children[0].click();
+        }
+
+        function selectVideo( event )
+        {
+            let vid = event.currentTarget;
+            if( vid.classList.contains('selected'))
+                return;
+
+            //Clear Selected from all
+            let list = videoList.querySelectorAll('li');
+            list.forEach( li => {
+                toggleSelection( li, false );
+                li.querySelector('i').classList.add( 'fa-minus' );
+
+            });
+            toggleSelection( vid, true );
+            vid.querySelector('i').classList.add( 'fa-check' );
+            vid.querySelector('i').classList.remove('fa-minus');
+            loadVideo( vid.getAttribute('data-link'));
+            event.stopPropagation();
+        }
+
         function loadVideo( url )
         {
-            var video = document.getElementById('video');
+            let video = document.querySelector('#video');
+            let ytvideo = document.querySelector('#ytv');
+            ytvideo.src = ''
             video.pause();
-            //document.getElementById('mp4').src = url;
-            video.src = url;
-            video.load();
-            video.play();
-        }
-
-        /**
-        * Selects a menu item, and ensures the proper path is also selected
-        **/
-        function selectItem( $this, loadLastItem )
-        {
-            var $curItem = $this.parent();//li
-            var $curList = $curItem.parent(); // ul of current li
-
-            //This will make the current li item selected, and all in that
-            //level of the list unselected
-            $curItem.siblings().each( function()
+            if( ['youtube','youtu.be', 'yt.be'].some( yt => url.includes( yt )))
             {
-                $(this).removeClass('selected').css('background', 'Beige');
-                $(this).find('ul').css('display', 'none');
-            });
-            $curItem.addClass( 'selected' ).css('background', '#923338');
-            $curItem.find('ul').css('display','block');
-
-            //recursive call
-            if( $curItem.has('ul').length )
-            {
-                selectItem( $curItem.find('ul').first().find('a').first(), false );
+                video.classList.toggle('show', false);
+                ytvideo.classList.toggle('show', true);
+                //dealing with a yt link
+                video.currentTime = 0;
+                video.controls = false;
+                document.querySelector('#ytv').src = url;
             }
-            else
+            else 
             {
-                if( loadLastItem )
-                {
-                    console.log('loading: ' + $curItem.text() + '- src: ' + $this.attr('href') );
-                    loadVideo( $this.attr('href') );
-                }
+                video.classList.toggle('show', true);
+                ytvideo.classList.toggle('show', false);
+                video.controls = true;
+                video.src = url.startsWith('http') ? url : `data/video/${url}`;
+                video.load();
+                video.play();
             }
         }
 
-        /**
-        * Initializes video menu
-        **/
-        function initVideoMenu()
-        {
-            //Set the first Video as selected
-            $('.C > li').first().addClass("selected");
-            $('.T > li').first().addClass("selected");
-            $('.V > li').first().addClass("selected");
-
-            //hijack the click events to control the menu
-            $(".videomenu a").click( function(event) {
-                event.preventDefault();
-                selectItem( $(this), true);
-            });
-
-            //Set video to the first category > topic > video, then pause it (no one likes autoplay)
-            $('.C > li > a').first().click();
-            $('.V > li > a').first().click();
-            document.getElementById('video').pause();
-        };
-
-        document.addEventListener('DOMContentLoaded', async ()=> {
-            displayResult("content/data/videos.xml","content/data/transforms/video-transform.xsl","vids");
-            initVideoMenu();
+        document.addEventListener('DadContentLoaded', async function loadHandler(){
+            document.removeEventListener('DadContentLoaded', loadHandler);
+            let response = await fetch('content/data/videos.xml');
+            let data = await response.text();
+            const parser = new DOMParser();
+            videoXMLDoc = parser.parseFromString( data, "application/xml" );
+            loadCategories();
         });
-
