@@ -2,7 +2,7 @@
 	--union-red: #923338; 
 	--union-garnet: #822438;
 	--union-stone: #b3b38c;
-	--union-light-stone: #e4d2d2;
+	--union-light-stone: #e4e2d2;
 	--union-gray: #6c6f70;
 	
 	--rbb-black: #111;
@@ -12,6 +12,26 @@
 	--rbb-lightest-gray: #aaa;
 	--rbb-white: #f7f7f7;
 }
+
+.text-garnet {
+	color: var(--union-garnet );
+}
+.bg-garnet {
+	background-color: var(--union-red);
+}
+.text-stone {
+	color: var(--union-stonet );
+}
+.bg-stone {
+	background-color: var(--union-stone-light);
+}
+.text-black {
+	color: var( --rbb-black );
+}
+.bg-black {
+	background-color: var(--rbb-black);
+}
+
 
 /* General styles
  **************************************************/
