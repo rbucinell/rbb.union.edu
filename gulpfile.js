@@ -40,6 +40,7 @@ var paths = {
         `${src}/data/**/*`,
         `${src}/content/**/*`,
         `${src}/courses/**/*`,
+        `${src}/layouts/**/*`
     ]
 };
 
@@ -90,8 +91,7 @@ gulp.task('build-course-pug', () =>
 
 
 gulp.task('copy',function(){
-    return gulp.src( paths.copy, { base: src })
-        .pipe( gulp.dest( dest ));
+    return gulp.src( paths.copy, { base: src }).pipe( gulp.dest( dest ));
 });
 
 function cleanDest()
