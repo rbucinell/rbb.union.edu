@@ -1,14 +1,27 @@
 :root{
+	/*Primary Palette*/
 	--union-red: #923338; 
 	--union-garnet: #822438;
 	--union-stone: #b3b38c;
 	--union-light-stone: #e4e2d2;
 	--union-gray: #6c6f70;
-	
+	/*Secondary Palette*/
+	--union-gold: #D7941D;	
+	--union-metallic-gold: #85714D;
+	--union-navy: #003261;
+	--union-blue: #237FA4;
+	--union-blue-light: #5ABCE1;
+	--union-green: #5C8827;	
+	--union-green-light: #AEBC21;
+	--union-orange: #F58F20;
+	--union-orange-light: #FCB54D;
+
+	/*RBB Colors*/
 	--rbb-black: #111;
 	--rbb-dark-gray: #2b2b2b;
 	--rbb-gray: #333;
 	--rbb-light-gray: #303030;
+	--rbb-light-gray-hover: #363636;
 	--rbb-lightest-gray: #aaa;
 	--rbb-white: #f7f7f7;
 }
@@ -20,16 +33,34 @@
 	background-color: var(--union-red);
 }
 .text-stone {
-	color: var(--union-stonet );
+	color: var(--union-stone );
 }
 .bg-stone {
-	background-color: var(--union-stone-light);
+	background-color: var(--union-light-stone);
 }
 .text-black {
 	color: var( --rbb-black );
 }
 .bg-black {
 	background-color: var(--rbb-black);
+}
+.bg-gray {
+	background-color: var(--union-gray);
+}
+.panel-gray
+{
+	color: var(--rbb-gray);
+	background-color: var(--rbb-lightest-gray);
+	border-color: var(--union-gray);
+}
+
+.btn-remove {
+    background-color: var(--union-garnet);
+    color: var(--union-stone);
+}
+.btn-add {
+    background-color: green;
+    color: var(--rbb-white);
 }
 
 
@@ -71,6 +102,7 @@ body {
 	font-family: 'Lato', sans-serif;
 	font-weight: 400;
 	background: url(../img/dark_gray_tile.jpg);
+	color: var(--rbb-dark-gray);
 }
 
 a{
@@ -143,6 +175,11 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	background: url(../img/white_noise.jpg);
 	overflow: hidden;
 	overflow-y: scroll;
+	padding: 0 1em;
+	margin: 0 auto 20px auto;
+	width: 80vw;
+	max-width: 1500px;
+	height: 100%;
 }
 
 .page {
@@ -232,52 +269,54 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	margin: 0px 0 10px 0;
 }
 
-ul#navigation {
+.navigation {
 	padding: 0;
 	margin: 0;
 }
 
-ul#navigation li {
+.navigation li {
 	display: block;
 	float: none;
 	clear: both;
-	background: var(--rbb-light-gray);
+	background: var(--rbb-gray);
 	border-top: 1px solid var(--rbb-gray);
 	border-bottom: 1px solid var(--rbb-dark-gray);
 	transition: background-color 0.5s linear;
 }
 
-ul#navigation li a {
+.navigation li a {
 	color: var(--rbb-white);
 	font-size: 14px;
 }
-ul#navigation li .subnav li a :hover{
-	color: var(--union-garnet);
+.navigation li .subnav li a :hover{
+	background-color: var(--union-garnet);
 }
 
-ul#navigation li:hover,ul#navigation li:focus {
+.navigation li:hover,.navigation li:focus {
 	background: var(--rbb-gray);
 }
 
-ul#navigation li:hover a,ul#navigation li:focus a {
+.navigation li:hover a,
+.navigation li:focus a {
 	color: var(--rbb-white);
+	background: var(--rbb-light-gray-hover);
 }
 
-ul#navigation .currentmenu {
+.navigation .currentmenu {
 	font-weight: bold;
 }
 
-ul#navigation li.currentmenu a {
+.navigation li .currentmenu a {
 	color: var(--rbb-white);
 }
 
-ul#navigation li.currentmenu {
+.navigation li .currentmenu {
 	background: #363636;
 	border-top: 1px solid #3d3d3d;
 	border-bottom: 1px solid #252525;
 }
 
-ul#navigation li .text {
+.navigation li .text {
 	padding-left: 5%;
 	/*margin-left: 50px;*/
 	line-height: 35px;
@@ -286,7 +325,7 @@ ul#navigation li .text {
 	box-shadow: -3px 0 5px -4px #000;
 }
 
-ul#navigation li a .text {
+.navigation li a .text {
 	padding-left: 5%;
 	/*margin-left: 50px;*/
 	line-height: 35px;
@@ -295,12 +334,16 @@ ul#navigation li a .text {
 	box-shadow: -3px 0 5px -4px #000;
 }
 
-ul#navigation li .icon {
+.navigation li .icon {
 	float: left;
 	line-height: 45px;
 	width: 50px;
 	text-align: center;
 	font-size: 27px;
+}
+
+.submenu {
+	padding-left: 30px;
 }
 
 .social-icons {
@@ -375,7 +418,7 @@ ul#navigation li .icon {
 	ul.grid li {
 		width: 100%;
 	}
-	#navigation .text{
+	.navigation .text{
 		line-height: 30px !important;
 	}
 }

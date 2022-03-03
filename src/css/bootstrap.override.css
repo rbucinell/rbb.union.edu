@@ -8,7 +8,10 @@
 .breadcrumb > li + li:before {
     color: black;
 }
-
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
 .page-header {
     border-bottom: 1px solid #923338;
 }
