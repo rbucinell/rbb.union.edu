@@ -5,21 +5,70 @@
             #profile.clearfix
                 .portrate.hidden-xs
                 .title
-                    h2 Ronald B. Bucinell, Ph.D., P.E.
+                    a(href="/"): h2 Ronald B. Bucinell, Ph.D., P.E.
                     h3 Union College
             nav
-                ul#navigation
+                ul#navigation.nav.navigation
+                ul: li: h4#courseNavName.text-stone #{course}
+                ul#courseNavigation.nav.navigation
     .social-icons
         ul
-            li: a(href="/data/PE_Ronald_B_Bucinell_PhD.msg"): i.fa.fa-envelope-o
-            li: a(href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"): i.fa.fa-linkedin
-            li: a(href="http://www.researchgate.net/profile/Ronald_Bucinell"): i.ai.ai-researchgate
+            li: a(title="Outlook Contact Card"  href="/data/PE_Ronald_B_Bucinell_PhD.msg"): i.fa.fa-envelope-o
+            li: a(title="LinkedIn Profile"      href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"): i.fa.fa-linkedin
+            li: a(title="Research Gate Profile" href="http://www.researchgate.net/profile/Ronald_Bucinell"): i.ai.ai-researchgate
 script.
+
+    /**
+    * @param {String} HTML representing a single element
+    * @return {Element}
+    */
+    function htmlToElement(html) {
+        var template = document.createElement('template');
+        html = html.trim(); // Never return a text node of whitespace as the result
+        template.innerHTML = html;
+        return template.content.firstChild;
+    }
+
     async function loadXMLDoc(filename)
     {
         let response = await fetch(filename);
         let txt = await response.text();
         return [new DOMParser().parseFromString( txt, 'application/xml'), response.headers.get('Last-Modified')];
+    }
+
+    async function loadNavigation( filename, ulID )
+    {
+        let [xmlDoc, modified ] = await loadXMLDoc( filename );
+        let ul = document.querySelector(`#${ulID}`);
+        xmlDoc.querySelectorAll('item').forEach((item,i) =>
+        {
+            let li = document.createElement('li');
+
+            let subitems = item.querySelectorAll('subitem');
+            if( subitems )
+            {
+                let menuName = item.getAttribute('name');
+                let anchor = htmlToElement(`<a id="${ulID}_menu${i}" href='#' data-toggle='collapse' data-target='#${ulID}_submenu${i}' aria-expanded='false'>${menuName}</a>`);
+                let subul = htmlToElement(`<ul id="${ulID}_submenu${i}" class="nav submenu collapse" role="menu" aria-labelledby="${ulID}_menu${i}"></ul>`);
+                
+                //Add all the sub-menu items to sub-menu
+                item.querySelectorAll('subitem').forEach((sub,j)=>{
+                    let subli = document.createElement('li');
+                    let suba = htmlToElement(`<a href="${sub.getAttribute('target')}">${sub.getAttribute('name')}</a>`);
+                    if( sub.getAttribute('external') )
+                    {
+                        suba.setAttribute('target', '_blanck');
+                        suba.appendChild(htmlToElement(`<i class="fa fa-external-link" style="padding-left:1rem;" aria-hidden="true"></i>`));
+                    }
+                    subli.appendChild(suba);
+                    subul.append( subli );
+                });
+                li.appendChild(anchor);
+                li.appendChild(subul);
+            }
+            console.log( li );
+            ul.append(li);
+        });
     }
 
     async function displayResult( xmlpath, transformpath, outputId )
@@ -33,6 +82,11 @@ script.
         document.querySelector('.updated').innerText = `Updated ${new Date(xmlLastMod).toDateString()}`;
     }
     document.addEventListener('DOMContentLoaded', async ()=> {
-        await displayResult( "content/data/nav.xml", "content/data/transforms/nav_transform.xsl", "navigation" );
-        initMenu();
+        await loadNavigation( "/content/data/nav.xml", "navigation");
+        if( '#{course}' )
+        {
+            console.log( 'is course');
+            await loadNavigation("/content/courses/#{course}/data/nav.xml",'courseNavigation')
+        }
+        document.querySelector('#navigation').appendChild(htmlToElement(`<li><a href="/contact.html">Contact</a></li>`));
     });
