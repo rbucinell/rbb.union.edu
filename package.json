@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/rbucinell/rbb.union.edu/issues"
   },
-  "homepage": "https://github.com/rbucinell/rbb.union.edu#readme"
+  "homepage": "https://github.com/rbucinell/rbb.union.edu#readme",
+  "dependencies": {
+    "jszip": "^3.7.1"
+  }
 }
