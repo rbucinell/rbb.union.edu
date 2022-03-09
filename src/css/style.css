@@ -177,7 +177,6 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	overflow-y: scroll;
 	padding: 0 1em;
 	margin: 0 auto 20px auto;
-	width: 80vw;
 	max-width: 1500px;
 	height: 100%;
 }
@@ -342,9 +341,16 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	font-size: 27px;
 }
 
-.submenu {
-	padding-left: 30px;
+.navigation li.panel {
+	margin-bottom: 0px;
 }
+
+.submenu {
+	padding-left: 2em;
+}
+#courseNameHeader {
+	padding-left: 1em;
+  }
 
 .social-icons {
 	position: absolute;

@@ -8,8 +8,8 @@
                     a(href="/"): h2 Ronald B. Bucinell, Ph.D., P.E.
                     h3 Union College
             nav
-                ul#navigation.nav.navigation
-                ul: li: h4#courseNavName.text-stone #{course}
+                ul#mainNavigation.nav.navigation
+                ul#courseNameHeader: li: h4#courseNavName.text-stone #{course}
                 ul#courseNavigation.nav.navigation
     .social-icons
         ul
@@ -20,7 +20,7 @@ script.
 
     /**
     * @param {String} HTML representing a single element
-    * @return {Element}
+    * @return {Element} a DOM element
     */
     function htmlToElement(html) {
         var template = document.createElement('template');
@@ -43,13 +43,13 @@ script.
         xmlDoc.querySelectorAll('item').forEach((item,i) =>
         {
             let li = document.createElement('li');
-
             let subitems = item.querySelectorAll('subitem');
             if( subitems )
             {
+                li.classList.add('panel');
                 let menuName = item.getAttribute('name');
-                let anchor = htmlToElement(`<a id="${ulID}_menu${i}" href='#' data-toggle='collapse' data-target='#${ulID}_submenu${i}' aria-expanded='false'>${menuName}</a>`);
-                let subul = htmlToElement(`<ul id="${ulID}_submenu${i}" class="nav submenu collapse" role="menu" aria-labelledby="${ulID}_menu${i}"></ul>`);
+                let anchor = htmlToElement(`<a id="${ulID}_menu${i}" data-parent="#${ulID}" data-toggle='collapse' data-target='#${ulID}_submenu${i}' aria-expanded='false'>${menuName}</a>`);
+                let subul  = htmlToElement(`<ul id="${ulID}_submenu${i}" class="nav submenu collapse" role="menu" aria-labelledby="${ulID}_menu${i}"></ul>`);
                 
                 //Add all the sub-menu items to sub-menu
                 item.querySelectorAll('subitem').forEach((sub,j)=>{
@@ -57,7 +57,7 @@ script.
                     let suba = htmlToElement(`<a href="${sub.getAttribute('target')}">${sub.getAttribute('name')}</a>`);
                     if( sub.getAttribute('external') )
                     {
-                        suba.setAttribute('target', '_blanck');
+                        suba.setAttribute('target', '_blank');
                         suba.appendChild(htmlToElement(`<i class="fa fa-external-link" style="padding-left:1rem;" aria-hidden="true"></i>`));
                     }
                     subli.appendChild(suba);
@@ -66,27 +66,16 @@ script.
                 li.appendChild(anchor);
                 li.appendChild(subul);
             }
-            console.log( li );
             ul.append(li);
         });
     }
 
-    async function displayResult( xmlpath, transformpath, outputId )
-    {
-        let [xmlDoc, xmlLastMod] = await loadXMLDoc(xmlpath);
-        let [xslDoc, xslLastMod] = await loadXMLDoc(transformpath);
-        let xsltProcessor = new XSLTProcessor();
-        xsltProcessor.importStylesheet(xslDoc);
-        resultDocument = xsltProcessor.transformToFragment(xmlDoc, document);
-        document.getElementById(outputId).appendChild(resultDocument);
-        document.querySelector('.updated').innerText = `Updated ${new Date(xmlLastMod).toDateString()}`;
-    }
     document.addEventListener('DOMContentLoaded', async ()=> {
-        await loadNavigation( "/content/data/nav.xml", "navigation");
+        
+        await loadNavigation( "/content/data/nav.xml", "mainNavigation");
         if( '#{course}' )
         {
-            console.log( 'is course');
             await loadNavigation("/content/courses/#{course}/data/nav.xml",'courseNavigation')
         }
-        document.querySelector('#navigation').appendChild(htmlToElement(`<li><a href="/contact.html">Contact</a></li>`));
+        document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a href="/contact.html">Contact</a></li>`));
     });
