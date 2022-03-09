@@ -4,7 +4,7 @@ html(lang='en')
     // Do not modify this file! It was automatically generated. To change it's content go to content folder 
     //                                                                                                      
     block config
-    include ./head.pug 
+    include ./head.pug
     block head
     include ./mixins.pug
     body
@@ -13,10 +13,17 @@ html(lang='en')
             include ./nav.pug
 
             //- Main content
-            main#main.container
+            main#main
                 header.page-header
-                    h1#pageheader #{ name }
-                    ul.breadcrumb 
+                    if course
+                        h1#pageheader #{ course }
+                            small &nbsp;#{courseName}
+                    else 
+                        h1#pageheader #{name}
+                    ul.breadcrumb
+                        if course
+                            li: a(href="/courselisting.html") Courses
+                            li: a(href="./") #{course}
                         li #{menu}
                         li.active: a(href="#") #{name}
                 section#dadcontent
