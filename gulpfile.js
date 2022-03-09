@@ -77,22 +77,27 @@ gulp.task('js-custom', gulp.series(
 
 // Compile main pug pages into HTML
 gulp.task('build-pug', function(){
-    return gulp.src([`${src}/layouts/**/*.pug`,`!${src}/layouts/mixins/*.pug`])
+    return gulp.src([`${src}/layouts/**/*.pug`,`!${src}/layouts/mixins/*.pug`, `!${src}/layouts/partials/page_template.pug`])
         .pipe(pug( { pretty: true } ))
         .pipe( gulp.dest( dest ));
 });
 gulp.task('build-course-pug', () =>
-    gulp.src([`${src}/courses/**/*.pug`,`!${src}/layouts/mixins/*.pug`])
+    gulp.src([`${src}/courses/**/*.pug`,`!${src}/layouts/mixins/*.pug`, `!${src}/layouts/partials/page_template.pug`])
         .pipe(debug())
-        .pipe( gulp.dest( `${dest}/${
-            (file)=>path.join(path.dirname(file.path), 'courses')
-        }` ))
-);
+        .pipe( gulp.dest( `${dest}/${(file)=>path.join(path.dirname(file.path), 'courses')}` )));
 
 
 gulp.task('copy',function(){
-    return gulp.src( paths.copy, { base: src }).pipe( gulp.dest( dest ));
+    return gulp.src( paths.copy, { base: src })
+    .pipe( debug())
+    .pipe( gulp.dest( dest ));
 });
+gulp.task('copy-layouts',function(){
+    return gulp.src( `${src}/layouts/**/*`, { base: src })
+    .pipe( debug())
+    .pipe( gulp.dest( dest ));
+});
+
 
 function cleanDest()
 {
