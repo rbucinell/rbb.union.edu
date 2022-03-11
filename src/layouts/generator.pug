@@ -34,9 +34,13 @@ block content
                         input#externalLink.form-control(type='checkbox')
                 .form-group.pull-right
                     button.btn.btn-remove(type='button', onclick='removePage(this)'): i.fa.fa-minus
-    label(for='navxmlpicker') Import Existing nav.xml?
-    input#navxmlpicker(type='file', name='navxmlpicker', onchange='importNavXML(event)')
+    .panel.bg-stone.text-red
+        .panel-body
+            label(for='navxmlpicker') Import Existing nav.xml?
+            input#navxmlpicker(type='file', name='navxmlpicker', onchange='importNavXML(event)')
     form#genratorForm
+        
+        h3 Course Info
         .row
             .form-group.col-xs-12.col-sm-2
                 label(for='courseID') Course ID
@@ -44,7 +48,10 @@ block content
             .form-group.col-xs-12.col-sm-4
                 label(for='courseName') Course Name
                 input#courseName.form-control(type='text' placeholder='Introduction to Mechancis', required )
-
+        h3 Rotation Images
+        .panel.bg-stone.text-red
+            .panel-body
+                input#rotateImages(type='file', name='rotateImages', multiple)
         h3 Sections
             button#addSectionButton.btn.btn-add(type='button', onclick='addSection()')
                 | Add Section &nbsp;
@@ -192,13 +199,19 @@ block scripts
             return true;
         }
 
+        const blobToData = (blob) => {
+            return new Promise((resolve) => {
+                const reader = new FileReader()
+                reader.onloadend = () => resolve(reader.result)
+                reader.readAsDataURL(blob)
+            })
+        }
         /**
         *   Generate button click handler. Creates files from the current DOM confuration on the page
         **/
         async function generateButtonClick(e)
         {
             e.preventDefault();
-
             let manifest = {
                 id: document.querySelector('#courseID').value,
                 name: document.querySelector('#courseName').value,
@@ -239,8 +252,6 @@ block scripts
             const parser = new DOMParser();
             let xml  = parser.parseFromString('<?xml version="1.0" encoding="utf-8"?><navigation></navigation>', "application/xml");
             let root = xml.querySelector('navigation');
-            //add the manifest
-            zip.file( `${manifestJSON.id}/mainfest.json`, JSON.stringify(manifestJSON));
 
             //add pages, the respective content pages, and layouts
             for( let section of manifestJSON.sections ) {
@@ -267,8 +278,23 @@ block scripts
                 }
                 root.appendChild(item);
             }
+
+            //add images
+            let imagePicker = document.querySelector('#rotateImages');
+            for( let i = 0; i <imagePicker.files.length; i++ )
+            {   
+                let file = imagePicker.files[i];
+                let ext = file.name.substring(file.name.lastIndexOf('.') + 1);
+                let newName = `PIC${((i < 10 ) ? "0" + (i+1): i+1)}.${ext}`;
+                manifestJSON.images.push( newName );
+                zip.file(`${manifestJSON.id}/img/rotation/${newName}`, file);
+            }
+
             //add the nav.xml
             zip.file(`${manifestJSON.id}/content/data/nav.xml`, new XMLSerializer().serializeToString(xml) );
+            //add the manifest
+            zip.file( `${manifestJSON.id}/mainfest.json`, JSON.stringify(manifestJSON));
+
             let content = await zip.generateAsync( { type: 'blob'});
             saveAs(content, `${manifestJSON.id}.zip`);
 
