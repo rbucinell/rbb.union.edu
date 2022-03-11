@@ -215,6 +215,7 @@ block scripts
             let manifest = {
                 id: document.querySelector('#courseID').value,
                 name: document.querySelector('#courseName').value,
+                created: (new Date()).toISOString(),
                 sections: [],
                 images: []
             }
