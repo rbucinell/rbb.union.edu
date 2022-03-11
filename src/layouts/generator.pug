@@ -240,7 +240,7 @@ block scripts
             let xml  = parser.parseFromString('<?xml version="1.0" encoding="utf-8"?><navigation></navigation>', "application/xml");
             let root = xml.querySelector('navigation');
             //add the manifest
-            //zip.file( `${manifestJSON.id}/mainfest.json`, JSON.stringify(manifestJSON));
+            zip.file( `${manifestJSON.id}/mainfest.json`, JSON.stringify(manifestJSON));
 
             //add pages, the respective content pages, and layouts
             for( let section of manifestJSON.sections ) {
@@ -255,8 +255,8 @@ block scripts
                     if( !page.externalLink)
                     {
                         let layoutURL = page.url.substring( 0, page.url.lastIndexOf('.')) + '.pug';
-                        zip.file( `${manifestJSON.id}/${page.url}`, '' );
-                        zip.file( `${manifestJSON.id}/content/${page.url}`, '' );
+                        //  zip.file( `${manifestJSON.id}/${page.url}`, '' );
+                        zip.file( `${manifestJSON.id}/content/${page.url}`, `<div class="alert alert-warning" role="alert"><strong>Default File</strong><p>The content of this file (content/${page.url}) needs to be populated</p></div>` );
                         zip.file( `${manifestJSON.id}/layouts/${layoutURL}`, template.replace('template_name', page.name) );
                     }
                     else 
@@ -268,7 +268,7 @@ block scripts
                 root.appendChild(item);
             }
             //add the nav.xml
-            zip.file(`${manifestJSON.id}/data/nav.xml`, new XMLSerializer().serializeToString(xml) );
+            zip.file(`${manifestJSON.id}/content/data/nav.xml`, new XMLSerializer().serializeToString(xml) );
             let content = await zip.generateAsync( { type: 'blob'});
             saveAs(content, `${manifestJSON.id}.zip`);
 
