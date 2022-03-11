@@ -2,9 +2,10 @@ const gulp      = require('gulp');
 const cleanCSS  = require('gulp-clean-css');
 const concat    = require('gulp-concat');
 const debug     = require('gulp-debug');
-var log = require('fancy-log');
 const pug       = require('gulp-pug');
 const uglify    = require('gulp-uglify');
+const rename    = require('gulp-rename');
+var log         = require('fancy-log');
 const del       = require('del');
 const fs        = require('fs');
 const path      = require('path');
@@ -40,7 +41,14 @@ var paths = {
         `${src}/data/**/*`,
         `${src}/content/**/*`,
         `${src}/courses/**/*`,
-        `${src}/layouts/**/*`
+        `!${src}/courses/**/*.pug`,
+        `${src}/layouts/partials/page_template.pug`
+    ],
+    pug: [
+        `${src}/layouts/**/*.pug`,
+        `!${src}/layouts/mixins/*.pug`,
+        `!${src}/layouts/partials/*.pug`, 
+        `!${src}/layouts/partials/page_template.pug`
     ]
 };
 
@@ -77,15 +85,17 @@ gulp.task('js-custom', gulp.series(
 
 // Compile main pug pages into HTML
 gulp.task('build-pug', function(){
-    return gulp.src([`${src}/layouts/**/*.pug`,`!${src}/layouts/mixins/*.pug`, `!${src}/layouts/partials/page_template.pug`])
+    return gulp.src(paths.pug)
         .pipe(pug( { pretty: true } ))
         .pipe( gulp.dest( dest ));
 });
-gulp.task('build-course-pug', () =>
-    gulp.src([`${src}/courses/**/*.pug`,`!${src}/layouts/mixins/*.pug`, `!${src}/layouts/partials/page_template.pug`])
-        .pipe(debug())
-        .pipe( gulp.dest( `${dest}/${(file)=>path.join(path.dirname(file.path), 'courses')}` )));
 
+gulp.task('build-course-pug', () =>{
+    return gulp.src([`${src}/courses/**/*.pug`])
+        .pipe(pug( { pretty: true } ))
+        .pipe(rename((file) => file.dirname = file.dirname.split(path.sep).slice(0,-1).join() ))
+        .pipe(gulp.dest(`${dest}/courses`));
+});
 
 gulp.task('copy',function(){
     return gulp.src( paths.copy, { base: src })
@@ -93,7 +103,7 @@ gulp.task('copy',function(){
     .pipe( gulp.dest( dest ));
 });
 gulp.task('copy-layouts',function(){
-    return gulp.src( `${src}/layouts/**/*`, { base: src })
+    return gulp.src( `${src}/layouts/partials/page_template.pug`, { base: src })
     .pipe( debug())
     .pipe( gulp.dest( dest ));
 });
