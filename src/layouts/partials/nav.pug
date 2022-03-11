@@ -75,7 +75,7 @@ script.
         await loadNavigation( "/content/data/nav.xml", "mainNavigation");
         if( '#{course}' )
         {
-            await loadNavigation("/content/courses/#{course}/data/nav.xml",'courseNavigation')
+            await loadNavigation("/courses/#{course}/content/data/nav.xml",'courseNavigation')
         }
         document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a href="/contact.html">Contact</a></li>`));
     });
