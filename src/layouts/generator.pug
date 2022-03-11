@@ -293,7 +293,7 @@ block scripts
             //add the nav.xml
             zip.file(`${manifestJSON.id}/content/data/nav.xml`, new XMLSerializer().serializeToString(xml) );
             //add the manifest
-            zip.file( `${manifestJSON.id}/mainfest.json`, JSON.stringify(manifestJSON));
+            zip.file( `${manifestJSON.id}/manifest.json`, JSON.stringify(manifestJSON));
 
             let content = await zip.generateAsync( { type: 'blob'});
             saveAs(content, `${manifestJSON.id}.zip`);
