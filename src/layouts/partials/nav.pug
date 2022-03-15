@@ -111,13 +111,16 @@ script.
     }
 
     document.addEventListener('DOMContentLoaded', async ()=> {
-        
-        await loadNavigation( "/content/data/nav.xml", "mainNavigation");
         if( '#{course}' )
         {
+            document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-white" href="/index.html">RBB Home</a></li>`));
             await loadNavigation("/courses/#{course}/content/data/nav.xml",'courseNavigation')
         }
-        document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-truncate" style="color: var(--union-light-stone);" href="/contact.html">Contact</a></li>`));
+        else 
+        {
+            await loadNavigation( "/content/data/nav.xml", "mainNavigation");
+        }
+        document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2" style="color: var(--union-light-stone);" href="/contact.html">Contact</a></li>`));
         if( window.innerLocation >= 768 )
         {
             //document.querySelector('#navgroup').classList.add('show');
