@@ -29,7 +29,6 @@ var paths = {
     css : {
         libraries : [`${src}/css/plugins/*.css`],
         custom : [
-            `${src}/css/bootstrap.override.css`,
             `${src}/css/style.css`
         ],
         libmin:     `${dest}/css/lib.min.css`,
