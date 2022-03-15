@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <videos>
+	<Category name="Webinars">
+		<Topic name="KEEN">
+			<Video name="Identifying a Problem (21 May 15)" link="2015-05-21 11.01 The Creative Problem Solving Process_  Identifying the Less Than Optimal Situation_1.mp4" />
+			<!--Video name="Category1-Topic1-Video2" link="http://techslides.com/demos/sample-videos/small.mp4" /-->
+		</Topic>
+	</Category>
+	
+	<Category name="Animations">
+		<Topic name="Instant Centers">
+			<Video name="Locating using Aronhold-Kennedy" link="IC Aronhold Kennedy Theorem Example (no sound).mp4" />
+			<Video name="Determining Velocity" link="IC Velocity Animated Example (no sound).mp4" />
+		</Topic>
+		<Topic name="Mechanism">
+			<Video name="4-Bar" link="Mechanism 4-BAR.mp4" />
+			<Video name="4-Bar with Coupler" link="Mechanism 4-Bar Coupler.mp4" />
+			<Video name="Mechanism Slider Crank" link="Mechanism Slider Crank.mp4" />
+		</Topic>
+	</Category>
+	
+</videos>
+
+
+<!--Sample
+<videos>
 	<Category name="Category1">
 		<Topic name="Topic 1 - Hosted Videos">
 			<Video name="bbb" link="mov_bbb.mp4" />
@@ -8,18 +32,12 @@
 		<Topic name="Topic 2 - Youtube Videos">
 			<Video name="Cat1-Topic2-Vid1 - Rand YT Link ZUFo2Br2eeI" link="https://www.youtube.com/embed/ZUFo2Br2eeI" />
 			<Video name="Cat1-Topic2-Vid2 - Rand YT Link jqMXNoXql40" link="https://www.youtube.com/embed/jqMXNoXql40" />
-			<Video name="Cat1-Topic2-Vid3 - Rand YT Link SiPU7dB-nn0" link="https://www.youtube.com/embed/SiPU7dB-nn0" />
-			<Video name="Cat1-Topic2-Vid4 - Rand YT Link l554kV12Wuo" link="https://www.youtube.com/embed/l554kV12Wuo" />
-			<Video name="Cat1-Topic2-Vid5 - Rand YT Link z56j06plUgs" link="https://www.youtube.com/embed/z56j06plUgs" />
-			<Video name="Cat1-Topic2-Vid6 - Rand YT Link t5jg87Xb1_I" link="https://www.youtube.com/embed/t5jg87Xb1_I" />
-			<Video name="Cat1-Topic2-Vid7 - Rand YT Link mTVa1OCs9M0" link="https://www.youtube.com/embed/mTVa1OCs9M0" />
 		</Topic>
 	</Category>
 	<Category name="Category2">
 		<Topic name="Category2Topic1">
 			<Video name="Category2-Topic1-Video1" link="#" />
 			<Video name="Category2-Topic1-Video2" link="#" />
-			<Video name="Category2-Topic1-Video3" link="#" />
 		</Topic>
 		<Topic name="Sample Remote">
 			<Video name="big buck bunny" link="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
@@ -30,16 +48,5 @@
 		<Topic name="Category3Topic1">
 		</Topic>
 	</Category>	
-</videos>
-
-<!--Sample
-<videos>
-	<Category name="Cat 1">
-		<Topic name="Topic A">
-			both ways work fine
-			<Video name="my movie" link="mymovie.mp4" />
-			<Video name="my movie" link="mymovie.mp4" ></Video>
-		</Topic>
-	</Category>
 </videos>
 -->
