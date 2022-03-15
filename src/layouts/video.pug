@@ -26,22 +26,22 @@ block config
     - const [menu,name] = ['Course Listing', 'Videos']
 block content
     .row.bg-black
-        .col-sm-8.col-sm-offset-2
-            figure#video_player.embed-responsive.embed-responsive-16by9.filePreview
+        .text-center
+            figure#video_player.embed-responsive.embed-responsive-16by9.filePreview(style="height: 400px;")
                 iframe#ytv.collapse(type='text/html' width='100%' height='100%' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen='')
-                video#video.collapse.show(controls='')
+                video#video.collapse.show.h-100(controls='')
     template#listItemTemplate
         li.list-group-item 
             span
             i.fa.fa-arrow-right.pull-right
-    #videoMenu.row.row-no-gutters
-        .col-md-3.col-xs-4.panel
+    #videoMenu.row.p-3
+        .col-md-3.col-xs-4.panel.g-0
             .panel-heading: strong Categories
             ul#category-list.list-group
-        .col-md-3.col-xs-4.panel
+        .col-md-3.col-xs-4.panel.g-0
             .panel-heading: strong Topics
             ul#topic-list.list-group
-        .col-md-6.col-xs-4.panel
+        .col-md-6.col-xs-4.panel.g-0
             .panel-heading: strong  Videos
             ul#video-list.list-group
 block scripts 

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
 	let images = [];
 	let foundMax = false;
 	let cur = 1;
-	let portrait = document.querySelector("#profile > div.portrate");
+	let portrait = document.querySelector("#profile > img");
 
 	//If there is a manifest, then preload the rotation images
 	let manifest = await fetch( 'manifest.json' );
