@@ -1,21 +1,55 @@
-#sidebar
-    a.mobilemenu(href="#sidebar"): i.fa.fa-bars
-    #main-nav
-        #nav-container
-            #profile.clearfix
-                .portrate.hidden-xs
-                .title
-                    a(href="/"): h2 Ronald B. Bucinell, Ph.D., P.E.
-                    h3 Union College
-            nav
-                ul#mainNavigation.nav.navigation
-                ul#courseNameHeader: li: h4#courseNavName.text-stone #{course}
-                ul#courseNavigation.nav.navigation
+aside#nav-aside.g-0.col-sm-3.flex-shrink-1.sticky-top.pb-sm-0.pb-3
+    //.p-1.h-100.sticky-top
+    #profile.m-2
+        img.img-thumbnail.d-none.d-sm-block(width="250px", height="250px")
+        .title.text-center
+            a(href="/"): h4.pt-2 Ronald B. Bucinell, Ph.D., P.E.
+            h4.lead Union College
+    nav.navbar.navbar-expand-sm.d-flex.flex-column
+        button#navtogglebutton.navbar-toggler.mb-4.text-white(type="button" data-bs-toggle="collapse" data-bs-target=".navgroup"): i.fa.fa-bars
+        ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column#mainNavigation
+        ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column#courseNameHeader
+            li: span#courseNavName.text-stone #{course}
+        ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column#courseNavigation
+    //- ul.nav.nav-pills.flex-sm-column.flex-row.mb-auto.justify-content-between.text-truncate
+    //-     li.nav-item: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Home
+    //-     li: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Customers
+    //-     li: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Customers
+    //-     li: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Customers
+    //-     li: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Customers
+
     .social-icons
-        ul
-            li: a(title="Outlook Contact Card"  href="/data/PE_Ronald_B_Bucinell_PhD.msg"): i.fa.fa-envelope-o
-            li: a(title="LinkedIn Profile"      href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"): i.fa.fa-linkedin
-            li: a(title="Research Gate Profile" href="http://www.researchgate.net/profile/Ronald_Bucinell"): i.ai.ai-researchgate
+        .d-flex.justify-content-center.text-center
+            span.fs-3.flex-fill: a(title="Outlook Contact Card"  href="/data/PE_Ronald_B_Bucinell_PhD.msg"): i.fa-user.fa
+            span.fs-3.flex-fill: a(title="LinkedIn Profile"      href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"): i.fa.fa-linkedin
+            span.fs-3.flex-fill: a(title="Research Gate Profile" href="http://www.researchgate.net/profile/Ronald_Bucinell"): i.ai.ai-researchgate
+            span.fs-3.flex-fill: a(title="Phone Number", href="tel:+1518886023"): i.fa.fa-phone
+            span.fs-3.flex-fill: a(title="Email", href="mailto:bucinelr@union.edu"): i.fa.fa-envelope-o
+
+
+//- #sidebar
+//-     a.mobilemenu(href="#main-nav", role="button", data-toggle="collapse"): i.fa.fa-bars
+//-     #main-nav
+//-         #nav-container.collapse
+//-             #profile.clearfix
+//-                 .portrate.hidden-xs
+//-                 .title
+//-                     a(href="/"): h2 Ronald B. Bucinell, Ph.D., P.E.
+//-                     h3 Union College
+//-             nav
+//-                 ul#mainNavigation.nav.navigation
+//-                 ul#courseNameHeader: li: h4#courseNavName.text-stone #{course}
+//-                 ul#courseNavigation.nav.navigation
+//-             .social-icons
+//-                 ul
+//-                     li: a(title="Outlook Contact Card"  href="/data/PE_Ronald_B_Bucinell_PhD.msg")
+//-                         span.fa-stack
+//-                             i.fa.fa-user.fa-stack-1x
+//-                             i.fa.fa-envelope-o.fa-stack-2x
+//-                     li: a(title="LinkedIn Profile"      href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"): i.fa.fa-linkedin
+//-                     li: a(title="Research Gate Profile" href="http://www.researchgate.net/profile/Ronald_Bucinell"): i.ai.ai-researchgate
+//-                     li: a(title="Phone Number", href="tel:+1518886023"): i.fa.fa-phone
+//-                     li: a(title="Email", href="mailto:bucinelr@union.edu"): i.fa.fa-envelope-o
 script.
 
     /**
@@ -46,15 +80,19 @@ script.
             let subitems = item.querySelectorAll('subitem');
             if( subitems )
             {
-                li.classList.add('panel');
+                li.classList = 'nav-link px-2 text-wrap';
                 let menuName = item.getAttribute('name');
-                let anchor = htmlToElement(`<a id="${ulID}_menu${i}" data-parent="#${ulID}" data-toggle='collapse' data-target='#${ulID}_submenu${i}' aria-expanded='false'>${menuName}</a>`);
-                let subul  = htmlToElement(`<ul id="${ulID}_submenu${i}" class="nav submenu collapse" role="menu" aria-labelledby="${ulID}_menu${i}"></ul>`);
+                let anchor = htmlToElement(`<a id="${ulID}_menu${i}" class="text-white" data-bs-parent="#${ulID}" data-bs-toggle='collapse' data-bs-target='#${ulID}_submenu${i}' aria-expanded='false'>${menuName}</a>`);
+                let subul  = htmlToElement(`<ul id="${ulID}_submenu${i}" class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate collapse" aria-labelledby="${ulID}_menu${i}"></ul>`);
                 
+                let expand = false;
                 //Add all the sub-menu items to sub-menu
                 item.querySelectorAll('subitem').forEach((sub,j)=>{
+                    if( window.location.pathname.includes(sub.getAttribute('target')) ) expand = true;
+
                     let subli = document.createElement('li');
-                    let suba = htmlToElement(`<a href="${sub.getAttribute('target')}">${sub.getAttribute('name')}</a>`);
+                    subli.classList = 'my-1 px-2 text-truncate text-muted';
+                    let suba = htmlToElement(`<a class="text-white-50" href="${sub.getAttribute('target')}">${sub.getAttribute('name')}</a>`);
                     if( sub.getAttribute('external') )
                     {
                         suba.setAttribute('target', '_blank');
@@ -63,6 +101,8 @@ script.
                     subli.appendChild(suba);
                     subul.append( subli );
                 });
+
+                if( expand && window.innerLocation >= 768) subul.classList.add('show');
                 li.appendChild(anchor);
                 li.appendChild(subul);
             }
@@ -77,5 +117,9 @@ script.
         {
             await loadNavigation("/courses/#{course}/content/data/nav.xml",'courseNavigation')
         }
-        document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a href="/contact.html">Contact</a></li>`));
+        document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-truncate" style="color: var(--union-light-stone);" href="/contact.html">Contact</a></li>`));
+        if( window.innerLocation >= 768 )
+        {
+            //document.querySelector('#navgroup').classList.add('show');
+        }
     });
