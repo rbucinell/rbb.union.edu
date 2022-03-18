@@ -17,9 +17,9 @@ block content
 
     template#sectionTemplate 
         .section.card.mb-3.border.border-secondary
-            .card-header.p-0.pt-1
+            .card-header.p-0
                 .input-group
-                    span.input-group-text.text-bold Section
+                    span.input-group-text.text-bold: h5.m-0 Section
                     button.btn.btn-remove(type='button',onclick='removeSection(this)' ): i.fa.fa-minus
                     input#sectionName.form-control(type='text' placeholder="Secion Name")
                     button#addPageBtn.btn.btn-add(type='button', onclick='addPage(this)'): i.fa.fa-plus &nbsp;Add Page
@@ -47,7 +47,7 @@ block content
                 input#courseName.form-control(type='text' placeholder='e.g. Introduction to Mechancis', required )
             .col-xs-6.col-sm-3.col-md-3.form-group.pull-right
                 label.form-label(for="navxmlpicker") Import <code>nav.xml</code>?
-                input#navxmlpicker.form-control(type="file" onclick="importNavXML(event)")
+                input#navxmlpicker.form-control(type="file" onchange="importNavXML(event)")
         .row: h3 Rotation Images
         .row.mb-3
             input#rotateImages(type='file', name='rotateImages', multiple)
@@ -55,7 +55,9 @@ block content
             button#addSectionButton.btn.btn-add(type='button', onclick='addSection()'): i.fa.fa-plus &nbsp;Add Section
         .row: section#sections
         .row: section#errors
-        .row: .col-2: button.form-control.btn.btn-primary(type='post' onclick="generateButtonClick(event)") Generate
+        .row
+            .col-2: button.form-control.btn.btn-primary(type='post' onclick="generateButtonClick(event)") Generate
+            .col-2: button.form-control.btn.btn-secondary(type='button' onclick="clearForm(event)") Clear Form
 
     // Button trigger modal
     button#launchModal.collapse.btn.btn-primary.btn-lg(type='button' data-bs-toggle='modal' data-bs-target='#createdModal') Launch modal
@@ -79,6 +81,7 @@ block scripts
         **/
         function importNavXML( event )
         {
+            if(event.target.files.length === 0 ) return;
             let file = event.target.files[0];
             let reader = new FileReader();
             reader.onload = (e)=>{
@@ -186,6 +189,13 @@ block scripts
                     alertElement('Incomplete Form!', 'Section is missing a name');
                     return false;
                 }
+
+                if( section.pages.length === 0 )
+                {
+                    alertElement('Incomplete Form!', 'Section needs at least one page');
+                    return false;
+                }
+
                 for( let page of section.pages )
                 {
                     if(!page.name) 
@@ -330,8 +340,17 @@ block scripts
             document.querySelector('#launchModal').click();
         }
 
+        function clearForm(event=null)
+        {
+            document.querySelector('#courseID').value = '';
+            document.querySelector('#courseName').value = '';
+            document.querySelector('#navxmlpicker').value = ''; //clear file caching
+            document.querySelector('#sections').innerHTML = '';
+            document.querySelector('#addSectionButton').click();
+        }
+
         document.addEventListener('DadContentLoaded', ()=>{
             document.querySelector("#dadcontent").innerHTML = "";
             document.querySelector('.updated').innerHTML = '';
-            document.querySelector('#addSectionButton').click();
+            clearForm();
         });
