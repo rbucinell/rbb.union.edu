@@ -173,6 +173,12 @@ block scripts
                 return false;
             }
             
+            if( manifestJSON.sections.length === 0 )
+            {
+                alertElement('Incomplete Form!', 'No Sections Found');
+                return false;
+            }
+
             for( let section of manifestJSON.sections )
             {
                 if(!section.name) 
