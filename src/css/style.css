@@ -188,6 +188,10 @@ a,a:hover,a:focus {
 	color: var(--union-navy);
 }
 
+table thead {
+	background-color: var(--rbb-lightest-gray);
+}
+
 /************************************
 * Navigation
 *************************************/
