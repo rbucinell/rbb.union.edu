@@ -3,79 +3,77 @@ block config
     - const [menu,name] = ['HIDDEN','Course Generator'];
 block head 
     script(src="https://pugjs.org/js/pug.js")
-    
+    style.
+        .modal-backdrop {
+            display: none;
+            z-index: 1040 !important;
+        }
+
+        .modal-content {
+            margin: 2px auto;
+            z-index: 1100 !important;
+        }    
 block content
 
     template#sectionTemplate 
-        .section.panel.bg-stone.text-red
-            .panel-heading.panel-gray
-                .form-inline
-                    .form-group
-                        button.btn.btn-remove(type='button',onclick='removeSection(this)' ): i.fa.fa-minus
-                        label(for='sectionName') Section Name
-                        input(type='text',class='form-control',id='sectionName', placeholder="Main", required )
-                        button#addPage.btn.btn-add(type='button', onclick='addPage(this)')
-                            | Add Page &nbsp;
-                            i.fa.fa-plus
-            .panel-body
+        .section.card.mb-3.border.border-secondary
+            .card-header.p-0.pt-1
+                .input-group
+                    span.input-group-text.text-bold Section
+                    button.btn.btn-remove(type='button',onclick='removeSection(this)' ): i.fa.fa-minus
+                    input#sectionName.form-control(type='text' placeholder="Secion Name")
+                    button#addPageBtn.btn.btn-add(type='button', onclick='addPage(this)'): i.fa.fa-plus &nbsp;Add Page
+            .card-body.px-1
 
-    template#pageTemplate 
-        .newpage.list-group-item
-            .form-inline
-                .form-group 
-                    label(for='pageName') Page Name 
-                    input#pageName.form-control(type='text', placeholder="Course Generator", required )
-                .form-group 
-                    label(for='pageURL') URL 
-                    input#pageURL.form-control(type='text', placeholder="generator.html", required )
-                .form-group 
-                    .checkbox
-                        label.checkbox-inline(for="externalLink") Is External Link?
-                        input#externalLink.form-control(type='checkbox')
-                .form-group.pull-right
-                    button.btn.btn-remove(type='button', onclick='removePage(this)'): i.fa.fa-minus
-    .panel.bg-stone.text-red
-        .panel-body
-            label(for='navxmlpicker') Import Existing nav.xml?
-            input#navxmlpicker(type='file', name='navxmlpicker', onchange='importNavXML(event)')
-    form#genratorForm
-        
-        h3 Course Info
-        .row
-            .form-group.col-xs-12.col-sm-2
-                label(for='courseID') Course ID
-                input#courseID.form-control(type='text' placeholder='ME100', required )
-            .form-group.col-xs-12.col-sm-4
-                label(for='courseName') Course Name
-                input#courseName.form-control(type='text' placeholder='Introduction to Mechancis', required )
-        h3 Rotation Images
-        .panel.bg-stone.text-red
-            .panel-body
-                input#rotateImages(type='file', name='rotateImages', multiple)
-        h3 Sections
-            button#addSectionButton.btn.btn-add(type='button', onclick='addSection()')
-                | Add Section &nbsp;
-                i.fa.fa-plus
-        section#sections
-        section#errors
-        button.btn.btn-primary(type='post' onclick="generateButtonClick(event)") Generate
+    template#pageTemplate
+        .newpage
+            .input-group.mb-1
+                span.input-group-text Page
+                input.form-control#pageName(type="text", placeholder="Page Name", required)
+                input.form-control#pageURL(type="text", placeholder="Page URL (generator.html)", required)
+                .input-group-text
+                    label External Link?
+                        input#externalLink.mx-1.form-check-input(type="checkbox")
+                button.btn.btn-remove(type='button', onclick='removePage(this)'): i.fa.fa-minus
+
+    form#genratorForm.form-inline
+        .row: h3 Course Info
+        .row.mb-3.form-group
+            .col-xs-6.col-sm-3.col-md-2.form-group
+                label.form-label(for='courseID') Course ID
+                input#courseID.form-control(type='text' placeholder='e.g. ME100', required )
+            .col-xs-6.col-sm-3.col-md-5.form-group 
+                label.form-label(for='courseName') Course Name
+                input#courseName.form-control(type='text' placeholder='e.g. Introduction to Mechancis', required )
+            .col-xs-6.col-sm-3.col-md-3.form-group.pull-right
+                label.form-label(for="navxmlpicker") Import <code>nav.xml</code>?
+                input#navxmlpicker.form-control(type="file" onclick="importNavXML(event)")
+        .row: h3 Rotation Images
+        .row.mb-3
+            input#rotateImages(type='file', name='rotateImages', multiple)
+        .row.mb-3: h3 Sections
+            button#addSectionButton.btn.btn-add(type='button', onclick='addSection()'): i.fa.fa-plus &nbsp;Add Section
+        .row: section#sections
+        .row: section#errors
+        .row: .col-2: button.form-control.btn.btn-primary(type='post' onclick="generateButtonClick(event)") Generate
+
     // Button trigger modal
-    button#launchModal.hidden.btn.btn-primary.btn-lg(type='button' data-toggle='modal' data-target='#createdModal') Launch modal
+    button#launchModal.collapse.btn.btn-primary.btn-lg(type='button' data-bs-toggle='modal' data-bs-target='#createdModal') Launch modal
     // Modal
-    #createdModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel')
-        .modal-dialog(role='document')
+    #createdModal.modal.fade(tabindex='-1' aria-labelledby='myModalLabel', style="z-index: 9999")
+        .modal-dialog.shadow-lg
             .modal-content
                 .modal-header
-                    button.close(type='button' data-dismiss='modal' aria-label='Close')
-                        span(aria-hidden='true') &times;
                     h4#myModalLabel.modal-title Modal title
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                 .modal-body
                     | ...
                 .modal-footer
-                    button.btn.btn-default(type='button' data-dismiss='modal') OK
+                    button.btn.btn-default(type='button' data-bs-dismiss='modal') OK
 block scripts
     script(src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js")
     script.
+
         /**
         *   Reads the given nav.xml and imports it into the existing pages
         **/
@@ -91,9 +89,9 @@ block scripts
                     addSection();
                     section = document.querySelector(`#sections .section:nth-child(${i+1})`);
                     section.querySelector('#sectionName').value = item.getAttribute('name');
-                    section.querySelector('.panel-body').innerHTML = null;
+                    section.querySelector('.card-body').innerHTML = null;
                     item.querySelectorAll( 'subitem' ).forEach( (si,j)=>{
-                        addPage( section.querySelector('#addPage') );
+                        addPage( section.querySelector('#addPageBtn') );
                         let page = section.querySelector(`.newpage:nth-child(${j+1})`);
                         page.querySelector('#pageName').value = si.getAttribute('name');
                         page.querySelector('#pageURL').value = si.getAttribute('target');
@@ -128,7 +126,7 @@ block scripts
         {
             let clone = document.querySelector('#sectionTemplate').content.cloneNode(true);
             let page = document.querySelector('#pageTemplate').content.cloneNode(true);
-            clone.querySelector('.panel-body').appendChild(page);
+            clone.querySelector('.card-body').appendChild(page);
             document.querySelector('#sections').appendChild(clone);
             return clone;
         }
@@ -146,8 +144,9 @@ block scripts
         **/
         function addPage( btn )
         {
+            console.log( 'add apge!')
             let page = document.querySelector('#pageTemplate').content.cloneNode(true);
-            let sectionBody = btn.closest('.section').querySelector('.panel-body');
+            let sectionBody = btn.closest('.section').querySelector('.card-body');
             sectionBody.appendChild(page);
         }
 
@@ -159,8 +158,8 @@ block scripts
             errors.innerHTML = '';
             const alertElement = (title, msg ) =>
                 errors.appendChild( htmlToElement(
-                    `<div class="alert alert-danger alert-dismissible fade in" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         <strong>${title}</strong>${msg}
                     </div>`));
             if(!manifestJSON.id) 
@@ -206,6 +205,7 @@ block scripts
                 reader.readAsDataURL(blob)
             })
         }
+
         /**
         *   Generate button click handler. Creates files from the current DOM confuration on the page
         **/
