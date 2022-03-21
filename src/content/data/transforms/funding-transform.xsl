@@ -6,7 +6,7 @@
 		<h2> Funding While at Union College (<small><xsl:value-of select="format-number(sum(//Amount), '$#,#00')" /></small>)</h2>
 	</div>
 	<table id="funding" class="table table-condensed table-hover table-striped table-bordered table-responsive border-garnet bg-white">
-		<thead class="text-garnet" style="background-color: var(--rbb-lightest-gray)">
+		<thead class="text-garnet">
 			<tr>
 				<th>Year</th>
 				<th>Amount</th>
