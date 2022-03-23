@@ -234,6 +234,9 @@ table thead {
 .border-garnet {
 	border-color: var(--union-garnet) !important;
 }
+.border-stone {
+	border-color: var(--union-stone) !important;
+}
 
 
 .list-grid {

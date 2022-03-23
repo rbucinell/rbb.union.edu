@@ -8,15 +8,9 @@ aside#nav-aside.g-0.col-sm-3.flex-shrink-1.sticky-top.pb-sm-0.pb-3
     nav.navbar.navbar-expand-sm.d-flex.flex-column
         button#navtogglebutton.navbar-toggler.mb-4.text-white(type="button" data-bs-toggle="collapse" data-bs-target=".navgroup"): i.fa.fa-bars
         ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column#mainNavigation
-        ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column#courseNameHeader
-            li: span#courseNavName.text-stone #{course}
+        ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column.mt-3#courseNameHeader
+            li: span#courseNavName.text-white.px-2.lead.font-weight-bold #{course}
         ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column#courseNavigation
-    //- ul.nav.nav-pills.flex-sm-column.flex-row.mb-auto.justify-content-between.text-truncate
-    //-     li.nav-item: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Home
-    //-     li: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Customers
-    //-     li: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Customers
-    //-     li: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Customers
-    //-     li: a.nav-link.px-2.text-truncate(href="#"): span.d-sm-inline Customers
 
     .social-icons
         .d-flex.justify-content-center.text-center
@@ -26,30 +20,6 @@ aside#nav-aside.g-0.col-sm-3.flex-shrink-1.sticky-top.pb-sm-0.pb-3
             span.fs-3.flex-fill: a(title="Phone Number", href="tel:+1518886023"): i.fa.fa-phone
             span.fs-3.flex-fill: a(title="Email", href="mailto:bucinelr@union.edu"): i.fa.fa-envelope-o
 
-
-//- #sidebar
-//-     a.mobilemenu(href="#main-nav", role="button", data-toggle="collapse"): i.fa.fa-bars
-//-     #main-nav
-//-         #nav-container.collapse
-//-             #profile.clearfix
-//-                 .portrate.hidden-xs
-//-                 .title
-//-                     a(href="/"): h2 Ronald B. Bucinell, Ph.D., P.E.
-//-                     h3 Union College
-//-             nav
-//-                 ul#mainNavigation.nav.navigation
-//-                 ul#courseNameHeader: li: h4#courseNavName.text-stone #{course}
-//-                 ul#courseNavigation.nav.navigation
-//-             .social-icons
-//-                 ul
-//-                     li: a(title="Outlook Contact Card"  href="/data/PE_Ronald_B_Bucinell_PhD.msg")
-//-                         span.fa-stack
-//-                             i.fa.fa-user.fa-stack-1x
-//-                             i.fa.fa-envelope-o.fa-stack-2x
-//-                     li: a(title="LinkedIn Profile"      href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"): i.fa.fa-linkedin
-//-                     li: a(title="Research Gate Profile" href="http://www.researchgate.net/profile/Ronald_Bucinell"): i.ai.ai-researchgate
-//-                     li: a(title="Phone Number", href="tel:+1518886023"): i.fa.fa-phone
-//-                     li: a(title="Email", href="mailto:bucinelr@union.edu"): i.fa.fa-envelope-o
 script.
 
     /**
@@ -88,7 +58,9 @@ script.
                 let expand = false;
                 //Add all the sub-menu items to sub-menu
                 item.querySelectorAll('subitem').forEach((sub,j)=>{
-                    if( window.location.pathname.includes(sub.getAttribute('target')) ) expand = true;
+                    
+                    let path = window.location.pathname.endsWith('/') ? 'index.html' : window.location.pathname;
+                    if( path.includes(sub.getAttribute('target'))) expand = true;
 
                     let subli = document.createElement('li');
                     subli.classList = 'my-1 px-2 text-truncate text-muted';
@@ -101,8 +73,7 @@ script.
                     subli.appendChild(suba);
                     subul.append( subli );
                 });
-
-                if( expand && window.innerLocation >= 768) subul.classList.add('show');
+                if( expand && window.innerWidth >= 768) subul.classList.add('show');
                 li.appendChild(anchor);
                 li.appendChild(subul);
             }
@@ -113,16 +84,12 @@ script.
     document.addEventListener('DOMContentLoaded', async ()=> {
         if( '#{course}' )
         {
-            document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-white" href="/index.html">RBB Home</a></li>`));
+            document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-white" href="/index.html">Home</a></li>`));
             await loadNavigation("/courses/#{course}/content/data/nav.xml",'courseNavigation')
         }
         else 
         {
             await loadNavigation( "/content/data/nav.xml", "mainNavigation");
         }
-        document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2" style="color: var(--union-light-stone);" href="/contact.html">Contact</a></li>`));
-        if( window.innerLocation >= 768 )
-        {
-            //document.querySelector('#navgroup').classList.add('show');
-        }
+        document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-white" href="/contact.html">Contact</a></li>`));
     });
