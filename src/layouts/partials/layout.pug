@@ -13,7 +13,7 @@ html(lang='en')
                 //- site navigation menu
                 include ./nav.pug
                 //- Main content
-                main#main.col.overflow-auto.px-3.h-100
+                main#main.col.overflow-auto.h-100
                     header.page-header.sticky-top.mt-4.mb-2
                         if course
                             h1#pageheader.dislay-5 #{ course }
@@ -26,8 +26,9 @@ html(lang='en')
                                 li.breadcrumb-item: a(href="./") #{course}
                             li.breadcrumb-item #{menu}
                             li.breadcrumb-item.active: a(href="#") #{name}
-                    section#dadcontent
-                    block content
-                    section.updated.text-garnet.fst-italic.pull-right.fw-light
+                    .px-3
+                        section#dadcontent
+                        block content
+                        section.updated.text-garnet.fst-italic.pull-right.fw-light
         include ./scripts
         block scripts
