@@ -29,7 +29,7 @@ script.
         let response = await fetch(contentPath);
         if( response.status === 404)
         {
-            response = await fetch(`/data/404.html`);
+            response = await fetch(`/content/data/404.html`);
         }
         else {
             let updateDate = new Date(response.headers.get('Last-Modified')).toDateString();
