@@ -1,0 +1,6 @@
+extends partials/layout.pug
+block config
+    - const [menu,name] = ['Student Collaborations', 'Summer Fellowship Students'];
+block scripts
+    script.
+        document.addEventListener('DadContentLoaded', ()=> formatListGroup('Summer Fellowship Students'));

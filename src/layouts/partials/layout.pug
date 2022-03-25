@@ -1,0 +1,34 @@
+doctype html
+html(lang='en')
+    //                                                                                                      
+    // Do not modify this file! It was automatically generated. To change it's content go to content folder 
+    //                                                                                                      
+    block config
+    include ./head.pug
+    block head
+    include ./mixins.pug
+    body.d-flex.flex-column.vh-100.overflow-hidden
+        .d-flex.flex-column.flex-sm-row.overflow-auto.h-100
+            .row.w-100
+                //- site navigation menu
+                include ./nav.pug
+                //- Main content
+                main#main.col.overflow-auto.h-100
+                    header.page-header.sticky-top.mt-4.mb-2
+                        if course
+                            h1#pageheader.dislay-5 #{ course }
+                                small.text-muted.fs-3 &nbsp;#{courseName}
+                        else 
+                            h1#pageheader.dislay-5 #{name}
+                        ul.breadcrumb.bg-light.p-2
+                            if course
+                                li.breadcrumb-item: a(href="/courselisting.html") Courses
+                                li.breadcrumb-item: a(href="./") #{course}
+                            li.breadcrumb-item #{menu}
+                            li.breadcrumb-item.active: a(href="#") #{name}
+                    .px-3
+                        section#dadcontent
+                        block content
+                        section.updated.text-garnet.fst-italic.pull-right.fw-light
+        include ./scripts
+        block scripts

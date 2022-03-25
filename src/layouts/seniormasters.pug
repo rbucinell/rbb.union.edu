@@ -1,0 +1,6 @@
+extends partials/layout.pug
+block config
+    - const [menu,name] = ['Student Collaborations', 'Senior Projects'];
+block scripts 
+    script.
+        document.addEventListener('DadContentLoaded', ()=> formatListGroup('Senior Project and Thesis Reports'));

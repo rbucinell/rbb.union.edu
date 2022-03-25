@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigation><item name="Main"><subitem name="Course Home" target="index.html"/><subitem name="Union College" target="http://www.union.edu/" external="true"/></item></navigation>

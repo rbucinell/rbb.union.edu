@@ -3,7 +3,6 @@ package-lock.json
 head.html
 nav.html
 scripts-footer.html
+noupload/
 node_modules/
-www/
-dist/
-.vscode/
+docs/

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projects>
+    <section name="Bio-Materials">
+        <project name="BIO-INDUSTRIAL MATERIALS INSTITUTE">
+            <summary>
+                The success of bast plants (e.g., hemp, jute, kenaf, flax) in industrial and technical applications is 
+                completely a function of how they compare to other plant-based and synthetic materials on a cost and performance basis. 
+                The Center for Bio-industrial Materials Institute (BMI) has the mission of collaboratively establishing a 
+                comprehensive understanding of bio-industrial materials from bast plants (both hurd and fiber), their opportunities, and 
+                how to economically process them into useful products, through partnerships to increase their competitiveness and material use.  
+            </summary>
+            <collaborators>
+                  Rensselaer Polytechnic Institute, SUNY New Paltz, Innotech International LLC, PureHempNY, NY HempLab
+            </collaborators>
+            <image url="/data/labs/Project - Hemp (492 x4 02).jpg" alt="<-IMG:Ten Char of Sus Mtl->"></image>
+        </project>
+
+        <project name="TENSILE CHARACTERIZATION OF BIO-POLYMERS AND BIO-COMPOSITES">
+            <summary>
+                Bio-Polymer (skeletal mycelium) has the potential of replacing petroleum based foams in many applications.  This material is extremely complient which
+                makes the experimental evaluation of its tensile properties challenging.  Strength, elastic modulus, and Poisson's ration need to be characterized for
+                these materials in bulk form.  A tensile test method had to be developed that would allow the material to be properly characterized.  The full field strain technique DIC
+                was employed to validate the method and collect deformation data.
+            </summary>
+            <collaborators>
+                  Rensselaer Polytechnic Institute, Ecovative Design LLC, Innotech International LLC, National Science Foundation (NSF), New York State Energy Research and Development Authority (NYSERDA)
+            </collaborators>
+            <image url="/data/labs/Project - Ten Char of Sus Mtl (500 x 317).jpg" alt="<-IMG:Ten Char of Sus Mtl->"></image>
+        </project>
+
+        <project name="COMPRESSIVE CHARACTERIZATION OF BIO-POLYMERS AND BIO-COMPOSITES">
+            <summary>
+                Bio-Polymer (skeletal mycelium) has the potential of replacing petroleum based foams in many applications.  This material is extremely complient which
+                makes the experimental evaluation of its compressive properties challenging.  Strength, elastic modulus, and Poisson's ration need to be characterized for
+                these materials in bulk form.  A compressive test method had to be developed that would allow these material to be properly characterized. The full field strain technique DIC
+                was employed to validate the method and collect deformation data.
+            </summary>
+            <collaborators>
+                Rensselaer Polytechnic Institute, Ecovative Design LLC, Innotech International LLC, National Science Foundation (NSF), New York State Energy Research and Development Authority (NYSERDA)
+            </collaborators>
+            <image url="/data/labs/Project - BioPolymer Compression (500 x 260).jpg" alt="<-IMG:Comp Char of Sus Mtl->"></image>
+        </project>
+
+        <project name="ENGINEERED WOOD DEVELOPMENT USING BIO-POLYMERS">
+            <summary>
+                Bio-Polymer (skeletal mycelium) has the potential of replacing petroleum based glues in engineered wood applications.  Material characterization testing
+                is used to optimize the manufacturing parameters associated with production of engineered woods using bio-polymer
+            </summary>
+            <collaborators>
+                Rensselaer Polytechnic Institute, Ecovative Design LLC, Innotech International LLC, National Science Foundation (NSF), New York State Energy Research and Development Authority (NYSERDA)
+            </collaborators>
+            <image url="/data/labs/Project - Janka Ball Testing (200 x 133).jpg" alt="<-IMG:Char of Sus Engineered Wood->"></image>
+        </project>
+
+        <project name="DEVELOPING BIOCOMPOSITES FOR ENGINEERING APPLICATIONS">
+            <summary>
+                The development of sustainable materials for engineering applications is an ongoing, collaborative, effort.  The goal is to replace petroleum based foams 
+                and plastics with the use of sustainable materials.  For this effort to be successful, the sustainable alternative materials must perform as well as or better than their 
+                petroleum counterparts.  This project is supporting local industry in the development and characterization of these materials.
+            </summary>
+            <collaborators>
+                Rensselaer Polytechnic Institute, Ecovative Design LLC, Innotech International LLC, National Science Foundation (NSF), New York State Energy Research and Development Authority (NYSERDA)
+            </collaborators>
+            <image url="/data/labs/Project - BioComposite Applications (500 x 223).jpg" alt="<-IMG:Eng Applic for BioComposites->"></image>
+        </project>
+    </section>
+
+    <section name="Bio-Mechanics">
+    
+        <project name="MECHANICAL TESTING OF MUSCULOSKELETAL TISSUE">
+            <summary>
+                The mechanical behavior of rabbit Medial Collateral Ligaments (MCL)to various treatments is being studied in vitro. Treatments were
+                performed to the rabbit MCL's, harvested by a veterinarian, and tissue not vital to the evaluation were removed.  Specialty test fixtures 
+                were fabricated to insure the load was placed axially on the ligament.  Each specimen was imaged in a micro-CT to evaluate 
+                the cross-sectional area of the MCL.  The Digital Image Correlation technique was used to evaluate strains on the surface of the ligament.  
+                Standard test procedures were used to preform the evaluations.
+            </summary>
+            <collaborators>
+                OrthoGraph, Innotech International LLC, Albany Medical College
+            </collaborators>
+            <image url="/data/labs/Project - MCL (500 x 224).jpg" alt="<-IMG:MCL Testing->"></image>
+        </project>
+
+        <project name="EVALUATING ANTERIOR CRUCIATE LIGAMENT TEARS DUE TO ATHLETIC SURFACES AND FOOTWARE">
+            <summary>
+                Today, Anterior Cruciate Ligament (ACL) tears are one of the most prevalent knee injuries, with the occurrence of 
+                ACL tears increasing drastically from approximately 80 000 in 2000 to 150 000 in 2011. Although there are many factors that 
+                contribute to an ACL tear occurring, certain environmental factors could contribute to the dramatic increase over the past couple 
+                decades, especially in athletes. This study explores two of these possible factors; the playing surface and the type of shoes worn 
+                by soccer players. The effects these factors have on ACL tears were evaluated by measuring the maximum torque achieved prior to the 
+                shoe breaking free of the playing surface using a servo-hydraulic bi-axial load frame.
+            </summary>
+            <collaborators>
+                Albany Medical College, Innotech International LLC
+            </collaborators>
+            <image url="/data/labs/Project - ACL (500 x 234 ).jpg" alt="<-IMG:ACL Testing->"></image>
+        </project>
+
+        <project name="OPTIMIZING POROUS BONE CONSTRUCT USING ADDITIVE MANUFACTURING">
+            <summary>
+                Patient specific implants are becoming viable treatment options in some orthopaedic applications through advances in additive 
+                manufacturing and 3D printing techniques. One potential application is for treatment of segmental bone defects, particularly in patients 
+                suffering from bone cancer. Current treatment options are: Amputation, megaprosthesis, or allografts. These treatments are often highly 
+                invasive, may require a partial/full joint replacement and are limited by mechanical properties, which affect the life of the implant. 
+                The Ti6Al4V implant proposed in this research was designed to fit a mid-diaphyseal segmental bone defect, mimic the mechanical properties of bone, 
+                facilitate osseointegration and reduce wear at the bone-implant surface. 
+            </summary>
+            <collaborators>
+                ReVivo, Rensselaer Polytechnic Institute
+            </collaborators>
+            <image url="/data/labs/Project - Femur (500 x 154).jpg" alt="<-IMG:Eval of Porous Bone Construct->"></image>
+        </project>
+
+        <project name="MEASURING DEFORMATIONS ON THE SURFACE OF A HEART">
+            <summary>
+                 Many techniques used to measure the deformation of biological tissue are inadequate for measuring deformations of hearts in vivo. Bull Frogs (Rana Catesbeiana) 
+                were double-pithed and dissected to expose the amphibian heart for the measurements conducted in this study. White titanium dioxide powder and black charcoal 
+                were applied to the surface of the heart to create an artificial surface pattern with high contrast that does not react with the heart muscle or mask surface 
+                details. This pattern was then used in conjunction with three dimensional Digital Image Correlation (DIC) to measure full field deformations of the heart 
+                through several cardiac cycles. These deformations were measured with a spatial resolution of approximately 0.4 m and temporal resolution of 50 Hz
+            </summary>
+            <collaborators>
+                Stony Brook University, Union College Biology Department
+            </collaborators>
+            <image url="/data/labs/Projects - Frog Hearts (500 x 231).jpg" alt="<-IMG:DIC on Hearts->"></image>
+        </project>
+
+        <project name="EVALUATION OF INTERVERTEBRAL DISC DEGENERATION AND RECOVERY">
+            <summary>
+                Lower back pain is a disorder that is experienced by millions every year.  This condition is often attributed to damage of the 
+                intervertebral disc annulus fibrosus.  This project is studying several therapeutic methodologies to mitigate this condition or regenerate the 
+                intervertebral disc.  Spinal segments are studied experimentally in vitro.   Animal and cadaver specimens are subjected to specific testing 
+                protocols to evaluate the performance of the discs.  The use of the Digital Image Correlation Technique is invaluable in developing the understanding 
+                of the load paths in the spinal segments.
+            </summary>
+            <collaborators>
+                Albany Medical College, Innotech International LLC, Rensselaer Polytechnic Institute
+            </collaborators>
+            <image url="/data/labs/Project - Spine (500 x 125 ).jpg" alt="<-IMG:Intervertebral Disc Evaluation->"></image>
+        </project>
+
+        <project name="MEASURING DEFORMATIONS ON COLOBINE MANDIBULAR SYMPHYSIS">
+            <summary>
+                The masticatory loading regime of lateral transverse bending (wishboning)is hypothesized to be instrumental in the evolution of symphyseal form
+                among primates. The biomechanics of wishboning have largely been inferred by assuming that the mandible behaves as a curved beam under 
+                this load; however, the characterization of stress and strain in the anthropoid symphysis has been interpretively challenging. This is due, in part, 
+                to both limitations of sampling strain in an in vivo context and the incongruence of beam theory assumptions on the one hand, and the anatomical 
+                complexity of mandibular morphology on the other. Utilizing three-dimensional (3D) Digital Image Correlation (DIC), we employ an in vitro 
+                approach to characterize the strain field in a sample of colobine mandibles under simulated wishboning loads in order to assess the utility of 
+                idealized curved beam models for characterizing strain gradients in symphyseal bone. 
+            </summary>
+            <collaborators>
+                University of Florida, Ohio State University
+            </collaborators>
+            <image url="/data/labs/Project - Mandible (500 x 173).jpg" alt="<-IMG:DIC on Colobine Mandibular Symphysis->"></image>
+        </project>
+    </section>
+
+    <section name="Advanced Materials">
+
+        <project name="ISOGRID DEVELOPMENT">
+            <summary>
+                Isogrid structures are made up of a lattice or ribs oriented in an equilateral configuration that give the structure isotropic characteristics.  
+                Metallic isogrids were found to be extremely efficient (load bearing capability with respect to weight); however, very costly to manufacture.  
+                Isogrid structures fabricated from composite materials were able to take advantage of the extreme anisotropy of continuous carbon fibers to increase 
+                structural efficiency well above metallic isogrids.  Most of the applications the successfully used composite isogrids were filament wound and took 
+                advantage of winding tension to flatten the fiber tows at intersections that allowed deleterious build-up in thickness to be avoided.  Because of the 
+                use of the need for winding tension, flat composite isogrids were found to be extremely difficult and impractical to produce using filament winding 
+                techniques.  This study explores the production of flat composite isogrids that eliminates build-ups at intersections, does not rely on winding tension, 
+                and maintains the advantageous structural efficiency of isogrids.
+            </summary>
+            <collaborators>
+                U.S. Air Force, NASA, Automated Dynamics, Innotech International LLC
+            </collaborators>
+            <image url="/data/labs/Project - IsoGrids (500 x 348).jpg" alt="<-IMG:Composite Isogrid Dev->"></image>
+        </project>
+
+        <project name="COMPOSITE MATERIAL CHARACTERIZATION USING STANDARD METHODS">
+            <summary>
+                The performance of composite materials is dependent on the constituent materials (fiber, matrix, sizing), the proportions of the constituents
+                (volume fractions), component geometry, and the method used to manufacture the component.  The sensitivity of composite materials to these factors make standard
+                characterization methods essential to modeling efforts.  The Mechanics Lab has performed most of the ASTM test standards related to composite characterization.  
+                The lab has also developed specialized test methods for characterizing the performance of composite structures.
+            </summary>
+            <collaborators>
+                U.S. Navy, U.S. Army, U.S. Air Force, NASA, Automated Dynamics, Innotech International LLC
+            </collaborators>
+            <image url="/data/labs/Project - Advanced Material Characterization (500 x 211).jpg" alt="<-IMG:Composite Stand Characterization->"></image>
+        </project>
+
+        <project name="COMPOSITE MATERIAL STRUCTURAL DESIGN">
+            <summary>
+                One of the most important issues in composite material design is joining composite structures to other materials.  Conventional joint of 
+                fasteners can at best yield a joint that is 40 percent efficient.  Bonded and fastened joints also have to account for significant differences in thermal 
+                expansion coefficients that give rise to high residual stresses if the structure is subjected to temperature variations.  The Composite Material and Mechanics 
+                Labs have been involved in several structural development efforts that involve the modeling and experimental evaluation of composite structures 
+                that are being designed for hostile environments.
+            </summary>
+            <collaborators>
+                NASA, Automated Dynamics, Cameron, FMC Technologies, StatOil, Innotech International LLC
+            </collaborators>
+            <image url="/data/labs/Project - Advanced Composite Design (500 x 242).jpg" alt="<-IMG:Composite Structural Design->"></image>
+        </project>
+
+        <project name="SECOND GENERATION HIGH TEMPERATURE SUPERCONDUCTING WIRE DEVELOPMENT">
+            <summary>
+                Second Generation (2G) High Temperature Superconductors (HTS) become superconducting at high temperatures (liquid nitrogen).  This generation
+                of wire is a significant improvement over first generation wire that need more costly and colder liquid helium to become superconducting.  This generation of
+                HTS wire improves capacity per cross-sectional area, improves reliability and quality of power, increases efficiency in transmission of power, reduces operating 
+                costs, and has significant environmental benefits over 1G HTs and conventional wire.  The mechanics lab	supported the development of 2G HTS by developing a cross 
+                tension test procedure to evaluate the quality of the 2G HTS wire at both room and liquid nitrogen temperatures
+            </summary>
+            <collaborators>
+                Super Power Inc, New York State
+            </collaborators>
+            <image url="/data/labs/Project - HT Super Conducting Wire (500 x 204).jpg" alt="<-IMG:2G HTS Wire Dev->"></image>
+        </project>
+
+        <project name="COMPOSITE MATERIALS FOR INFRASTRUCTURE APPLICATIONS">
+            <summary>
+                Composite materials are being used in infrastructure projects for repair, increase the capacity of older structures, and design more structurally efficient 
+                new structures.  The Composite Materials Manufacturing Lab and the Mechanics Lab have been involved in several project related to infrastructure.  These projects 
+                include test method development, material screening, design, and professional development.
+            </summary>
+            <collaborators>
+                New York State Department of Transportation, Federal Highway Administration, Innotech International LLC
+            </collaborators>
+            <image url="/data/labs/Project - Composites in Infrastructure (500 x 142).jpg" alt="<-IMG:Infrastructure App of Comp MTL->"></image>
+        </project>
+
+        <project name="AEROGEL PROCESS DEVELOPMENT">
+            <summary>
+                The development of the fabrication process of aerogel monoliths using a hot press was pioneered in the Composite Materials Manufacturing 
+                lab at Union College.  This process significantly reduced the fabrication time, while maintaining the unique characteristics of aerogels.  Characterizations 
+                efforts were initially carried out in the Mechanics Lab at Union College.
+            </summary>
+            <collaborators>
+                New York State Department of Transportation, Federal Highway Administration, Innotech International LLC
+            </collaborators>
+            <image url="/data/labs/Project - Aerogels (500 x 153).jpg" alt="<-IMG:Aerogel Dev->"></image>
+        </project>
+
+        <project name="SINGLE FIBER CHARACTERIZATION">
+            <summary>
+                The experimental characterization of single fibers (carbon, glass, etc) are evaluated using tensile stage.  A specialized tensile stage was designed
+                and constructed in the Mechanics Lab to fit under the optical microscope.  This additional stage gives the lab the capability to study dry fiber and fiber embedded
+                in a surrounding matrix material.  Dry fiber strength, dry fiber modulus, and the strength of the fiber-matrix interface have been successfully evaluated in the 
+                Mechanics Lab using these stages.  The method for testing single dry fibers was developed by the lab.
+            </summary>
+            <collaborators>
+                Vital Materials 
+            </collaborators>
+            <image url="/data/labs/Project - Single Fiber Testing (500 x 134).jpg" alt="<-IMG:Single Fiber Characterization->"></image>
+        </project>
+    </section>
+
+    <section name="Fatigue &amp; Fracture">
+
+        <project name="FATIGUE EVALUATION OF CLOSED CROSS-SECTIONED COMPOSITES">
+            <summary>
+                In traditional homogenous materials, failure results from the propagation of a single crack. In composite materials cracks (both 
+                inter-laminar matrix cracking, intra-laminar matrix cracking, and fiber breaks) form throughout the material during its life cycle and failure 
+                results from the accumulation of these various types of damage.  This process is dependent on fiber architecture, materials used, and structural 
+                geometry.  A thorough understanding of damage accumulation is critical to structural assessment.  Traditional characterization of laminated composite 
+                materials occurs on flat coupons.  The free edges of the flat laminated composite coupons give rise to an exacerbated interlaminar state of stress 
+                that dominate the formation of damage.  Many composite structures are of a closed form configuration that do not have free-edges.  Traditional 
+                coupons do not accurately characterize the performance of closed form laminated structures.   For this reason a new specimen configuration and test 
+                procedure was developed to study the accumulation of damage in closed cross-section composite structures under static and fatigue loading.
+            </summary>
+            <collaborators>
+                Innotech International LLC
+            </collaborators>
+            <image url="/data/labs/Project - Fatigue (500 x 408).jpg" alt="<-IMG:Fatigue in Closed X-Section Composites->"></image>
+        </project>
+
+        <project name="EXPERIMENTALLY DETERMINED J-INTEGRAL IN DCDC SPECIMENS">
+            <summary>
+                In fracture mechanics the formation and propagation of cracks in brittle solids are studied using the Double Cleavage Drilled 
+                Compression (DCDC).  Glass DCDC specimens with various hole configurations were studied using the Digital Image Correlation (DIC) technique.  
+                This technique enabled the strain field around to be measured.  These strains were then used to numerically compute the stress-intensity factor 
+                at the crack tip using the J-Integral technique.
+            </summary>
+            <collaborators>
+                U.S. Air Force, U.S. Army, NASA, Innotech International LLC
+            </collaborators>
+            <image url="/data/labs/Project - DCDC (500 x 217 ).jpg" alt="<-IMG:Fatigue in Closed X-Section Composites->"></image>
+        </project>
+
+    </section>
+
+    <section name="Miscellaneous Projects">
+
+        <project name="STUDENT COMPETITIONS">
+            <summary>
+                Student competitions give students the opportunity to apply concepts learned in the classroom to the design, construction, and evaluation 
+                of engineering challenges.  Student competitions also give student exposure to potential employers and an opportunity to start building their professional 
+                network. Many of these projects have taken advantage of the resources available in the Composite Manufacturing and Mechanics labs.  These 
+                competitions include ASME Human Powered Vehicle, SAE Formula, SAE Air Cargo, SAMPE Student Bridge Competition, and several others.
+            </summary>
+            <collaborators></collaborators>
+            <image url="/data/labs/Project - Student Competitions (500 x 308).jpg" alt="<-Student Competitions->"></image>
+        </project>
+
+        <project name="STUDENT MOTIVTED PROJECTS">
+            <summary>
+                The Composite Manufacturing and Mechanics labs include spaces for student innovation and have a long history of supporting student innovation.  
+                Some students come to college with a deep passion, develop an interest through their studies, or are just curious enough about a particular topic that a project develops. 
+                These are the seeds of future innovation and the student innovation spaces help students develop the confidence that will lead to a career of innovation.  Student 
+                motivated projects include development of a torsional load cell, a six-degree-of-freedom load platform, a tensile stage for a microscope, a electro-magnetic 
+                actuated load frame for studying spinal segments, an innovative integrated bike frame and suspension, an adjustable sled hockey frame, and an adjustable prosthetic. 
+            </summary>
+            <collaborators>
+            
+            </collaborators>
+            <image url="/data/labs/Project - Student Motivated (500 x 279).jpg" alt="<-IMG:Student Motivated Projects->"></image>
+        </project>
+
+        <project name="INTERNATIONAL STUDENT PROJECTS">
+            <summary>
+                Engineering has evolved into a global enterprise where projects routinely involve international collaborators. To help prepare students for the 
+                internationalization of engineering, several programs were created to give Union College engineering students international engineering project experiences.  
+                The International Virtual Design Studio (IVDS) project is a collaboration with the Middle East Technical University in Ankara, Turkey; Altim University in Ankara, 
+                Turkey; and ESIGELEC in Rouen, France.  IVDS teams Union College engineering students with international students to remotely work on a project as a team.  IVDS typically 
+                runs between six and nine months and includes a visit to the US by the international students and a visit to the collaborating institution by the Union College students.  
+                Additionally, Union College has chapters of Engineers Without Borders (EWB) and Engineers for a Sustainable World (ESW) which have led to international design projects to 
+                sustainability support communities in the developing world.   
+            </summary>
+            <collaborators></collaborators>
+            <image url="/data/labs/Projects - International Projects (500 x 278).jpg" alt="<-IMG:Student Motivated Projects->"></image>
+        </project>
+    </section>
+</projects>

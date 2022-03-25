@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigation>
+    <item name="Main">
+        <subitem name="Homepage" target="index.html"/>
+        <subitem name="Instructor" target="http://rbb.union.edu" external="true"/>
+        <subitem name="Union College" target="http://www.union.edu" external="true"/>
+    </item>
+    <item name="Course">
+        <subitem name="Weekly Topics" target="CourseWeekly.html"/>
+        <subitem name="Guidelines" target="CourseGuidelines.html"/>
+        <subitem name="Grading" target="CourseGrading.html"/>
+        <subitem name="Description" target="CourseDescription.html"/>
+        <subitem name="Objectives" target="CourseObjectives.html"/>
+    </item>
+    <item name="Homework">
+        <subitem name="Assignments" target="HomeworkAssignments.html"/>
+        <subitem name="Format" target="HomeworkFormat.html"/>
+        <subitem name="Guidelines" target="HomeworkGuidelines.html"/>
+    </item>
+    <item name="Exams">
+        <subitem name="Schedule" target="ExamsSchedule.html"/>
+        <subitem name="Library" target="ExamLibrary.html"/>
+        <subitem name="Guidelines" target="ExamGuidelines.html"/>
+    </item>
+</navigation>

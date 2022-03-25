@@ -1,0 +1,6 @@
+extends partials/layout.pug
+block config
+    - const [menu,name] = ['Scholarship', 'Select Presentations'];
+block scripts 
+    script.
+        document.addEventListener('DadContentLoaded', ()=> formatListGroup('Select Presentations'));

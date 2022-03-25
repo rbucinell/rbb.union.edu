@@ -1,0 +1,95 @@
+aside#nav-aside.g-0.col-sm-3.flex-shrink-1.sticky-top.pb-sm-0.pb-3
+    //.p-1.h-100.sticky-top
+    #profile.m-2
+        img.img-thumbnail.d-none.d-sm-block(width="250px", height="250px")
+        .title.text-center
+            a(href="/"): h4.pt-2 Ronald B. Bucinell, Ph.D., P.E.
+            h4.lead Union College
+    nav.navbar.navbar-expand-sm.d-flex.flex-column
+        button#navtogglebutton.navbar-toggler.mb-4.text-white(type="button" data-bs-toggle="collapse" data-bs-target=".navgroup"): i.fa.fa-bars
+        ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column#mainNavigation
+        ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column.mt-3#courseNameHeader
+            li: span#courseNavName.text-white.px-2.lead.font-weight-bold #{course}
+        ul.flex-fill.align-self-start.align-items-start.navgroup.navbar-collapse.collapse.navigation.nav.flex-column#courseNavigation
+
+    .social-icons
+        .d-flex.justify-content-center.text-center
+            span.fs-3.flex-fill: a(title="Outlook Contact Card"  href="/data/PE_Ronald_B_Bucinell_PhD.msg"): i.fa-user.fa
+            span.fs-3.flex-fill: a(title="LinkedIn Profile"      href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"): i.fa.fa-linkedin
+            span.fs-3.flex-fill: a(title="Research Gate Profile" href="http://www.researchgate.net/profile/Ronald_Bucinell"): i.ai.ai-researchgate
+            span.fs-3.flex-fill: a(title="Phone Number", href="tel:+1518886023"): i.fa.fa-phone
+            span.fs-3.flex-fill: a(title="Email", href="mailto:bucinelr@union.edu"): i.fa.fa-envelope-o
+
+script.
+
+    /**
+    * @param {String} HTML representing a single element
+    * @return {Element} a DOM element
+    */
+    function htmlToElement(html) {
+        var template = document.createElement('template');
+        html = html.trim(); // Never return a text node of whitespace as the result
+        template.innerHTML = html;
+        return template.content.firstChild;
+    }
+
+    async function loadXMLDoc(filename)
+    {
+        let response = await fetch(filename);
+        let txt = await response.text();
+        return [new DOMParser().parseFromString( txt, 'application/xml'), response.headers.get('Last-Modified')];
+    }
+
+    async function loadNavigation( filename, ulID )
+    {
+        let [xmlDoc, modified ] = await loadXMLDoc( filename );
+        let ul = document.querySelector(`#${ulID}`);
+        xmlDoc.querySelectorAll('item').forEach((item,i) =>
+        {
+            let li = document.createElement('li');
+            let subitems = item.querySelectorAll('subitem');
+            if( subitems )
+            {
+                li.classList = 'nav-link px-2 text-wrap';
+                let menuName = item.getAttribute('name');
+                let anchor = htmlToElement(`<a id="${ulID}_menu${i}" class="text-white" data-bs-parent="#${ulID}" data-bs-toggle='collapse' data-bs-target='#${ulID}_submenu${i}' aria-expanded='false'>${menuName}</a>`);
+                let subul  = htmlToElement(`<ul id="${ulID}_submenu${i}" class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate collapse" aria-labelledby="${ulID}_menu${i}"></ul>`);
+                
+                let expand = false;
+                //Add all the sub-menu items to sub-menu
+                item.querySelectorAll('subitem').forEach((sub,j)=>{
+                    
+                    let path = window.location.pathname.endsWith('/') ? 'index.html' : window.location.pathname;
+                    if( path.includes(sub.getAttribute('target'))) expand = true;
+
+                    let subli = document.createElement('li');
+                    subli.classList = 'my-1 px-2 text-truncate text-muted';
+                    let suba = htmlToElement(`<a class="text-white-50" href="${sub.getAttribute('target')}">${sub.getAttribute('name')}</a>`);
+                    if( sub.getAttribute('external') )
+                    {
+                        suba.setAttribute('target', '_blank');
+                        suba.appendChild(htmlToElement(`<i class="fa fa-external-link" style="padding-left:1rem;" aria-hidden="true"></i>`));
+                    }
+                    subli.appendChild(suba);
+                    subul.append( subli );
+                });
+                if( expand && window.innerWidth >= 768) subul.classList.add('show');
+                li.appendChild(anchor);
+                li.appendChild(subul);
+            }
+            ul.append(li);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', async ()=> {
+        if( '#{course}' )
+        {
+            document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-white" href="/index.html">Home</a></li>`));
+            await loadNavigation("/courses/#{course}/content/data/nav.xml",'courseNavigation')
+        }
+        else 
+        {
+            await loadNavigation( "/content/data/nav.xml", "mainNavigation");
+        }
+        document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-white" href="/contact.html">Contact</a></li>`));
+    });

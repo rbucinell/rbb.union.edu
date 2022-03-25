@@ -8,7 +8,10 @@
 .breadcrumb > li + li:before {
     color: black;
 }
-
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
 .page-header {
     border-bottom: 1px solid #923338;
 }
@@ -20,7 +23,7 @@ main h2 {
     color: #923338;
 }
 
-main div.updated {
+main section.updated {
     color: #923338;
     font-style: italic;
     font-family: Georgia, Serif;
@@ -29,7 +32,7 @@ main div.updated {
     position: absolute;
     right: 5px;
     height: 20px;
-    margin-bottom: 15px;
+    margin: 20px 0 15px 0;
 }
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
     background-color: #ADADAD;
