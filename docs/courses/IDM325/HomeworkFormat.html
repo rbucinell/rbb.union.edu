@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--                                                                                                      -->
+  <!-- Do not modify this file! It was automatically generated. To change it's content go to content folder -->
+  <!--                                                                                                      -->
+  <head>
+    <title>Format | Ronald B. Bucinell</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Ryan Bucinell">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Ronald Bucinell's Professional Website">
+    <meta name="keywords" content="factulty, professor, profile, ronlad bucinell, union, union college, mechanical, engineering, Format">
+    <meta property="og:site_name" content="rbb.union.edu">
+    <meta property="og:title" content="Ronald B. Bucinell Ph.D., P.E">
+    <meta property="og:description" content="Ronald B. Bucinell's Professional Website">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/img/portrait.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Ronald B. Bucinell Ph.D., P.E">
+    <meta name="twitter:description" content="Ronald B. Bucinell's Professional Website">
+    <meta name="twitter:image" content="/img/portrait.jpg">
+    <meta name="twitter:image:alt" content="Ronald's Portrait">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/lib.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+  </head>
+  <body class="d-flex flex-column vh-100 overflow-hidden">
+    <div class="d-flex flex-column flex-sm-row overflow-auto h-100">
+      <div class="row w-100">
+        <aside class="g-0 col-sm-3 flex-shrink-1 sticky-top pb-sm-0 pb-3" id="nav-aside">
+          <!--.p-1.h-100.sticky-top-->
+          <div class="m-2" id="profile"><img class="img-thumbnail d-none d-sm-block" width="250px" height="250px">
+            <div class="title text-center"><a href="/">
+                <h4 class="pt-2">Ronald B. Bucinell, Ph.D., P.E.</h4></a>
+              <h4 class="lead">Union College</h4>
+            </div>
+          </div>
+          <nav class="navbar navbar-expand-sm d-flex flex-column">
+            <button class="navbar-toggler mb-4 text-white" id="navtogglebutton" type="button" data-bs-toggle="collapse" data-bs-target=".navgroup"><i class="fa fa-bars"></i></button>
+            <ul class="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column" id="mainNavigation"></ul>
+            <ul class="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column mt-3" id="courseNameHeader">
+              <li><span class="text-white px-2 lead font-weight-bold" id="courseNavName">IDM325</span></li>
+            </ul>
+            <ul class="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column" id="courseNavigation"></ul>
+          </nav>
+          <div class="social-icons">
+            <div class="d-flex justify-content-center text-center"><span class="fs-3 flex-fill"><a title="Outlook Contact Card" href="/data/PE_Ronald_B_Bucinell_PhD.msg"><i class="fa-user fa"></i></a></span><span class="fs-3 flex-fill"><a title="LinkedIn Profile" href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"><i class="fa fa-linkedin"></i></a></span><span class="fs-3 flex-fill"><a title="Research Gate Profile" href="http://www.researchgate.net/profile/Ronald_Bucinell"><i class="ai ai-researchgate"></i></a></span><span class="fs-3 flex-fill"><a title="Phone Number" href="tel:+1518886023"><i class="fa fa-phone"></i></a></span><span class="fs-3 flex-fill"><a title="Email" href="mailto:bucinelr@union.edu"><i class="fa fa-envelope-o"></i></a></span></div>
+          </div>
+        </aside>
+        <script>
+          /**
+          * @param {String} HTML representing a single element
+          * @return {Element} a DOM element
+          */
+          function htmlToElement(html) {
+              var template = document.createElement('template');
+              html = html.trim(); // Never return a text node of whitespace as the result
+              template.innerHTML = html;
+              return template.content.firstChild;
+          }
+          
+          async function loadXMLDoc(filename)
+          {
+              let response = await fetch(filename);
+              let txt = await response.text();
+              return [new DOMParser().parseFromString( txt, 'application/xml'), response.headers.get('Last-Modified')];
+          }
+          
+          async function loadNavigation( filename, ulID )
+          {
+              let [xmlDoc, modified ] = await loadXMLDoc( filename );
+              let ul = document.querySelector(`#${ulID}`);
+              xmlDoc.querySelectorAll('item').forEach((item,i) =>
+              {
+                  let li = document.createElement('li');
+                  let subitems = item.querySelectorAll('subitem');
+                  if( subitems )
+                  {
+                      li.classList = 'nav-link px-2 text-wrap';
+                      let menuName = item.getAttribute('name');
+                      let anchor = htmlToElement(`<a id="${ulID}_menu${i}" class="text-white" data-bs-parent="#${ulID}" data-bs-toggle='collapse' data-bs-target='#${ulID}_submenu${i}' aria-expanded='false'>${menuName}</a>`);
+                      let subul  = htmlToElement(`<ul id="${ulID}_submenu${i}" class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate collapse" aria-labelledby="${ulID}_menu${i}"></ul>`);
+                      
+                      let expand = false;
+                      //Add all the sub-menu items to sub-menu
+                      item.querySelectorAll('subitem').forEach((sub,j)=>{
+                          
+                          let path = window.location.pathname.endsWith('/') ? 'index.html' : window.location.pathname;
+                          if( path.includes(sub.getAttribute('target'))) expand = true;
+          
+                          let subli = document.createElement('li');
+                          subli.classList = 'my-1 px-2 text-truncate text-muted';
+                          let suba = htmlToElement(`<a class="text-white-50" href="${sub.getAttribute('target')}">${sub.getAttribute('name')}</a>`);
+                          if( sub.getAttribute('external') )
+                          {
+                              suba.setAttribute('target', '_blank');
+                              suba.appendChild(htmlToElement(`<i class="fa fa-external-link" style="padding-left:1rem;" aria-hidden="true"></i>`));
+                          }
+                          subli.appendChild(suba);
+                          subul.append( subli );
+                      });
+                      if( expand && window.innerWidth >= 768) subul.classList.add('show');
+                      li.appendChild(anchor);
+                      li.appendChild(subul);
+                  }
+                  ul.append(li);
+              });
+          }
+          
+          document.addEventListener('DOMContentLoaded', async ()=> {
+              if( 'IDM325' )
+              {
+                  document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-white" href="/index.html">Home</a></li>`));
+                  await loadNavigation("/courses/IDM325/content/data/nav.xml",'courseNavigation')
+              }
+              else 
+              {
+                  await loadNavigation( "/content/data/nav.xml", "mainNavigation");
+              }
+              document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-white" href="/contact.html">Contact</a></li>`));
+          });
+        </script>
+        <main class="col overflow-auto h-100" id="main">
+          <header class="page-header sticky-top mt-4 mb-2">
+            <h1 class="dislay-5" id="pageheader">IDM325<small class="text-muted fs-3">&nbsp;Entrepreneurship Seminar</small></h1>
+            <ul class="breadcrumb bg-light p-2">
+              <li class="breadcrumb-item"><a href="/courselisting.html">Courses</a></li>
+              <li class="breadcrumb-item"><a href="./">IDM325</a></li>
+              <li class="breadcrumb-item">Homework</li>
+              <li class="breadcrumb-item active"><a href="#">Format</a></li>
+            </ul>
+          </header>
+          <div class="px-3">
+            <section id="dadcontent"></section>
+            <section class="updated text-garnet fst-italic pull-right fw-light"></section>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/lib.min.js"></script>
+    <script type="text/javascript" src="/js/rbb.min.js"></script>
+    <script>
+      const event = new Event( 'DadContentLoaded' );
+      /**
+      * String helper function to see if input string 'str' ends with the string 'suffix'
+      **/
+      const endsWith = (str, suffix) => str.indexOf(suffix, str.length - suffix.length) !== -1;
+      
+      /**
+      *   Function to format the html list after it is loaded
+      **/
+      function formatListGroup(headerText) {
+          let listOfLI = [...document.querySelectorAll(`.list-group > li`)];
+          console.log(listOfLI)
+          listOfLI.forEach( n => n.classList +='list-group-item')
+          document.querySelector( 'header > h1' ).innerText = `${headerText} (${listOfLI.length})`;
+      }
+      
+      /**
+      *  On DOM LOAD fetch the respective content file to populate the page
+      **/
+      document.addEventListener('DOMContentLoaded', async ()=> {
+      
+          let contentPath =  `content/${window.location.pathname.split('/').pop()}`;
+          let response = await fetch(contentPath);
+          if( response.status === 404)
+          {
+              response = await fetch(`/data/404.html`);
+          }
+          else {
+              let updateDate = new Date(response.headers.get('Last-Modified')).toDateString();
+              document.querySelector('.updated').innerText = `Updated: ${updateDate}`;
+          }
+          let data = await response.text();
+          document.querySelector('#dadcontent').innerHTML = data;
+          document.dispatchEvent( event );
+      });
+    </script>
+  </body>
+</html>

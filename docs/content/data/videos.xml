@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<videos>
+	<Category name="Webinars">
+		<Topic name="KEEN">
+			<Video name="Identifying a Problem (21 May 15)" link="2015-05-21 11.01 The Creative Problem Solving Process_  Identifying the Less Than Optimal Situation_1.mp4" />
+			<!--Video name="Category1-Topic1-Video2" link="http://techslides.com/demos/sample-videos/small.mp4" /-->
+		</Topic>
+	</Category>
+	
+	<Category name="Animations">
+		<Topic name="Instant Centers">
+			<Video name="Locating using Aronhold-Kennedy" link="IC Aronhold Kennedy Theorem Example (no sound).mp4" />
+			<Video name="Determining Velocity" link="IC Velocity Animated Example (no sound).mp4" />
+		</Topic>
+		<Topic name="Mechanism">
+			<Video name="4-Bar" link="Mechanism 4-BAR.mp4" />
+			<Video name="4-Bar with Coupler" link="Mechanism 4-Bar Coupler.mp4" />
+			<Video name="Mechanism Slider Crank" link="Mechanism Slider Crank.mp4" />
+		</Topic>
+	</Category>
+	
+</videos>
+
+
+<!--Sample
+<videos>
+	<Category name="Category1">
+		<Topic name="Topic 1 - Hosted Videos">
+			<Video name="bbb" link="mov_bbb.mp4" />
+			<Video name="Clip Canvas Video" link="clipcanvas.mp4" />
+		</Topic>
+		<Topic name="Topic 2 - Youtube Videos">
+			<Video name="Cat1-Topic2-Vid1 - Rand YT Link ZUFo2Br2eeI" link="https://www.youtube.com/embed/ZUFo2Br2eeI" />
+			<Video name="Cat1-Topic2-Vid2 - Rand YT Link jqMXNoXql40" link="https://www.youtube.com/embed/jqMXNoXql40" />
+		</Topic>
+	</Category>
+	<Category name="Category2">
+		<Topic name="Category2Topic1">
+			<Video name="Category2-Topic1-Video1" link="#" />
+			<Video name="Category2-Topic1-Video2" link="#" />
+		</Topic>
+		<Topic name="Sample Remote">
+			<Video name="big buck bunny" link="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
+			<Video name="Robot" link="http://techslides.com/demos/sample-videos/small.mp4" />
+		</Topic>
+	</Category>
+	<Category name="Category3">
+		<Topic name="Category3Topic1">
+		</Topic>
+	</Category>	
+</videos>
+-->
