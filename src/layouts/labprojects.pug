@@ -17,7 +17,7 @@ block content
                     .col-md-6
                         p.card-text 
                     .col-md-6
-                        img.pull-right.img-fluid.rounded-start(src="/data/labs/Project%20-%20Student%20Motivated%20(500%20x%20279).jpg", alt="Mechanics Lab Pan View")
+                        img.pull-right.img-fluid.rounded-start(src="content/data/labs/Project%20-%20Student%20Motivated%20(500%20x%20279).jpg", alt="Mechanics Lab Pan View")
             .card-footer.text-garnet COLLABORATORS:
                 span.mx-1.collaborators
     block scripts
@@ -50,6 +50,7 @@ block content
             for( let section of xmlDoc.querySelectorAll('section'))
             {
                 let sectionName = section.getAttribute('name');
+                console.log( sectionName);
                 document.querySelector(`#${outputId}`).appendChild(htmlToElement(`<div id="${sectionName}" class="mb-3 invisible" />`));
                 document.querySelector(`#${outputId}`).appendChild(htmlToElement(`<h1 class="text-center mb-2">${sectionName}</h1>`));
                 
