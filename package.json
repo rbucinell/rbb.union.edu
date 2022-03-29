@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "upload": "node ./upload/upload.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
   },
   "homepage": "https://github.com/rbucinell/rbb.union.edu#readme",
   "dependencies": {
+    "chalk": "^5.0.1",
     "jszip": "^3.7.1"
   }
 }
