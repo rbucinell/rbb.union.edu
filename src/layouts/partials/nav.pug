@@ -52,8 +52,8 @@ script.
             {
                 li.classList = 'nav-link px-2 text-wrap';
                 let menuName = item.getAttribute('name');
-                let anchor = htmlToElement(`<a id="${ulID}_menu${i}" class="text-white" data-bs-parent="#${ulID}" data-bs-toggle='collapse' data-bs-target='#${ulID}_submenu${i}' aria-expanded='false'>${menuName}</a>`);
-                let subul  = htmlToElement(`<ul id="${ulID}_submenu${i}" class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate collapse" aria-labelledby="${ulID}_menu${i}"></ul>`);
+                let anchor = htmlToElement(`<a id="${ulID}_menu${i}" class="text-white" data-bs-toggle='collapse' data-bs-target='#${ulID}_submenu${i}' aria-expanded='false'>${menuName}</a>`);
+                let subul  = htmlToElement(`<ul id="${ulID}_submenu${i}" class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate collapse ${ulID}_children" data-bs-parent="#${ulID}" aria-labelledby="${ulID}_menu${i}"></ul>`);
                 
                 let expand = false;
                 //Add all the sub-menu items to sub-menu
