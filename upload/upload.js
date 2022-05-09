@@ -43,7 +43,7 @@ import chalk from 'chalk';
     }
 
     console.log( `Processing ${chalk.green('root')} directories`);
-    await copyFromTo( remoteDir, buildDir );
+    await copyFromTo( buildDir, remoteDir );
 
     console.log( `Processing ${chalk.green('courses')} directories`);
     const courses = await fs.promises.readdir( path.join( buildDir, 'courses' ) );
