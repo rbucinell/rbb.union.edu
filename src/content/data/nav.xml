@@ -4,7 +4,6 @@
     <item name="Main">
         <subitem name="Homepage"        		target="/index.html"/>
         <subitem name="Union College"   		target="http://www.union.edu"     external="true"/>
-        <subitem name="ME Department"   		target="https://www.union.edu/academic/majors-minors/me" external="true"/>
 		<subitem name="Downloads"       		target="/downloads.html"/>
     </item>	
     <item name="Education &amp; Experience">	
