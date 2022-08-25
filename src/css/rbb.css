@@ -410,6 +410,28 @@ ul#navigation li .icon {
 	font-size: 45px;
 }
 
+#maintable table th:nth-child(1) {
+	width: 50px;
+	text-align: center;
+}
+#maintable tbody tr th{
+	text-align: center;
+}
+#maintable tbody tr td:nth-child(1),
+#maintable thead th:nth-child(2) {
+	width: 100px;
+}
+#maintable tbody th,
+#maintable tbody td:nth-child(1),
+#maintable tbody td:nth-child(2) {
+	vertical-align: middle;
+}
+#maintable .week {
+	border-top: 4px solid var(--rbb-dark-gray);
+	border-collapse: separate;
+	  border-spacing: 0 1em;
+}
+
 
 /*************************************************
  *  uls
