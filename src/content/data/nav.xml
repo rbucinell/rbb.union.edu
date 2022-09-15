@@ -6,8 +6,8 @@
         <subitem name="Union College"   		target="http://www.union.edu"     external="true"/>
 		<subitem name="Downloads"       		target="/downloads.html"/>
     </item>	
-    <item name="Education &amp; Experience">	
-        <subitem name="Education"   			target="/education.html"/>
+    <item name="Credentials &amp; Experience">	
+        <subitem name="Credentials"   			target="/education.html"/>
 		<subitem name="Funding History"   		target="/funding.html"/>
 		<subitem name="Experience"   			target="/experience.html"/>
 		<subitem name="Activities"   			target="/activities.html"/>
