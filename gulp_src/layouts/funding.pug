@@ -1,0 +1,21 @@
+extends partials/layout.pug
+block config
+    - const [menu,name] = ['Education & Experience','Funding History'];
+
+block scripts
+    script.
+    
+        async function displayResult( xmlpath, transformpath, outputId )
+        {
+            let [xmlDoc, xmlLastMod] = await loadXMLDoc(xmlpath);
+            let [xslDoc, xslLastMod] = await loadXMLDoc(transformpath);
+            let xsltProcessor = new XSLTProcessor();
+            xsltProcessor.importStylesheet(xslDoc);
+            resultDocument = xsltProcessor.transformToFragment(xmlDoc, document);
+            document.getElementById(outputId).appendChild(resultDocument);
+            document.querySelector('.updated').innerText = `Updated ${new Date(xmlLastMod).toDateString()}`;
+        }
+
+        document.addEventListener('DadContentLoaded', async ()=> {
+            displayResult("content/data/funding.xml","content/data/transforms/funding-transform.xsl","funding-table");
+        });

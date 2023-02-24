@@ -1,0 +1,356 @@
+extends partials/layout.pug
+block config
+    - const [menu,name] = ['HIDDEN','Course Generator'];
+block head 
+    script(src="https://pugjs.org/js/pug.js")
+    style.
+        .modal-backdrop {
+            display: none;
+            z-index: 1040 !important;
+        }
+
+        .modal-content {
+            margin: 2px auto;
+            z-index: 1100 !important;
+        }    
+block content
+
+    template#sectionTemplate 
+        .section.card.mb-3.border.border-secondary
+            .card-header.p-0
+                .input-group
+                    span.input-group-text.text-bold: h5.m-0 Section
+                    button.btn.btn-remove(type='button',onclick='removeSection(this)' ): i.fa.fa-minus
+                    input#sectionName.form-control(type='text' placeholder="Secion Name")
+                    button#addPageBtn.btn.btn-add(type='button', onclick='addPage(this)'): i.fa.fa-plus &nbsp;Add Page
+            .card-body.px-1
+
+    template#pageTemplate
+        .newpage
+            .input-group.mb-1
+                span.input-group-text Page
+                input.form-control#pageName(type="text", placeholder="Page Name", required)
+                input.form-control#pageURL(type="text", placeholder="Page URL (generator.html)", required)
+                .input-group-text
+                    label External Link?
+                        input#externalLink.mx-1.form-check-input(type="checkbox")
+                button.btn.btn-remove(type='button', onclick='removePage(this)'): i.fa.fa-minus
+
+    form#genratorForm.form-inline
+        .row: h3 Course Info
+        .row.mb-3.form-group
+            .col-xs-6.col-sm-3.col-md-2.form-group
+                label.form-label(for='courseID') Course ID
+                input#courseID.form-control(type='text' placeholder='e.g. ME100', required )
+            .col-xs-6.col-sm-3.col-md-5.form-group 
+                label.form-label(for='courseName') Course Name
+                input#courseName.form-control(type='text' placeholder='e.g. Introduction to Mechancis', required )
+            .col-xs-6.col-sm-3.col-md-3.form-group.pull-right
+                label.form-label(for="navxmlpicker") Import <code>nav.xml</code>?
+                input#navxmlpicker.form-control(type="file" onchange="importNavXML(event)")
+        .row: h3 Rotation Images
+        .row.mb-3
+            input#rotateImages(type='file', name='rotateImages', multiple)
+        .row.mb-3: h3 Sections
+            button#addSectionButton.btn.btn-add(type='button', onclick='addSection()'): i.fa.fa-plus &nbsp;Add Section
+        .row: section#sections
+        .row: section#errors
+        .row
+            .col-2: button.form-control.btn.btn-primary(type='post' onclick="generateButtonClick(event)") Generate
+            .col-2: button.form-control.btn.btn-secondary(type='button' onclick="clearForm(event)") Clear Form
+
+    // Button trigger modal
+    button#launchModal.collapse.btn.btn-primary.btn-lg(type='button' data-bs-toggle='modal' data-bs-target='#createdModal') Launch modal
+    // Modal
+    #createdModal.modal.fade(tabindex='-1' aria-labelledby='myModalLabel', style="z-index: 9999")
+        .modal-dialog.shadow-lg
+            .modal-content
+                .modal-header
+                    h4#myModalLabel.modal-title Modal title
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body
+                    | ...
+                .modal-footer
+                    button.btn.btn-default(type='button' data-bs-dismiss='modal') OK
+block scripts
+    script(src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js")
+    script.
+
+        /**
+        *   Reads the given nav.xml and imports it into the existing pages
+        **/
+        function importNavXML( event )
+        {
+            if(event.target.files.length === 0 ) return;
+            let file = event.target.files[0];
+            let reader = new FileReader();
+            reader.onload = (e)=>{
+                let data = e.target.result;
+                let xml = new DOMParser().parseFromString( data, 'application/xml');
+                document.querySelector('#sections').innerHTML = null;
+                xml.querySelectorAll('item').forEach( (item,i) => {
+                    addSection();
+                    section = document.querySelector(`#sections .section:nth-child(${i+1})`);
+                    section.querySelector('#sectionName').value = item.getAttribute('name');
+                    section.querySelector('.card-body').innerHTML = null;
+                    item.querySelectorAll( 'subitem' ).forEach( (si,j)=>{
+                        addPage( section.querySelector('#addPageBtn') );
+                        let page = section.querySelector(`.newpage:nth-child(${j+1})`);
+                        page.querySelector('#pageName').value = si.getAttribute('name');
+                        page.querySelector('#pageURL').value = si.getAttribute('target');
+                        if( si.getAttribute('external') )
+                            page.querySelector('#externalLink').checked = true;
+                    });
+                })
+            }
+            reader.readAsText(file);
+        }
+
+        /**
+        *   fetches a pug template and returns its text content
+        **/
+        async function fetchTemplate( path )
+        {
+            return await fetch( path ).then( response => response.text() );
+        }
+
+        /**
+        *   Removes the the button's parent, .section DOM element
+        **/
+        function removeSection( sectionBtn )
+        {
+            sectionBtn.closest('.section').parentElement.removeChild(sectionBtn.closest('.section'));
+        }
+
+        /**
+        *   Adds a .section DOM element to the page
+        **/
+        function addSection()
+        {
+            let clone = document.querySelector('#sectionTemplate').content.cloneNode(true);
+            let page = document.querySelector('#pageTemplate').content.cloneNode(true);
+            clone.querySelector('.card-body').appendChild(page);
+            document.querySelector('#sections').appendChild(clone);
+            return clone;
+        }
+
+        /**
+        *   Removes the the button's parent, .newpage DOM element
+        **/
+        function removePage( btn )
+        {
+            btn.closest('.newpage').parentElement.removeChild(btn.closest('.newpage'));
+        }
+
+        /**
+        *   Adds a .newpage DOM element to the page
+        **/
+        function addPage( btn )
+        {
+            console.log( 'add apge!')
+            let page = document.querySelector('#pageTemplate').content.cloneNode(true);
+            let sectionBody = btn.closest('.section').querySelector('.card-body');
+            sectionBody.appendChild(page);
+        }
+
+        function validateForm( manifestJSON )
+        {
+            //clear any old warnings
+            let errors = document.querySelector('#errors');
+            console.log( 'validateForm');
+            errors.innerHTML = '';
+            const alertElement = (title, msg ) =>
+                errors.appendChild( htmlToElement(
+                    `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <strong>${title}</strong>${msg}
+                    </div>`));
+            if(!manifestJSON.id) 
+            {
+                alertElement('Incomplete Form!', 'Missing Course ID');
+                return false;
+            }
+            if(!manifestJSON.name) 
+            {
+                alertElement('Incomplete Form!', 'Missing Course Name');
+                return false;
+            }
+            
+            if( manifestJSON.sections.length === 0 )
+            {
+                alertElement('Incomplete Form!', 'No Sections Found');
+                return false;
+            }
+
+            for( let section of manifestJSON.sections )
+            {
+                if(!section.name) 
+                {
+                    alertElement('Incomplete Form!', 'Section is missing a name');
+                    return false;
+                }
+
+                if( section.pages.length === 0 )
+                {
+                    alertElement('Incomplete Form!', 'Section needs at least one page');
+                    return false;
+                }
+
+                for( let page of section.pages )
+                {
+                    if(!page.name) 
+                    {
+                        alertElement('Incomplete Form!', `A page in section ${section.name} is missing a name`);
+                        return false;
+                    }
+                    if(!page.url) 
+                    {
+                        alertElement('Incomplete Form!', `A page in section ${section.name} is missing an url`);
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        const blobToData = (blob) => {
+            return new Promise((resolve) => {
+                const reader = new FileReader()
+                reader.onloadend = () => resolve(reader.result)
+                reader.readAsDataURL(blob)
+            })
+        }
+
+        /**
+        *   Generate button click handler. Creates files from the current DOM confuration on the page
+        **/
+        async function generateButtonClick(e)
+        {
+            e.preventDefault();
+            let manifest = {
+                id: document.querySelector('#courseID').value,
+                name: document.querySelector('#courseName').value,
+                created: (new Date()).toISOString(),
+                sections: [],
+                images: []
+            }
+
+            document.querySelectorAll('.section').forEach( section => {
+                let newSection = {
+                    name: '',
+                    pages: []
+                };
+                newSection.name = section.querySelector('#sectionName').value;
+
+                section.querySelectorAll('.newpage').forEach( page => {
+                    let newPage = {
+                        name: page.querySelector('#pageName').value,
+                        url: page.querySelector('#pageURL').value,
+                        externalLink: page.querySelector('#externalLink').checked
+                    }
+                    newSection.pages.push( newPage );
+                })
+                manifest.sections.push(newSection);
+            });
+
+            if( validateForm(manifest) )
+                generateFiles( manifest );
+        }
+
+        async function generateFiles( manifestJSON )
+        {
+            let pageTemplate = await fetchTemplate( '/layouts/partials/page_template.pug' );
+            pageTemplate = pageTemplate
+                .replace('template_course', manifestJSON.id)
+                .replace('template_courseName',   manifestJSON.name);
+
+            let zip = new JSZip();
+            const parser = new DOMParser();
+            let xml  = parser.parseFromString('<?xml version="1.0" encoding="utf-8"?><navigation></navigation>', "application/xml");
+            let root = xml.querySelector('navigation');
+
+            //add pages, the respective content pages, and layouts
+            for( let section of manifestJSON.sections ) {
+                let template = pageTemplate.slice().replace('template_menu', section.name );
+                let item = xml.createElement('item');
+                item.setAttribute('name', section.name );
+
+                for( let page of section.pages ) {
+                    let subitem = xml.createElement('subitem');
+                    subitem.setAttribute('name', page.name);
+                    subitem.setAttribute('target', page.url);
+                    if( !page.externalLink)
+                    {
+                        let layoutURL = page.url.substring( 0, page.url.lastIndexOf('.')) + '.pug';
+                        //  zip.file( `${manifestJSON.id}/${page.url}`, '' );
+                        zip.file( `${manifestJSON.id}/content/${page.url}`, `<div class="alert alert-warning" role="alert"><strong>Default File</strong><p>The content of this file (content/${page.url}) needs to be populated</p></div>` );
+                        zip.file( `${manifestJSON.id}/layouts/${layoutURL}`, template.replace('template_name', page.name) );
+                    }
+                    else 
+                    {
+                        subitem.setAttribute('external', true);
+                    }
+                    item.appendChild(subitem);
+                }
+                root.appendChild(item);
+            }
+
+            //add images
+            let imagePicker = document.querySelector('#rotateImages');
+            for( let i = 0; i <imagePicker.files.length; i++ )
+            {   
+                let file = imagePicker.files[i];
+                let ext = file.name.substring(file.name.lastIndexOf('.') + 1);
+                let newName = `PIC${((i < 10 ) ? "0" + (i+1): i+1)}.${ext}`;
+                manifestJSON.images.push( newName );
+                zip.file(`${manifestJSON.id}/img/rotation/${newName}`, file);
+            }
+
+            //add the nav.xml
+            zip.file(`${manifestJSON.id}/content/data/nav.xml`, new XMLSerializer().serializeToString(xml) );
+            //add the manifest
+            zip.file( `${manifestJSON.id}/manifest.json`, JSON.stringify(manifestJSON));
+
+            let content = await zip.generateAsync( { type: 'blob'});
+            saveAs(content, `${manifestJSON.id}.zip`);
+
+            //Show Modal
+            presentModal( manifestJSON );
+        }
+
+        function presentModal( manifestJSON )
+        {
+            let courseID = manifestJSON.id;
+            let modal = document.querySelector('#createdModal');
+            modal.querySelector('.modal-title').innerText = `${courseID}.zip Created!`;
+            modal.querySelector('.modal-body').innerHTML = `
+                A zip file has been downloaded with the contents required to setup a new course.
+                <ul>
+                    <li>The ${courseID} folder should be moved into your <code>./courses/</code> directory.
+                    <li>Make sure you populate the files in the <code>content/</code>.</li>
+                    <li>Give Ryan the zip file so he can update the site process the layouts for you</li>
+                </ul>
+
+                Don't forget to update the <code>./content/courselisting.html</code> page with the new link:
+                <div class="well">
+                &lt;li&gt;&lt;a href=&quot;courses/${courseID}/&quot;&gt;${manifestJSON.name}&lt;/a&gt;&lt;/li&gt;
+                </div>
+                `;
+            document.querySelector('#launchModal').click();
+        }
+
+        function clearForm(event=null)
+        {
+            document.querySelector('#courseID').value = '';
+            document.querySelector('#courseName').value = '';
+            document.querySelector('#navxmlpicker').value = ''; //clear file caching
+            document.querySelector('#sections').innerHTML = '';
+            document.querySelector('#addSectionButton').click();
+        }
+
+        document.addEventListener('DadContentLoaded', ()=>{
+            document.querySelector("#dadcontent").innerHTML = "";
+            document.querySelector('.updated').innerHTML = '';
+            clearForm();
+        });

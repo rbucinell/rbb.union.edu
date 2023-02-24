@@ -1,0 +1,8 @@
+extends partials/layout.pug
+block config
+    - const [menu,name] = ['Scholarship', 'Publications'];
+block content 
+    +scrollToTopText()
+block scripts 
+    script.
+        document.addEventListener('DadContentLoaded', ()=> formatListGroup('Publications'));

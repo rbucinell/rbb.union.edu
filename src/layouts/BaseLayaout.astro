@@ -1,0 +1,26 @@
+---
+/*
+//import HeadComponent from "../components/HeadComponent.astro";
+//import WrapperComponent from "../components/WrapperComponent.astro";
+const { config } = Astro.props;
+let title = config.title || 'Ryan Bucinell\'s Personal Site';
+<html lang="en">
+  <HeadComponent title={title}></HeadComponent>
+  <body>
+    <WrapperComponent config={config}>
+      <slot />
+    </WrapperComponent>
+  </body>
+</html>
+*/
+---
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" />
+    </head>
+    <body class="bg-blue-600">
+        <slot />
+    </body>
+</html>
