@@ -1,0 +1,13 @@
+---
+import BaseNav from './BaseNav.astro'
+import { htmlToElement, loadNavigation } from './nav';
+const { menu, name, course, courseName} = Astro.props;
+---
+<BaseNav />
+<script is:inline>
+    
+    document.addEventListener('DOMContentLoaded', async ()=> {
+        document.querySelector('#mainNavigation').appendChild(htmlToElement(`<li><a class="nav-link px-2 text-white" href="/contact.html">Contact</a></li>`));
+        await loadNavigation( "/content/data/nav.xml", "mainNavigation");
+    });
+</script>

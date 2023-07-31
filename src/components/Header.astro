@@ -1,25 +1,21 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+const { menu, name, course, courseName} = Astro.props;
 ---
+<header class="page-header sticky-top mt-4 mb-2">
+	{course && 
+	  <h1 id="pageheader" class="display-5">
+		{course}<small class="text-muted fs-3">&nbsp;{courseName}</small>
+	  </h1>
+	}
+	{ !course && <h1 id="pageheader" class="display-5">{ name }</h1> }
 
-<header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
-</header>
-<style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
-</style>
+	<h1 class="dislay-5" id="pageheader"></h1>
+	<ul class="breadcrumb bg-light p-2">
+		{course &&
+		  <li class="breadcrumb-item"><a href="/courselisting.html">Courses</a></li>
+		  <li class="breadcrumb-item"><a href="./">{course}</a></li>
+		}
+		<li class="breadcrumb-item">{menu}</li>
+		<li class="breadcrumb-item active"><a href="#">{name}</a></li>
+	</ul>
+  </header>

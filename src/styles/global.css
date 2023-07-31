@@ -1,67 +1,94 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-body {
-	font-family: Verdana, sans-serif;
-	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
-	text-align: left;
-	background-color: #fff;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444;
+:root {
+	/*Primary Palette*/
+	--union-red: #923338; 
+	--union-garnet: #822438;
+	--union-stone: #b3b38c;
+	--union-light-stone: #e4e2d2;
+	--union-gray: #6c6f70;
+	--union-white: #eeeeee;
+
+	/*Secondary Palette*/
+	--union-gold: #D7941D;	
+	--union-metallic-gold: #85714D;
+	--union-navy: #003261;
+	--union-blue: #237FA4;
+	--union-blue-light: #5ABCE1;
+	--union-green: #5C8827;	
+	--union-green-light: #AEBC21;
+	--union-orange: #F58F20;
+	--union-orange-light: #FCB54D;
+
+	/*RBB Colors*/
+	--rbb-black: #111;
+	--rbb-dark-gray: #2b2b2b;
+	--rbb-gray: #484848;
+	--rbb-light-gray: #303030;
+	--rbb-light-gray-hover: #363636;
+	--rbb-lightest-gray: #aaa;
+	--rbb-white: #f7f7f7;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong,
-b {
-	color: #222;
+
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Lato Light'), local('Lato-Light'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff');
 }
-a {
-	color: #3273dc;
+
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
 }
-nav a {
-	margin-right: 10px;
+
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 900;
+	src: local('Lato Black'), local('Lato-Black'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/BVtM30trf7q_jfqYeHfjtA.woff) format('woff');
 }
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-content {
-	line-height: 1.6;
-}
-table {
-	width: 100%;
-}
-img {
-	max-width: 100%;
-	height: auto;
-}
-code {
-	padding: 2px 5px;
-	background-color: #f2f2f2;
-}
-pre {
-	padding: 1rem;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border: 1px solid #999;
-	color: #222;
-	padding: 2px 0px 2px 20px;
-	margin: 0px;
+
+@font-face {
+	font-family: 'Lato';
 	font-style: italic;
+	font-weight: 400;
+	src: local('Lato Italic'), local('Lato-Italic'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/oUan5VrEkpzIazlUe5ieaA.woff) format('woff');
+}
+
+.text-garnet {
+	color: var(--union-garnet );
+}
+.bg-garnet {
+	background-color: var(--union-red);
+}
+.text-stone {
+	color: var(--union-stone );
+}
+.bg-stone {
+	background-color: var(--union-light-stone);
+}
+.text-black {
+	color: var( --rbb-black );
+}
+.bg-black {
+	background-color: var(--rbb-black);
+}
+.bg-gray {
+	background-color: var(--union-gray);
+}
+.panel-gray
+{
+	color: var(--rbb-gray);
+	background-color: var(--rbb-lightest-gray);
+	border-color: var(--union-gray);
+}
+
+.btn-remove {
+    background-color: var(--union-garnet);
+    color: var(--union-stone);
+}
+.btn-add {
+    background-color: green;
+    color: var(--rbb-white);
 }

@@ -1,0 +1,25 @@
+---
+const { menu, name, course, courseName} = Astro.props;
+---
+<nav data-menu={menu} data-name={name} data-course={course} data-courseName={courseName}>
+    <aside class="g-0 col-sm-3 flex-shrink-1 sticky-top pb-sm-0 pb-3" id="nav-aside">
+        <div class="m-2" id="profile"><img class="img-thumbnail d-none d-sm-block" width="250px" height="250px" />
+            <div class="title text-center">
+                <a href="/"> <h4 class="pt-2">Ronald B. Bucinell, Ph.D., P.E.</h4></a>
+                <h4 class="lead">Union College</h4>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-sm d-flex flex-column"><button class="navbar-toggler mb-4 text-white" id="navtogglebutton" type="button" data-bs-toggle="collapse" data-bs-target=".navgroup"><i class="fa fa-bars"></i></button>
+            <ul class="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column" id="mainNavigation"></ul>
+            <ul class="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column mt-3" id="courseNameHeader">
+                <li><span class="text-white px-2 lead font-weight-bold" id="courseNavName"></span></li>
+            </ul>
+            <ul class="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column" id="courseNavigation"></ul>
+        </nav>
+        <div class="social-icons">
+            <div class="d-flex justify-content-center text-center"><span class="fs-3 flex-fill"><a title="Outlook Contact Card" href="/content/data/PE_Ronald_B_Bucinell_PhD.zip"><i class="fa-user fa"></i></a></span><span class="fs-3 flex-fill"><a title="LinkedIn Profile" href="https://www.linkedin.com/pub/ronald-bucinell/15/772/5a4"><i class="fa fa-linkedin"></i></a></span><span class="fs-3 flex-fill"><a title="Research Gate Profile" href="http://www.researchgate.net/profile/Ronald_Bucinell"><i class="ai ai-researchgate"></i></a></span><span class="fs-3 flex-fill"><a title="Phone Number" href="tel:+1518886023"><i class="fa fa-phone"></i></a></span><span class="fs-3 flex-fill"><a title="Email" href="mailto:bucinelr@union.edu"><i class="fa fa-envelope-o"></i></a></span></div>
+        </div>
+    </aside>
+</nav>
+<slot />
+<script src="./nav.js"/>
