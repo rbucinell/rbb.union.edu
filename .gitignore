@@ -1,4 +1,4 @@
-package-lock.json
+.vscode/
 *.bat
 head.html
 nav.html
