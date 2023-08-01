@@ -6,3 +6,4 @@ scripts-footer.html
 noupload/
 node_modules/
 docs/
+dist/
