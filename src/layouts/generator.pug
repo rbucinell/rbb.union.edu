@@ -260,7 +260,7 @@ block scripts
 
         async function generateFiles( manifestJSON )
         {
-            let pageTemplate = await fetchTemplate( '/layouts/partials/page_template.pug' );
+            let pageTemplate = await fetchTemplate( './layouts/partials/page_template.txt' );
             pageTemplate = pageTemplate
                 .replace('template_course', manifestJSON.id)
                 .replace('template_courseName',   manifestJSON.name);

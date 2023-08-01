@@ -102,7 +102,7 @@ gulp.task('copy',function(){
     .pipe( gulp.dest( dest ));
 });
 gulp.task('copy-layouts',function(){
-    return gulp.src( `${src}/layouts/partials/page_template.pug`, { base: src })
+    return gulp.src( `${src}/layouts/partials/page_template.txt`, { base: src })
     .pipe( debug())
     .pipe( gulp.dest( dest ));
 });
