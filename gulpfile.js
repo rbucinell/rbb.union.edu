@@ -5,7 +5,6 @@ const debug     = require('gulp-debug');
 const pug       = require('gulp-pug');
 const uglify    = require('gulp-uglify');
 const rename    = require('gulp-rename');
-var log         = require('fancy-log');
 const del       = require('del');
 const fs        = require('fs');
 const path      = require('path');

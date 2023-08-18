@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>  | Ronald B. Bucinell</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="author" content="Ryan Bucinell"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content="Ronald Bucinell's Professional Website"/>
+    <meta name="keywords" content="factulty, professor, profile, ronlad bucinell, union, union college, mechanical, engineering, "/>
+    <meta property="og:site_name" content="rbb.union.edu"/>
+    <meta property="og:title" content="Ronald B. Bucinell Ph.D., P.E"/>
+    <meta property="og:description" content="Ronald B. Bucinell's Professional Website"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="/img/portrait.jpg"/>
+    <meta property="og:image:alt" content="Portrait of Ronald Bucinell"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Ronald B. Bucinell Ph.D., P.E"/>
+    <meta name="twitter:description" content="Ronald B. Bucinell's Professional Website"/>
+    <meta name="twitter:image" content="/img/portrait.jpg"/>
+    <meta name="twitter:image:alt" content="Ronald's Portrait"/>
+    <link rel="icon" href="/img/favicon.ico"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- 
+    <link rel="stylesheet" href="/css/lib.min.css"/>
+    <link rel="stylesheet" href="/css/style.min.css"/> 
+    -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="/js/nav.js"></script>
+    <script type="module" src="/src/main.jsx"></script>
+    <!-- <script type="text/javascript" src="/js/lib.min.js"></script>
+    <script type="text/javascript" src="/js/rbb.min.js"></script> -->
+    <!-- <script>
+      const event = new Event( 'DadContentLoaded' );
+      /**
+      * String helper function to see if input string 'str' ends with the string 'suffix'
+      **/
+      const endsWith = (str, suffix) => str.indexOf(suffix, str.length - suffix.length) !== -1;
+      
+      /**
+      *   Function to format the html list after it is loaded
+      **/
+      function formatListGroup(headerText) {
+          let listOfLI = [...document.querySelectorAll(`.list-group > li`)];
+          console.log(listOfLI)
+          listOfLI.forEach( n => n.classList +='list-group-item')
+          document.querySelector( 'header > h1' ).innerText = `${headerText} (${listOfLI.length})`;
+      }
+      
+      /**
+      *  On DOM LOAD fetch the respective content file to populate the page
+      **/
+      document.addEventListener('DOMContentLoaded', async ()=> {
+      
+          let contentPath =  `content/${window.location.pathname.split('/').pop()}`;
+          let response = await fetch(contentPath);
+          if( response.status === 404)
+          {
+              response = await fetch(`/content/data/404.html`);
+          }
+          else {
+              let updateDate = new Date(response.headers.get('Last-Modified')).toDateString();
+              document.querySelector('.updated').innerText = `Updated: ${updateDate}`;
+          }
+          let data = await response.text();
+          document.querySelector('#dadcontent').innerHTML = data;
+          document.dispatchEvent( event );
+      });
+    </script> -->
+  </body>
+</html>
