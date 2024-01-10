@@ -1,17 +1,23 @@
 import { useState, useEffect } from "react";
 import SocialIcon from "./SocialIcon";
-import { loadNavigation } from '../js/nav';
+import { loadXMLDoc } from '../../js/nav.js';
 
 export default function Nav() {
     let [navXML, setNavXML ] = useState();
 
     useEffect( ()=>{
         async function fetchData(){
-            // let xmlPage = await fetch('/content/data/nav.xml');
-            // let xml = await xmlPage.text();
-            // console.log( xml ) 
-            // setNavXML(xml);
-            setNavXML( await loadNavigation("/content/data/nav.xml"))
+            const [xmlDoc, _] = await loadXMLDoc('/content/data/nav.xml');
+            const navigationItems = Array.from(xmlDoc.querySelectorAll('item')).map(item => {
+                const name = item.getAttribute('name');
+                const subItems = Array.from(item.querySelectorAll('subitem')).map(subitem => ({
+                  subitemName: subitem.getAttribute('name'),
+                  target: subitem.getAttribute('target'),
+                  external: subitem.getAttribute('external') ?? 'true',
+                }));
+                return { name, subItems };
+              });
+              setNavXML(navigationItems);
         };
         fetchData();
     }, []);
@@ -27,11 +33,31 @@ export default function Nav() {
             </div>
             <nav className="navbar navbar-expand-sm d-flex flex-column">
                 <button className="navbar-toggler mb-4 text-white" id="navtogglebutton" type="button" data-bs-toggle="collapse" data-bs-target=".navgroup"><i className="fa fa-bars"></i></button>
-                <ul className="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column" id="mainNavigation"></ul>
+                <ul id="mainNavigation" className="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column" >
+                {navXML?.map(item => (
+                    <li key={item.name} className="nav-link px-2 text-wrap">
+                        <a className="text-white">{item.name}</a>
+                        <ul>
+                            {item.subItems.map(subitem => (
+                            <li key={subitem.subitemName}>
+                                <a href={subitem.target} target={subitem.external ? '_blank' : '_self'}>
+                                {subitem.subitemName}
+                                </a>
+                            </li>
+                            ))}
+                        </ul>
+                    </li>
+                ))}
+                {navXML?.map(item => (
+                    <NavItem props={item} >
+                        
+                    </NavItem>
+                ))}
+                </ul>
                 <ul className="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column mt-3" id="courseNameHeader">
                 <li><span className="text-white px-2 lead font-weight-bold" id="courseNavName"></span></li>
                 </ul>
-                <ul className="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column" id="courseNavigation"></ul>
+                <ul id="courseNavigation" className="flex-fill align-self-start align-items-start navgroup navbar-collapse collapse navigation nav flex-column" ></ul>
             </nav>
             <div className="social-icons">
                 <div className="d-flex justify-content-center text-center">

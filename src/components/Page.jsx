@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Nav from './Nav'
+import Nav from './Nav/Nav'
 
 export default function Page( props ){
 

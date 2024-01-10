@@ -21,7 +21,6 @@ export async function loadNavigation( filename, ulID )
     let [xmlDoc, modified ] = await loadXMLDoc( filename );
     let ul = document.querySelector(`#${ulID}`);
     console.log('ul',ul);
-    return
     xmlDoc.querySelectorAll('item').forEach((item,i) =>
     {
         let li = document.createElement('li');
