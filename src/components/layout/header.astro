@@ -1,0 +1,19 @@
+---
+import DrawerButton from "../nav/drawerbutton.astro";
+import Title from "../nav/title.astro";
+const {menu, name, href, course=null, courseName=null } = Astro.props;
+---
+<div class="bg-neutral-800">
+    <div class="block md:hidden navbar sticky top-0">
+        <Title />
+    </div>
+    <div class="navbar sticky top-0">
+        <DrawerButton />
+        <div class="breadcrumbs">
+            <ul class="text-lg text-rbb-white">
+                <li>{menu}</li>
+                <li><a class="text-union-red font-semibold" href={href}>{name}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

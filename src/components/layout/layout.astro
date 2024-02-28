@@ -1,0 +1,22 @@
+---
+import Head from './head.astro';
+import Header from './header.astro';
+import Drawer from '../nav/drawer.astro';
+import Footer from '../nav/footer.astro';
+import Content from './content.astro';
+//import '../../css/rbb.css';
+let { name, menu, href } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="rbb">
+    <Head title={name}></Head>    
+    <body class="bg-[url('img/dark_gray_tile.jpg')] ">
+        <Drawer>
+            <main class="flex flex-col">
+                <Header  name={name} menu={menu} href={href}/>
+                <Content name={name} href={href} ><slot/></Content>
+            </main>
+            <Footer />
+        </Drawer>
+    </body>
+</html>

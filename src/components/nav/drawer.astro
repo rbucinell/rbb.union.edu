@@ -1,0 +1,14 @@
+---
+import SiteNav from "./sitenav.astro";
+---
+<div class="drawer md:drawer-open">
+    <input id="site-navigation-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+        <!-- Drawer Button found in Page Header -->
+        <slot/>
+    </div> 
+    <div class="drawer-side">
+      <label for="site-navigation-drawer" class="drawer-overlay" aria-label="close sidebar"></label> 
+      <SiteNav />
+    </div>
+</div>

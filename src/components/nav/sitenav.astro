@@ -1,0 +1,43 @@
+---
+import SocialBar from './socialbar.astro';
+import navData from '../../../public/content/data/nav.json';
+import RotationImage from './rotationimage.astro'
+import Title from './title.astro';
+---
+<style>
+    .menu { font-size: 0.7rem; line-height: 1rem; }
+</style>
+<script is:inline src="../../js/rotate.js"></script>
+<aside id="nav-aside" class="h-full drawer lg:drawer-open w-48 lg:w-64 flex flex-col justify-start bg-neutral-800" >
+    <div id="lower-nav"  class="mb-2">
+        <div id="profile">
+            <RotationImage />
+            <div class="hidden md:block">
+                <Title />
+            </div>
+        </div>
+        <div class="hidden md:block">
+            <SocialBar />
+        </div>
+    </div>
+
+    <ul class="justify-self-start menu rounded-box w-100 text-neutral-content bg-neutral-800">
+        { navData && navData.map( category => {
+            let isOpen = category.items?.some( i => i.path === Astro.url.pathname);            
+            return <li> 
+                <details open={isOpen} class="text-sm md:text-base">
+                    <summary >{category.category}</summary>
+                    <ul>
+                        {category.items?.map( i => {
+                            return <li>
+                                <a href={i.path} target={i.external ? '_blank' : ''} >{i.name}
+                                    { i.external ? <i class="fa-solid fa-arrow-up-right-from-square"></i>: null}
+                                </a>
+                            </li>
+                        })}
+                    </ul>
+                </details>
+            </li>
+        })}
+    </ul>
+</aside>

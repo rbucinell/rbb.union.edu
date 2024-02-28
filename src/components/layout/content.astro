@@ -1,0 +1,14 @@
+---
+const { name, href } = Astro.props;
+---
+<section id="external_content" class="bg-[url('/img/white_noise.jpg')] relative prose prose-sm p-3 min-h-[80vh]">
+    <slot />
+</section>
+
+<script defer is:inline define:vars={{ name, href }}>
+    (async()=>{
+        const content = await fetch( `/content/${href.toLowerCase()}.html`);
+        const content_body = await content.text();
+        document.querySelector('#external_content').innerHTML = content_body;
+    })();
+</script>

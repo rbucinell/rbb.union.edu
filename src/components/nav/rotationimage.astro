@@ -1,0 +1,29 @@
+---
+
+---
+<div class="carousel rounded-box ">
+    <div id={`slide0`} class="carousel-item w-full hidden">
+        <img id={`rot0`} src="/img/portrait.jpg" class="w-full hidden md:block lg:h-64" alt={`Profile Rotation Image #0`} />
+    </div> 
+</div>
+
+<script is:inline>
+    const ROTATION_RATE_SECONDS = 5_000;
+    //TODO
+    document.querySelector('.carousel-item').classList.remove('hidden');
+    let slides = document.querySelectorAll('.carousel-item');
+    let i = 1;
+    setInterval(()=>
+    {
+        let id = i % slides.length;
+        slides.forEach( (slide,index) => {
+            if( index === id ) slide.classList.remove('hidden');
+            else{
+                if( !slide.classList.contains('hidden')){
+                    slide.classList.add('hidden');
+                }
+            }
+        });
+        i++;
+    }, ROTATION_RATE_SECONDS);
+</script>
