@@ -1,14 +1,19 @@
 ---
 const { name, href } = Astro.props;
 ---
-<section id="external_content" class="bg-[url('/img/white_noise.jpg')] relative prose prose-sm p-3 min-h-[80vh]">
+<section class="bg-[url('/img/white_noise.jpg')] prose prose-sm relative p-3 min-h-[80vh] md:w-[700px]">
+    <div id="external_content"></div>
     <slot />
+    <section class="flex justify-end updated text-union-garnet italic font-thin"></section>
 </section>
 
 <script defer is:inline define:vars={{ name, href }}>
-    (async()=>{
-        const content = await fetch( `/content/${href.toLowerCase()}.html`);
+    (async()=> {
+        let contentPath = href === '/' ? 'index' : href;
+        const content = await fetch( `/content/${contentPath.toLowerCase()}.html`);
         const content_body = await content.text();
         document.querySelector('#external_content').innerHTML = content_body;
+        let updateDate = new Date(content.headers.get('Last-Modified')).toDateString();
+        document.querySelector('.updated').innerText = `Updated: ${updateDate}`;
     })();
 </script>
