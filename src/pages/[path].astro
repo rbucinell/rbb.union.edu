@@ -1,0 +1,19 @@
+---
+import Layout from '../components/layout/layout.astro';
+import type { GetStaticPaths } from "astro";
+import nav from '../../public/content/data/nav.json';
+
+//We are going to build the site from the user provided content/data/nav.json, grabbing the menu, name and href
+export const getStaticPaths = (() => {    
+    return nav.map( cat => cat.items.filter( _ => !_.external && _.name !== 'Homepage').map( c => {
+        let path = c.path.startsWith('/') ? c.path.slice(1) : c.path;
+        return { 
+            params: { path }, 
+            props:{ menu: cat.category, name: c.name, href: path } 
+        }
+    })).flat();
+}) satisfies GetStaticPaths;
+
+const { menu, name, href } = Astro.props;
+---
+<Layout menu={menu} name={name} href={href} />
