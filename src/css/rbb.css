@@ -1,0 +1,39 @@
+@import 'root.css';
+@import 'font.css';
+
+.text-garnet {
+	color: var(--union-garnet );
+}
+.bg-garnet {
+	background-color: var(--union-red);
+}
+.text-stone {
+	color: var(--union-stone );
+}
+.bg-stone {
+	background-color: var(--union-light-stone);
+}
+.text-black {
+	color: var( --rbb-black );
+}
+.bg-black {
+	background-color: var(--rbb-black);
+}
+.bg-gray {
+	background-color: var(--union-gray);
+}
+.panel-gray
+{
+	color: var(--rbb-gray);
+	background-color: var(--rbb-lightest-gray);
+	border-color: var(--union-gray);
+}
+
+.btn-remove {
+    background-color: var(--union-garnet);
+    color: var(--union-stone);
+}
+.btn-add {
+    background-color: green;
+    color: var(--rbb-white);
+}
