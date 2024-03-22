@@ -34,6 +34,23 @@ module.exports = {
 			'rbb-white': '#f7f7f7',
 		},
 		extend:{
+			typography: {
+				DEFAULT: {
+					css: {
+						'*':{
+							fontFamily: 'Lato, sans-serif'
+						},
+						h2: {
+							//color: 'var(--union-red)',
+							// fontSize: 'calc(1.325rem + .9vw)',
+							// marginTop: 0,
+							// marginBottom: 0,
+						},
+
+						maxWidth: '100%'
+					}
+				}
+			},
 			backgroundImage: {
 				'white-noise': "url(/img/white_noise.jpg)"
 			}
