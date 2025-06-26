@@ -47,18 +47,6 @@
     --color-rbb-white: #f7f7f7;
 }
 
-@layer utilities {
-  .striped tbody > tr:nth-child(even) {
-    @apply bg-gray-100;
-    @apply text-black;
-  }
-
-  .striped tbody > tr:nth-child(odd) {
-    @apply bg-gray-300;
-    @apply text-black;
-  }
-}
-
 @font-face {
 	font-family: 'Lato';
 	font-style: normal;

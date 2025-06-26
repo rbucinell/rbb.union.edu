@@ -1,6 +1,6 @@
 @import '../styles/global.css';
 
-.text-garnet {
+/* .text-garnet {
 	color: var(--color-garnet );
 }
 .bg-garnet {
@@ -35,8 +35,31 @@
 .btn-add {
     background-color: var(--color-union-green);
     color: var(--color-rbb-white);
+} */
+
+@layer utilities {
+    table {
+        @apply border border-collapse rounded border-garnet;
+    }
+
+    thead {
+        @apply bg-rbb-gray-200 text-garnet dark:bg-rbb-gray-900 dark:prose-headings:text-white;
+    }
+    thead > tr >th {
+        @apply prose-headings:text-garnet font-bold;
+    }
+    tbody > tr:nth-child(even) {
+        @apply bg-rbb-gray-100 text-black;
+    }
+    tbody > tr:nth-child(odd) {
+        @apply bg-rbb-gray-300 text-black;
+    }
 }
 
 th, td {
 	padding: 0.5em;
+}
+
+th {
+	@apply text-garnet font-bold dark:text-garnet-500
 }
