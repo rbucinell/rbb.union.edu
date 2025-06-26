@@ -1,0 +1,9 @@
+---
+import { Icon } from 'astro-icon/components';
+const {label, href="#", icon} = Astro.props;
+//https://github.com/natemoo-re/astro-icon#readme
+//https://icon-sets.iconify.design/
+---
+<a rel="noopener noreferrer" href={href} aria-label={label} class="p-1 rounded-md ">
+    <Icon name={icon} title={label} class="w-6 h-6 md:w-8 md:h-8 text-gray-200 hover:dark:text-garnet-700" />
+</a>

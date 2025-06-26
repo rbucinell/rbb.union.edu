@@ -1,0 +1,32 @@
+---
+import Social from '@/components/sidebar/social.astro';
+---
+<!-- <span class="sm:hidden text-white font-bold uppercase">Rona</span> -->
+<div class="flex flex-col justify-center max-w-xs p-2 shadow-md bg-[var(--rbb-white)] dark:bg-[var(--rbb-gray-700)]  dark:text-gray-200">
+    <label for="my-drawer-2" class="text-[var(--union-garnet)] dark:text-[var(--union-garnet-500)] cursor-pointer self-end md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 lg:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </label>
+    <div class="avatar mx-auto">
+        <div class="w-48 h-48 lg:w-64 lg:h-64 rounded-xl">
+            <img src="https://rbb.union.edu/img/portrait.jpg" alt="" class="sm:block dark:bg-gray-500 aspect-square">
+        </div>
+    </div>
+	<div class="space-y-2 text-center divide-y border-b py-2 dark:divide-gray-300">
+		<div class="py-2 space-y-1">
+			<h2 class="text-xl font-semibold sm:text-2xl">
+                <p>Ronald B. Bucinell,</p>
+                <small>Ph.D., P.E.</small>
+            </h2>
+			<p class="px-5 text-xs sm:text-base font-bold text-garnet-800 dark:text-garnet-600">Union College</p>
+		</div>
+		<div class="flex justify-between gap-1 items-center h-12">
+            <Social label="Outlook Contact"           icon="fa6-solid:address-card"             href="https://rbb.union.edu/content/data/PE_Ronald_B_Bucinell_PhD.zip" />
+            <Social label="Linked In"                 icon="fa6-brands:linkedin"                href="https://www.linkedin.com/in/ronald-bucinell-5a477215/" />
+			<Social label="Research Gate"             icon="academicons:researchgate-square"    href="http://www.researchgate.net/profile/Ronald_Bucinell" />
+            <Social label="Phone (518) 388-6023"      icon="fa6-solid:phone"                    href="tel:+15183886023" /> 
+            <Social label="EmaiL: bucinelr@union.edu" icon="fa6-solid:envelope"                 href="mailto:bucinelr@union.edu" /> 
+		</div>
+	</div>
+</div>

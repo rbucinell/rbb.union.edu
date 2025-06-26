@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";
+
+@theme {
+    --color-garnet-50: #fdf3f3;
+    --color-garnet-100: #fbeae8;
+    --color-garnet-200: #f7d4d4;
+    --color-garnet-300: #f0b2b1;
+    --color-garnet-400: #e68686;
+    --color-garnet-500: #d95a5e;
+    --color-garnet-600: #c43a45;
+    --color-garnet-700: #a42c38;
+    --color-garnet-800: #862633;
+    --color-garnet-900: #762533;
+    --color-garnet-950: #411017;
+    --color-garnet: #862633;
+
+    --color-rbb-gray-50: #f6f6f6;
+    --color-rbb-gray-100: #e7e7e7;
+    --color-rbb-gray-200: #d1d1d1;
+    --color-rbb-gray-300: #b0b0b0;
+    --color-rbb-gray-400: #888888;
+    --color-rbb-gray-500: #6d6d6d;
+    --color-rbb-gray-600: #5d5d5d;
+    --color-rbb-gray-700: #4f4f4f;
+    --color-rbb-gray-800: #454545;
+    --color-rbb-gray-900: #3d3d3d;
+    --color-rbb-gray-950: #2b2b2b;
+
+    
+    --color-union-red: #923338;
+    --color-union-stone: #b3b38c;
+    --color-union-light-stone: #e4e2d2;
+    --color-union-gray: #6c6f70;
+    --color-union-white: #eeeeee;
+    --color-union-gold: #D7941D;
+    --color-union-metallic-gold: #85714D;
+    --color-union-navy: #003261;
+    --color-union-blue: #237FA4;
+    --color-union-blue-light: #5ABCE1;
+    --color-union-green: #5C8827;
+    --color-union-green-light: #AEBC21;
+    --color-union-orange: #F58F20;
+    --color-union-orange-light: #FCB54D;
+    --color-rbb-black: #111;
+    --color-rbb-white: #f7f7f7;
+}
+
+@layer utilities {
+  .striped tbody > tr:nth-child(even) {
+    @apply bg-gray-100;
+    @apply text-black;
+  }
+
+  .striped tbody > tr:nth-child(odd) {
+    @apply bg-gray-300;
+    @apply text-black;
+  }
+}
+
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Lato Light'), local('Lato-Light'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 900;
+	src: local('Lato Black'), local('Lato-Black'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/BVtM30trf7q_jfqYeHfjtA.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Lato';
+	font-style: italic;
+	font-weight: 400;
+	src: local('Lato Italic'), local('Lato-Italic'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/oUan5VrEkpzIazlUe5ieaA.woff) format('woff');
+}

@@ -1,0 +1,18 @@
+---
+import MainNav from "@/components/sidebar/mainnav.astro";
+import Profile from "@/components/sidebar/profile.astro";
+---
+
+<div class="drawer md:drawer-open">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col items-center justify-center">
+    <slot />
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+    <div class="menu bg-rbb-gray-950 text-rbb-white min-h-full">
+      <Profile />
+      <MainNav />
+    </div>
+  </div>
+</div>

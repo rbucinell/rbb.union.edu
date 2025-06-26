@@ -1,15 +1,14 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from "@tailwindcss/vite";
 import sitemap from '@astrojs/sitemap';
-import alpine from '@astrojs/alpinejs';
+import icon from "astro-icon";
 
 // https://astro.build/config
 // https://docs.astro.build/en/reference/configuration-reference/
 export default defineConfig({
-    sites: 'http://rbb.union.edu',
-    output: 'static',
-    build: {
-        format: 'file'
-    },
-    integrations: [ tailwind(), sitemap(), alpine() ]
+  output: 'static',
+  vite: {
+    plugins: [ tailwindcss() ],
+  },
+  integrations: [ icon(), sitemap() ]
 });

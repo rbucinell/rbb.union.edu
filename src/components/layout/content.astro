@@ -1,20 +1,24 @@
 ---
 const { name, href } = Astro.props;
 ---
-<section class:list={[ "bg-[url('/img/white_noise.jpg')] relative p-3 min-h-[90vh] max-w-6xl",
+<article class:list={[ "flex", "flex-col","p-4",    
+    "max-w-6xl",
+    "lg:text-lg",
     "prose",
-    "prose-headings:text-rbb-dark",
+    "prose-headings:my-2",
+    "prose-headings:text-rbb-gray-950",
     "prose-headings:font-normal",
     "prose-headings:text-larger",
-    "prose-a:text-union-red",
+    "prose-a:text-union-red",    
     "prose-ul:list-none",
     "prose-p:m-4",
-    "lg:text-lg",
+    "dark:prose-a:text-union-blue",
+    "dark:prose-invert"
 ]}>
     <div id="external_content"></div>
     <slot />
-    <section class="flex justify-end updated text-union-garnet italic font-thin"></section>
-</section>
+    <section class="updated text-garnet italic self-end fw-light"></section>
+</article>
 
 <script defer is:inline define:vars={{ name, href }}>
     (async()=> {

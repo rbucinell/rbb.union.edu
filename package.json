@@ -22,18 +22,24 @@
   },
   "homepage": "https://github.com/rbucinell/rbb.union.edu#readme",
   "dependencies": {
-    "@astrojs/alpinejs": "^0.3.2",
-    "@astrojs/sitemap": "^3.0.4",
-    "@astrojs/tailwind": "^5.1.0",
-    "@types/alpinejs": "^3.13.6",
-    "alpinejs": "^3.13.3",
-    "astro": "^4.1.1",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.3.3"
+    "@astrojs/node": "^9.0.2",
+    "@astrojs/sitemap": "^3.4.1",
+    "@fontsource/cabin": "^5.0.16",
+    "@tailwindcss/vite": "^4.1.10",
+    "astro": "^5.2.0",
+    "astro-icon": "^1.1.5",
+    "daisyui": "^5.0.43",
+    "date-fns": "^3.2.0",
+    "tailwindcss": "^4.1.10",
+    "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "daisyui": "^4.4.24",
-    "sharp": "^0.33.1"
+    "@iconify-json/academicons": "^1.2.2",
+    "@iconify-json/fa6-brands": "^1.2.5",
+    "@iconify-json/fa6-solid": "^1.2.3",
+    "@tailwindcss/typography": "^0.5.16"
+  },
+  "volta": {
+    "node": "22.16.0"
   }
 }

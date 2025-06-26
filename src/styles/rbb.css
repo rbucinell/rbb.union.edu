@@ -1,0 +1,42 @@
+@import '../styles/global.css';
+
+.text-garnet {
+	color: var(--color-garnet );
+}
+.bg-garnet {
+	background-color: var(--color-union-red);
+}
+.text-stone {
+	color: var(--color-union-stone );
+}
+.bg-stone {
+	background-color: var(--color-union-light-stone);
+}
+.text-black {
+	color: var( --color-rbb-black );
+}
+.bg-black {
+	background-color: var(--color-rbb-black);
+}
+.bg-gray {
+	background-color: var(--color-union-gray);
+}
+.panel-gray
+{
+	color: var(--color-rbb-gray-500);
+	background-color: var(--color-rbb-gray-100);
+	border-color: var(--color-union-gray);
+}
+
+.btn-remove {
+    background-color: var(--color-garnet);
+    color: var(--color-union-stone);
+}
+.btn-add {
+    background-color: var(--color-union-green);
+    color: var(--color-rbb-white);
+}
+
+th, td {
+	padding: 0.5em;
+}

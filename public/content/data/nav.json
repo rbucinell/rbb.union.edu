@@ -1,58 +1,64 @@
 [
     {
         "category": "Main",
+        "icon": "fa6-solid:house",
         "items": [
-            {"name": "Homepage",        "path": "/" },
-            {"name": "Union College",   "path": "/http://www.union.edu", "external": true },
-            {"name": "Downloads",       "path": "/downloads" }
+            {"name": "Homepage",        "slug": "/" },
+            {"name": "Union College",   "slug": "http://www.union.edu", "external": true },
+            {"name": "Downloads",       "slug": "downloads" }
         ]
     },
     {
         "category": "Credentials & Experience",
+        "icon": "fa6-solid:certificate",
         "items": [
-            {"name": "Credentials",     "path": "/credentials" },
-            {"name": "Funding History", "path": "/funding" },
-            {"name": "Experience",      "path": "/experience" },
-            {"name": "Activities",      "path": "/activities" }
+            {"name": "Credentials",     "slug": "credentials" },
+            {"name": "Funding History", "slug": "funding" },
+            {"name": "Experience",      "slug": "experience" },
+            {"name": "Activities",      "slug": "activities" }
         ]
     },
     {
         "category": "Course Listing",
+        "icon": "fa6-solid:list",
         "items": [
-            {"name": "Course Links", "path": "/courselisting" },
-            {"name": "Videos",       "path": "/video" },
-            {"name": "Format",       "path": "/homeworkformat" }
+            {"name": "Course Links", "slug": "courselisting" },
+            {"name": "Videos",       "slug": "video" },
+            {"name": "Format",       "slug": "homeworkformat" }
         ]
     },
     {
         "category": "Student Collaborations",
+        "icon": "fa6-solid:user-graduate",
         "items": [
-            {"name":"Resources"          	,"path": "/resources" },
-            {"name":"Senior Projects"    	,"path": "/seniormasters" },
-            {"name":"Summer Fellowship"  	,"path": "/summerfellowship" },
-            {"name":"Steinmetz Symposium"	,"path": "/steinmetz" },
-            {"name":"NCUR"          		,"path": "/ncur" },
-            {"name":"Other Forums"       	,"path": "/otherforum" },
-            {"name":"Scholars Soph Project"	,"path": "/unionscholars" },
-            {"name":"Masters and Outside"	,"path": "/masterandoutside" }
+            {"name":"Resources"          	,"slug": "resources" },
+            {"name":"Senior Projects"    	,"slug": "seniormasters" },
+            {"name":"Summer Fellowship"  	,"slug": "summerfellowship" },
+            {"name":"Steinmetz Symposium"	,"slug": "steinmetz" },
+            {"name":"NCUR"          		,"slug": "ncur" },
+            {"name":"Other Forums"       	,"slug": "otherforum" },
+            {"name":"Scholars Soph Project"	,"slug": "unionscholars" },
+            {"name":"Masters and Outside"	,"slug": "masterandoutside" }
         ]
     },
     {
         "category": "Scholarship",
+        "icon": "fa6-solid:school",
         "items": [
-            {"name":"Publications"         	,"path": "/bucpub"},
-            {"name":"Select Reports"        ,"path": "/selectreports"},
-            {"name":"Select Presentations"  ,"path": "/selectpresentations"},
-            {"name":"Addresses/Speeches"    ,"path": "/bucaddress"},
-            {"name":"In The News"         	,"path": "/bucNews"}
+            {"name":"Publications"         	,"slug": "bucpub"},
+            {"name":"Select Reports"        ,"slug": "selectreports"},
+            {"name":"Select Presentations"  ,"slug": "selectpresentations"},
+            {"name":"AddressesSpeeches"    ,"slug": "bucaddress"},
+            {"name":"In The News"         	,"slug": "bucNews"}
         ]
     },
     {
         "category": "Lab",
+        "icon": "fa6-solid:microscope",
         "items": [
-            {"name": "Engineering Mechanics",   "path": "/mechengineerlab" },
-            {"name": "Composite Mfg",           "path": "/compositelab" },
-            {"name": "Projects",                "path": "/labprojects" }
+            {"name": "Engineering Mechanics",   "slug": "mechengineerlab" },
+            {"name": "Composite Mfg",           "slug": "compositelab" },
+            {"name": "Projects",                "slug": "labprojects" }
         ]
     }    
 ]

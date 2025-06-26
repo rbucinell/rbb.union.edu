@@ -1,19 +1,30 @@
 ---
-import DrawerButton from "../nav/drawerbutton.astro";
-import Title from "../nav/title.astro";
-const {menu, name, href, course=null, courseName=null } = Astro.props;
+import SidebarToggle from '@/components/sidebar/sidebartoggle.astro';
+import BreadCrumbSeperator from '@/components/breadcrumbs/seperator.astro';
+import { Icon } from 'astro-icon/components';
+const { slug = "#", category, name, courseId, courseName } = Astro.props;
 ---
-<div class="bg-neutral-800">
-    <div class="block md:hidden navbar sticky top-0">
-        <Title />
-    </div>
-    <div class="navbar sticky top-0">
-        <DrawerButton />
-        <div class="breadcrumbs">
-            <ul class="text-lg text-rbb-white">
-                <li>{menu}</li>
-                <li><a class="text-union-red font-semibold" href={href}>{name}</a></li>
-            </ul>
+<header class="bg-gray-100 border-b h-16 border-garnet dark:bg-gray-100 dark:text-gray-800 navbar sticky top-0">
+    <div class="flex px-4 items-center justify-start h-16  w-full">
+        <SidebarToggle/>
+        <div class="flex flex-col">
+            <h1 class="text-2xl font-bold">{name}</h1>
+            <div id="breadcrumbs" aria-label="breadcrumb" class="w-full">
+                <div class="flex gap-2 items-center h-8">
+                    <Icon name="fa6-solid:house" class='my-auto h-4'/>
+                    <BreadCrumbSeperator/>
+                    {courseId &&
+                        <a rel="noopener noreferrer" href="/courselisting" class="flex items-center px-1 text-garnet">Courses</a>
+                        <BreadCrumbSeperator/>
+                        <a rel="noopener noreferrer" href={`/courses/${courseId}/`} class="flex items-center px-1 capitalize text-garnet">{courseId}</a>
+                        <BreadCrumbSeperator/>
+                    }
+                    <a rel="noopener noreferrer" href="#" class="flex items-center px-1 capitalize hover:underline  cursor-default">{category}</a>
+                    <BreadCrumbSeperator/>
+                    <a rel="noopener noreferrer" href={slug} class="flex items-center px-1 capitalize text-garnet">{name}</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</header>
