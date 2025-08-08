@@ -1,22 +1,23 @@
 ---
 import '@fontsource/cabin';
 import "../styles/rbb.css";
+import CourseNav from "@/components/sidebar/coursenav.astro";
 import Header from 	'@components/layout/header.astro';
 import Head from 	'@components/layout/head.astro';
 import Sidebar from '@components/sidebar/sidebar.astro';
 import Content from '@components/layout/content.astro';
-import Mainnav from '@/components/sidebar/mainnav.astro';
-import type { boolean } from 'astro:schema';
 
 interface Props {
-	category?:string;
+    category?:string;
 	slug: string;
 	name: string;
-	transform?: boolean;
 	description?: string;
+    courseId: string;
+    courseName: string;
+    nav: JSON;
 }
 
-const { category, slug, name, transform, description } = Astro.props;
+const { category, slug, name, description, courseId, courseName, nav } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -24,15 +25,15 @@ const { category, slug, name, transform, description } = Astro.props;
 	<body class="min-h-screen grid grid-rows-[auto,1fr,auto]">
 		<Sidebar>
 			<!-- https://www.transparenttextures.com/ -->
-			<main class="flex w-full h-screen bg-gray-200 dark:bg-rbb-gray-800 bg-[url('./img/texture/otis-redding.png')]">
+			<main class="flex w-full h-screen bg-gray-200 dark:bg-rbb-gray-800 bg-[url('/img/texture/otis-redding.png')]">
 				<div class="flex flex-col flex-1 overflow-y-auto">
-					<Header slug={slug} category={category} name={name}/>
-					<Content name={name} href={slug} transform={transform} >
+					<Header slug={slug} category={category} name={name} courseId={courseId} courseName={courseName}/>
+					<Content name={name} href={slug} courseId={courseId} >
 						<slot/>
 					</Content>
 				</div>
 			</main>
-			<Mainnav slot="nav" />
+			<CourseNav id={courseId} json={nav} slot="nav"/>
 		</Sidebar>
 	</body>
 </html>

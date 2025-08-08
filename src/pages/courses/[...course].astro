@@ -1,0 +1,40 @@
+---
+import CourseLayout from '@/layouts/courselayout.astro';
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = ( () => {
+
+    const courseManifests = Object.values(import.meta.glob('@public/courses/**/manifest.json', { eager: true }))
+        .map( _ => JSON.parse(JSON.stringify(_)).default );
+
+    const filtered = courseManifests.map( course => {
+        const{ id, name, created, sections, images } = course;
+        return sections.map( s => {
+            return s.pages.filter( p => !p.externalLink).map( p =>{
+                const url = (p.url === 'index' || p.url === 'index.html') ? '' : p.url?.substring(0, p.url.indexOf( "." ));
+                return {
+                    id, 
+                    category: name,
+                    name: s.name,
+                    url,
+                    created,
+                    images,
+                    slug: `${course.id}/${url}`,
+                    nav: JSON.parse(JSON.stringify(sections))
+                }
+            });
+        }).flat();
+    }).flat();
+
+    return filtered.map( course => {
+        return { 
+            params: { course: course.slug },
+            props: course,
+        } 
+    });
+}) satisfies GetStaticPaths;
+
+const { slug, category, name, id, nav } = Astro.props;
+---
+<CourseLayout slug={slug} category={category} name={name} courseId={id} courseName={name} nav={nav}/>
+

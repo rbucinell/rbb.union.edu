@@ -1,5 +1,5 @@
 ---
-const { name, href } = Astro.props;
+const { name, href, transform, courseId} = Astro.props;
 ---
 <article class:list={[ "flex", "flex-col","p-4",    
     "max-w-6xl",
@@ -20,13 +20,47 @@ const { name, href } = Astro.props;
     <section class="updated text-garnet italic self-end fw-light"></section>
 </article>
 
-<script defer is:inline define:vars={{ name, href }}>
+<script defer is:inline define:vars={{ name, href, transform, courseId }}>
+
+    async function loadXMLDoc(filename)
+    {
+        let response = await fetch(filename);
+        let txt = await response.text();
+        return [new DOMParser().parseFromString( txt, 'application/xml'), response.headers.get('Last-Modified')];
+    }
+
+    async function displayResult( xmlpath, transformpath, outputId )
+    {
+        let [xmlDoc, xmlLastMod] = await loadXMLDoc(xmlpath);
+        let [xslDoc, xslLastMod] = await loadXMLDoc(transformpath);
+        let xsltProcessor = new XSLTProcessor();
+        xsltProcessor.importStylesheet(xslDoc);
+        resultDocument = xsltProcessor.transformToFragment(xmlDoc, document);
+        document.querySelector('#external_content').appendChild(resultDocument);
+        document.querySelector('.updated').innerText = `Updated ${new Date(xmlLastMod).toDateString()}`;
+    }
+
     (async()=> {
-        let contentPath = href === '/' ? 'index' : href;
-        const content = await fetch( `/content/${contentPath.toLowerCase()}.html`);
-        const content_body = await content.text();
-        document.querySelector('#external_content').innerHTML = content_body;
-        let updateDate = new Date(content.headers.get('Last-Modified')).toDateString();
-        document.querySelector('.updated').innerText = `Updated: ${updateDate}`;
+
+        const externalContent = document.querySelector('#external_content');
+
+        if( !transform ) {
+            let contentPath = href === '/' ? 'index' : href;
+            let contentUrl = `/content/${contentPath.toLowerCase()}.html`;
+            if( courseId ) {
+                let [ id, page ] = contentPath.split('/');
+                contentUrl = `/courses/${id}/content/${page}.html`
+            }
+            console.log( contentUrl );
+            const content = await fetch( contentUrl );
+            const content_body = await content.text();
+            externalContent.innerHTML = content_body;
+            let updateDate = new Date(content.headers.get('Last-Modified')).toDateString();
+            document.querySelector('.updated').innerText = `Updated: ${updateDate}`;
+
+        } else {
+            console.log( name, href, transform, courseId );
+            displayResult(`content/data/${href}.xml`,`content/data/transforms/${href}-transform.xsl`,`${href}-table`);
+        }
     })();
 </script>

@@ -13,7 +13,7 @@
         "icon": "fa6-solid:certificate",
         "items": [
             {"name": "Credentials",     "slug": "credentials" },
-            {"name": "Funding History", "slug": "funding" },
+            {"name": "Funding History", "slug": "funding", "transform": true},
             {"name": "Experience",      "slug": "experience" },
             {"name": "Activities",      "slug": "activities" }
         ]
@@ -48,7 +48,7 @@
             {"name":"Publications"         	,"slug": "bucpub"},
             {"name":"Select Reports"        ,"slug": "selectreports"},
             {"name":"Select Presentations"  ,"slug": "selectpresentations"},
-            {"name":"AddressesSpeeches"    ,"slug": "bucaddress"},
+            {"name":"AddressesSpeeches"     ,"slug": "bucaddress"},
             {"name":"In The News"         	,"slug": "bucNews"}
         ]
     },
@@ -58,7 +58,7 @@
         "items": [
             {"name": "Engineering Mechanics",   "slug": "mechengineerlab" },
             {"name": "Composite Mfg",           "slug": "compositelab" },
-            {"name": "Projects",                "slug": "labprojects" }
+            {"name": "Projects",                "slug": "labprojects" ,  "transform": true}
         ]
     }    
 ]
