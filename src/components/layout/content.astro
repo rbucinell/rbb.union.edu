@@ -1,20 +1,10 @@
 ---
 const { name, href, transform, courseId} = Astro.props;
 ---
-<article class:list={[ "flex", "flex-col","p-4",    
-    "max-w-6xl",
-    "lg:text-lg",
-    "prose",
-    "prose-headings:my-2",
-    "prose-headings:text-rbb-gray-950",
-    "prose-headings:font-normal",
-    "prose-headings:text-larger",
-    "prose-a:text-union-red",    
-    "prose-ul:list-none",
-    "prose-p:m-4",
-    "dark:prose-a:text-union-blue",
-    "dark:prose-invert"
-]}>
+<article class="flex flex-col p-4 max-w-6xl lg:text-lg prose prose-headings:my-2 
+            prose-headings:text-rbb-gray-950 prose-headings:font-normal prose-headings:text-larger 
+            prose-a:text-union-red prose-ul:list-none prose-p:m-4 dark:prose-a:text-union-blue 
+            dark:prose-invert z-0">
     <div id="external_content"></div>
     <slot />
     <section class="updated text-garnet italic self-end fw-light"></section>

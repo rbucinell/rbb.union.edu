@@ -32,9 +32,9 @@
         "icon": "fa6-solid:user-graduate",
         "items": [
             {"name":"Resources"          	,"slug": "resources" },
-            {"name":"Senior Projects"    	,"slug": "seniormasters" },
-            {"name":"Summer Fellowship"  	,"slug": "summerfellowship" },
-            {"name":"Steinmetz Symposium"	,"slug": "steinmetz" },
+            {"name":"Senior Projects"    	,"slug": "seniormasters", "transform": true },
+            {"name":"Summer Fellowship"  	,"slug": "summerfellowship", "transform": true },
+            {"name":"Steinmetz Symposium"	,"slug": "steinmetz", "transform": true },
             {"name":"NCUR"          		,"slug": "ncur" },
             {"name":"Other Forums"       	,"slug": "otherforum" },
             {"name":"Scholars Soph Project"	,"slug": "unionscholars" },
@@ -58,7 +58,7 @@
         "items": [
             {"name": "Engineering Mechanics",   "slug": "mechengineerlab" },
             {"name": "Composite Mfg",           "slug": "compositelab" },
-            {"name": "Projects",                "slug": "labprojects" ,  "transform": true}
+            {"name": "Projects",                "slug": "labprojects" ,  "transform": true }
         ]
     }    
 ]

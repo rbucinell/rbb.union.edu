@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seniormasters>
+    <senior>
+        <name>Subik, Sarah</name>
+        <link>content/data/RBB Sr Projects/2021 Subik_Sarah Senior Project Poster.pdf</link>
+        <description>Mechanical Characterization of Downhill Ski Performance</description>
+        <year>2021</year>
+    </senior>
+    <senior>
+        <name>Constable, Hunter</name>
+        <link>content/data/RBB Sr Projects/2019 Constable_Hunter Senior Project Poster.pdf</link>
+        <description>Evaluation of intervertebral Disc Degeneration and Recovery</description>
+        <year>2019</year>
+    </senior>
+    <senior>
+        <name>Harkness, Brian</name>
+        <link>content/data/RBB Sr Projects/2019 Harkness_Brian Senior Project Poster.pdf</link>
+        <description>Composite Beam Design and Construction for 2019 SAMPE Bridge Contest</description>
+        <year>2019</year>
+    </senior>
+    <senior>
+        <name>Kellner, Arden</name>
+        <link>content/data/RBB Sr Projects/2019 Kellner_Arden Senior Project Poster.pdf</link>
+        <description>Mechanics of Barefoot Running</description>
+        <year>2019</year>
+    </senior>
+    <senior>
+        <name>Ye, Terry</name>
+        <link>content/data/RBB Sr Projects/2019 Ye_Terry Senior Project Poster.pdf</link>
+        <description>Investigating Material Characterization on Achilles Tendons with and Without Treatment</description>
+        <year>2019</year>
+    </senior>
+    <senior>
+        <name>Ashcroft, Adam</name>
+        <link>content/data/RBB Sr Projects/2018 Ashcroft_Adam Senior Project Poster.pdf</link>
+        <description>Manufacturing and Testing Enviornmentally Friendly Hiking Boot Shanks</description>
+        <year>2018</year>
+    </senior>
+    <senior>
+        <name>Glennon, Sean Q.</name>
+        <link>content/data/RBB Sr Projects/2018 Glennon_Sean Senior Project Poster.pdf</link>
+        <description>Designing of a Load Frame for Nonlinear Viscoelastic Biological Materials</description>
+        <year>2018</year>
+    </senior>
+    <senior>
+        <name>Sears, Nathan</name>
+        <link>content/data/RBB Sr Projects/2018 Sears_Nathan Senior Project Poster.pdf</link>
+        <description>Designing and Manufacturing of a Cross Country Ski with Sustainable Materials</description>
+        <year>2018</year>
+    </senior>
+    <senior>
+        <name>Tocci, Ron</name>
+        <link>content/data/RBB Sr Projects/2018 Tocci_Ron Senior Project Poster.pdf</link>
+        <description>Design Theory, and Construction of a Full-Scale Sustainalbe Composite Hockey Stick Shaft</description>
+        <year>2018</year>
+    </senior>
+    <senior>
+        <name>Armanetti, Evan J.</name>
+        <link>content/data/RBB Sr Projects/2017 Armanetti Evan Poster.pdf</link>
+        <description>Weight Optimization of a Natural Composite I-Beam for the 2017 SAMPE Bridge Competition</description>
+        <year>2017</year>
+    </senior>
+    <senior>
+        <name>Keever, Robert</name>
+        <link>content/data/RBB Sr Projects/2017 Keever Robert Poster.pdf</link>
+        <description>Design of a Tensile Testing Method for the Purpose of Characterizing the Mechanical Properties of Skeletal Mycelium</description>
+        <year>2017</year>
+    </senior>
+    <senior>
+        <name>Noonan, Joseph T.</name>
+        <link>content/data/RBB Sr Projects/2017 Noonan Joe Poster.pdf</link>
+        <description>The analyzation and creation of composite body panels for the SAE Baja Car</description>
+        <year>2017</year>
+    </senior>
+    <senior>
+        <name>Wood, Alexandra</name>
+        <link>content/data/RBB Sr Projects/2017 Wood Alexandra Poster.pdf</link>
+        <description>2017 SAMPE Carbon Fiber Composite I-Beam Design &amp; Optimization</description>
+        <year>2017</year>
+    </senior>
+    <senior>
+        <name>Chee, Marian</name>
+        <link>content/data/RBB Sr Projects/2016 Chee_Marian Senior Project Poster Poster.pdf</link>
+        <description>Development of a Methodology to Optimize the Accuracy of DIC</description>
+        <year>2016</year>
+    </senior>
+    <senior>
+        <name>Dhlamini, Zibusiso</name>
+        <link>content/data/RBB Sr Projects/2016 Dhlamini_Zibusiso Senior Project Poster.pdf</link>
+        <description>Design and Fabrication of an In-Situ Micro-Tensile Stage for Optical Microscopy Applications</description>
+        <year>2016</year>
+    </senior>
+    <senior>
+        <name>Prescott, W. Aaron</name>
+        <link>content/data/RBB Sr Projects/2016 Prescott_Aaron Senior Project Poster.pdf</link>
+        <description>Characterization of Material Properties of Skeletal Mycelium for use as a Biocomposite Constituent</description>
+        <year>2016</year>
+    </senior>
+    <senior>
+        <name>Smith, Duncan</name>
+        <link>content/data/RBB Sr Projects/2016 Smith_Duncan Senior Project Poster.pdf</link>
+        <description>Characterization of Natural Fibers for Sustainable Composite Materials</description>
+        <year>2016</year>
+    </senior>
+    <senior>
+        <name>Granger, Ryan C.</name>
+        <link>content/data/RBB Sr Projects/2015 Ryan_Granger_Poster.pdf</link>
+        <description>Use of Mycelium Core to Form a Sustainable Composite Beam for the 2015 SAMPE Bridge Competition</description>
+        <year>2015</year>
+    </senior>
+    <senior>
+        <name>Lapointe, Caelan</name>
+        <link>content/data/RBB Sr Projects/2015 Caelan_Lapointe_Poster.pdf</link>
+        <description>CFD Modeling of the Flow of Resin into a Preform Mold of Natural Fibers</description>
+        <year>2015</year>
+    </senior>
+    <senior>
+        <name>Milojevic, Hristina</name>
+        <link>content/data/RBB Sr Projects/2015 Hristina_Milojevic_Poster.pdf</link>
+        <description>Evaluation of the Bond between Natural Fibers and Resins Formulated from Natural Oils</description>
+        <year>2015</year>
+    </senior>
+    <senior>
+        <name>Allan, M.</name>
+        <link>content/data/RBB Sr Projects/2014 Allan Michael - Senior Project.pdf</link>
+        <description>Constructing a Sustainable Composite Beam for the 2014 SAMPE Bridge Competition</description>
+        <year>2014</year>
+    </senior>
+    <senior>
+        <name>Johnston, Ashley R.</name>
+        <link>content/data/RBB Sr Projects/2014 Johnston Ashley - Senior Project.pdf</link>
+        <description>Designing an Adjustable Below Knee Prosthetic for Children</description>
+        <year>2014</year>
+    </senior>
+    <senior>
+        <name>Mansfield, M.</name>
+        <link>content/data/RBB Sr Projects/2014 Mansfield Melissa - Senior Project.pdf</link>
+        <description>Effects of Playing Surface and Shoe Type on ACL Tears in Soccer Players</description>
+        <year>2014</year>
+    </senior>
+    <senior>
+        <name>Owen, C.</name>
+        <link>content/data/RBB Sr Projects/2013 Owen Connor - Senior Project.pdf</link>
+        <description>Engineering a Water Filtration Device using Hydrophobic Zeolite Absorbent as the Nano-Filter</description>
+        <year>2013</year>
+    </senior>
+    <senior>
+        <name>Wagner, R.</name>
+        <link>content/data/RBB Sr Projects/2013 Wagner Robert - Senior Project.pdf</link>
+        <description>Design of a Green Composite Beam for the 2013 SAMPE Beam Competition</description>
+        <year>2013</year>
+    </senior>
+    <senior>
+        <name>Ehrlich, J.</name>
+        <link>content/data/RBB Sr Projects/2013 Ehrlich Jeff - Senior Project.pdf</link>
+        <description>SAE Aero Design Project: Structural Design of Wing and Tail Sections</description>
+        <year>2013</year>
+    </senior>
+    <senior>
+        <name>Dlamini, M.</name>
+        <link>content/data/RBB Sr Projects/2012 DlaminiMcolisi_Poster.pdf</link>
+        <description>Characterization of deformation fields in hypertense amphibian hearts in vivo using the Speckle Image Photogrammetry Technique</description>
+        <year>2012</year>
+    </senior>
+    <senior>
+        <name>Chin, W.</name>
+        <link>content/data/RBB Sr Projects/2012 ChinWalter_Poster.pdf</link>
+        <description>Finite Element Analysis and Design of the SAE Aero Competition Plane Structure</description>
+        <year>2012</year>
+    </senior>
+    <senior>
+        <name>Bucklin, K.</name>
+        <link>content/data/RBB Sr Projects/2012 BucklinKyle_Poster.pdf</link>
+        <description>High Gas Mileage Vehicle Design</description>
+        <year>2012</year>
+    </senior>
+    <senior>
+        <name>Davis, J.</name>
+        <link>content/data/RBB Sr Projects/2012 DavisJake_Poster.pdf</link>
+        <description>ASME Human Powered Vehicle Competition (HPVC) Body Design</description>
+        <year>2012</year>
+    </senior>
+    <senior>
+        <name>Abrahamson, K.</name>
+        <link>content/data/RBB Sr Projects/2011 Abrahamson_Kyle_Poster.pdf</link>
+        <description>Investigation of the Mechanical Strength of Flexible Solar Nano-Composites</description>
+        <year>2011</year>
+    </senior>
+    <senior>
+        <name>Berg, K.</name>
+        <link>content/data/RBB Sr Projects/2011Berg_ Kathryn_Poster.pdf</link>
+        <description>Construction and Design of a Bridge Using Composite Materials</description>
+        <year>2011</year>
+    </senior>
+    <senior>
+        <name>Bombardier, M.</name>
+        <link></link>
+        <description>Mechanical Characterization of Flexible Solar Nano-Composites</description>
+        <year>2011</year>
+    </senior>
+    <senior>
+        <name>Jung, K.</name>
+        <link>content/data/RBB Sr Projects/2011 Jung_Kevin_Poster.pdf</link>
+        <description>Design of a Stand-Alone Pneumatically Powered Lift Chair for the Activity Restricted Elderly</description>
+        <year>2011</year>
+    </senior>
+    <senior>
+        <name>Brown, A.</name>
+        <link>content/data/RBB Sr Projects/2010 Brown_Andrew_Poster.pdf</link>
+        <description>Design of an Arm Pitching Machine with Curveball Capability</description>
+        <year>2010</year>
+    </senior>
+    <senior>
+        <name>Little, B.</name>
+        <link>content/data/RBB Sr Projects/2011 Little_Bridget_Poster.pdf</link>
+        <description>The Design of a Tire-Sandal Cutting Machine for Sub-Saharan African Villages</description>
+        <year>2011</year>
+    </senior>
+    <senior>
+        <name>Herman, T.</name>
+        <link>content/data/RBB Sr Projects/2010 Herman_Todd_Poster.pdf</link>
+        <description>The Mechanical Strength of Flexible Solar Nanocomposites</description>
+        <year>2010</year>
+    </senior>
+    <senior>
+        <name>Maher, J.</name>
+        <link>content/data/RBB Sr Projects/2010 Maher_James_Poster.pdf</link>
+        <description>Investigation of Bullfrog Hearts during Simulated Heart Attacks</description>
+        <year>2010</year>
+    </senior>
+    <senior>
+        <name>Adams, M.T.</name>
+        <link>content/data/RBB Sr Projects/2009 Adams_MatthewT_Poster.pdf</link>
+        <description>The Photogrammetry of Bullfrog Hearts</description>
+        <year>2009</year>
+    </senior>
+    <senior>
+        <name>Hopengarten, S.P.</name>
+        <link>content/data/RBB Sr Projects/2009 Hopengarten_Steven_Poster.pdf</link>
+        <description>Design and Fabrication of a Full Suspension Mountain Bike Suspension System</description>
+        <year>2009</year>
+    </senior>
+    <senior>
+        <name>Moriaty, M.A.</name>
+        <link></link>
+        <description>Design of a Handheld Pharmaceutical Design</description>
+        <year>2009</year>
+    </senior>
+    <senior>
+        <name>Adam, B.</name>
+        <link>content/data/RBB Sr Projects/2008 Adam_Brittany_Poster.pdf</link>
+        <description>Pico OWC1 Wave Energy Power Plant</description>
+        <year>2008</year>
+    </senior>
+    <senior>
+        <name>Mrazek, J.</name>
+        <link>content/data/RBB Sr Projects/2008 Mrazek_Justin_poster.pdf</link>
+        <description>Design of an Ice Hockey Goal Sensor</description>
+        <year>2008</year>
+    </senior>
+    <senior>
+        <name>Salemo, A.</name>
+        <link>content/data/RBB Sr Projects/2008 Salemo_Andrew_Poster.pdf</link>
+        <description>Design of an Adaptive Hockey Puck for the Visually Impaired</description>
+        <year>2008</year>
+    </senior>
+    <senior>
+        <name>Wood, C.D.</name>
+        <link>content/data/RBB Sr Projects/2008 Wood_Charles_Poster.pdf</link>
+        <description>Morphology of Advanced Nanocomposites in Novel Solar Cell Design</description>
+        <year>2008</year>
+    </senior>
+    <senior>
+        <name>Blythe, B.W.</name>
+        <link>content/data/RBB Sr Projects/2007 Blythe_Brent_Poster.pdf</link>
+        <description>Design of an Magneto-Rheological Auxiliary Brake System for Heavy Capacity Automotive Vehicles</description>
+        <year>2007</year>
+    </senior>
+    <senior>
+        <name>Kanagaki, G.</name>
+        <link>content/data/RBB Sr Projects/2007 Kanagaki_Greg_Poster.pdf</link>
+        <description>Investigating Magneto-Rheological Fluids</description>
+        <year>2007</year>
+    </senior>
+    <senior>
+        <name>Single, G.W.</name>
+        <link>content/data/RBB Sr Projects/2007 Single_Gordon_Poster.pdf</link>
+        <description>Inventing and Developing a Medical Device to Aid in an Emergency Cricothyroidotomy Procedure</description>
+        <year>2007</year>
+    </senior>
+    <senior>
+        <name>Burr, M.S.</name>
+        <link>content/data/RBB Sr Projects/2006 Burr_Matthew_Poster.pdf</link>
+        <description>Design of an Exercise Mechanism for Nonivasive Magetocardiography</description>
+        <year>2006</year>
+    </senior>
+    <senior>
+        <name>Goodman, A.</name>
+        <link>content/data/RBB Sr Projects/2006 Goodman_Amanda_Poster.pdf</link>
+        <description>PHotogrammetry of Bullfrog Hearts</description>
+        <year>2006</year>
+    </senior>
+    <senior>
+        <name>Spicer, C.</name>
+        <link>content/data/RBB Sr Projects/2006 Spicer_Cory_Poster.pdf</link>
+        <description>Design of an Adhesion Tester for High Temperature Superconductors</description>
+        <year>2006</year>
+    </senior>
+    <senior>
+        <name>VanWoeart, M.</name>
+        <link>content/data/RBB Sr Projects/2006 VanWoeart_Marissa_Poster.pdf</link>
+        <description>Investigation of Snowboard Dynamics</description>
+        <year>2006</year>
+    </senior>
+    <senior>
+        <name>Beal, J.</name>
+        <link>content/data/RBB Sr Projects/2005 Beal_Joel_Poster.pdf</link>
+        <description>Design of an Adjustable Sled to be used in Sled Hockey</description>
+        <year>2005</year>
+    </senior>
+    <senior>
+        <name>Robertson, D.</name>
+        <link>content/data/RBB Sr Projects/2005 Robertson_Douglas_Poster.pdf</link>
+        <description>The Design and Construction of a Composite RC Boat Hull</description>
+        <year>2005</year>
+    </senior>
+    <senior>
+        <name>Worth, M.</name>
+        <link>content/data/RBB Sr Projects/2005 worth_matt_poster.pdf</link>
+        <description>Shoulder Rehabilitation and Stabilization: The Creation of a Rehabilitation Brace for the Aid in Shoulder Dislocations</description>
+        <year>2005</year>
+    </senior>
+    <senior>
+        <name>Sanders, G.</name>
+        <link>content/data/RBB Sr Projects/2004 Sanders_Glenn_Poster.pdf</link>
+        <description>Design of a six-degree-of-freedom Stewart Platform Load Frame for Studying the Kinetics of the Spine</description>
+        <year>2004</year>
+    </senior>
+    <senior>
+        <name>Grieco, A.</name>
+        <link>content/data/RBB Sr Projects/2004 Grieco_Adam_Poster.pdf</link>
+        <description>Photogrammetry of Bullfrog Hearts</description>
+        <year>2004</year>
+    </senior>
+    <senior>
+        <name>Hilbert, M.</name>
+        <link>content/data/RBB Sr Projects/2004 Hilbert_Matt_Poster.pdf</link>
+        <description>Design of a Dual Suspension Cross Country Mountain Bike Frame</description>
+        <year>2004</year>
+    </senior>
+    <senior>
+        <name>Maleszweski, J.</name>
+        <link></link>
+        <description>Designing a Fly Rod</description>
+        <year>2003</year>
+    </senior>
+    <senior>
+        <name>Robinson, S.</name>
+        <link></link>
+        <description>Measuring Myocardial Deformation in Bullfrog Hearts</description>
+        <year>2003</year>
+    </senior>
+    <senior>
+        <name>Pasch, A.</name>
+        <link></link>
+        <description>Restoration of a 1931 Ford Model A Engine and Transmission design of an Alternative Camshaft</description>
+        <year>2002</year>
+    </senior>
+    <senior>
+        <name>Kimball, K.</name>
+        <link></link>
+        <description>Design and Fabrication of a Composite Body for a Formula 1 SAE Car</description>
+        <year>2002</year>
+    </senior>
+    <senior>
+        <name>Howe, W.</name>
+        <link></link>
+        <description>The Design of a Drive Train for the 2002 Formula Car</description>
+        <year>2002</year>
+    </senior>
+    <senior>
+        <name>Herzlinger, J.</name>
+        <link></link>
+        <description>International Virtual Design Studio: design of an Autonomous Vehicle</description>
+        <year>2002</year>
+    </senior>
+    <senior>
+        <name>Pasch, A.</name>
+        <link></link>
+        <description>International Virtual Design Studio: design of an Autonomous Vehicle</description>
+        <year>2002</year>
+    </senior>
+    <senior>
+        <name>Bowers, J.</name>
+        <link></link>
+        <description>International Virtual Design Studio Project: Design and construction of a Machine that Autonomously Scaled a Wall, Avoided Holes, and Found a Door to Reach the Finish Line</description>
+        <year>2002</year>
+    </senior>
+    <senior>
+        <name>Briody, S.</name>
+        <link></link>
+        <description>International Virtual Design Studio Project: Design and construction of a Machine that Autonomously Scaled a Wall, Avoided Holes, and Found a Door to Reach the Finish Line</description>
+        <year>2002</year>
+    </senior>
+    <senior>
+        <name>Grant, M.</name>
+        <link></link>
+        <description>Design of Air INtake Manifold and Fuel Injection System</description>
+        <year>2002</year>
+    </senior>
+    <senior>
+        <name>Denema, P.</name>
+        <link></link>
+        <description>The Design and Construction of a Mechanical Fountain</description>
+        <year>2001</year>
+    </senior>
+    <senior>
+        <name>Gretten, M.</name>
+        <link></link>
+        <description>Autonomous walking Quadruped Robot</description>
+        <year>2001</year>
+    </senior>
+    <senior>
+        <name>Fontaine, R.</name>
+        <link></link>
+        <description>Design of Autonomous Quadruped Walking Robot - IVDS France</description>
+        <year>2000</year>
+    </senior>
+    <senior>
+        <name>Perrucci, S.</name>
+        <link></link>
+        <description>Enhancing the Thermal Properties of Carbon Fiber Plastics</description>
+        <year>2000</year>
+    </senior>
+    <senior>
+        <name>Roy, B.</name>
+        <link></link>
+        <description>International Virtual design Competition (Turkey): An Autonomous Robot Design</description>
+        <year>2000</year>
+    </senior>
+    <senior>
+        <name>Spindler-Ranta, S.</name>
+        <link></link>
+        <description>International Virtual Design Studio 2000 (Turkey): Team 2</description>
+        <year>2000</year>
+    </senior>
+    <senior>
+        <name>Williams, G.</name>
+        <link></link>
+        <description>Mechanical Engineering Design (IVDS Turkey): Team 3</description>
+        <year>2000</year>
+    </senior>
+    <senior>
+        <name>Gretten, M.</name>
+        <link></link>
+        <description>Design and Modification of an Autonomous Walking Quadruped Robot: IVDS France</description>
+        <year>2000</year>
+    </senior>
+    <senior>
+        <name>Poindexter, D.</name>
+        <link></link>
+        <description>International Virtual Design Studio Project 1998-1999</description>
+        <year>1999</year>
+    </senior>
+    <senior>
+        <name>Haynes, P.</name>
+        <link></link>
+        <description>IVDS '98: The Fire Extinguishing Robot</description>
+        <year>1999</year>
+    </senior>
+    <senior>
+        <name>Pincus, A.</name>
+        <link></link>
+        <description>Design and Production of a Machine that Autonomously Sought Out and Extinguished Flames</description>
+        <year>1999</year>
+    </senior>
+    <senior>
+        <name>Flynn, P.</name>
+        <link></link>
+        <description>I.V.D.S. Team 1, Flame Extinguishing Robot</description>
+        <year>1999</year>
+    </senior>
+    <senior>
+        <name>Kimball, C.</name>
+        <link></link>
+        <description>International Virtual Design Studio: Design and Manufacture of a Mechatronic Ladder Crossing Machine</description>
+        <year>1998</year>
+    </senior>
+    <senior>
+        <name>Kriz, S.A.</name>
+        <link></link>
+        <description>International Virtual Design Project: The Design of a Quadruped Walking Robot</description>
+        <year>1998</year>
+    </senior>
+    <senior>
+        <name>Sandman, J.</name>
+        <link></link>
+        <description>Stereolithographic Modeling of a Locomotive Turbocharger</description>
+        <year>1998</year>
+    </senior>
+    <senior>
+        <name>Saunders, K.M.</name>
+        <link></link>
+        <description>International Virtual Design Project: The Design of a Quadruped Walking Robot</description>
+        <year>1998</year>
+    </senior>
+    <senior>
+        <name>Hahl, J.</name>
+        <link></link>
+        <description>Union's First Virtual Design Project: To Design a Vehicle Without Wheels, or Wheel-Like Motion</description>
+        <year>1997</year>
+    </senior>
+    <senior>
+        <name>McMurtry, C.</name>
+        <link></link>
+        <description>International Virtual Design Studio: Design of a Vehicle Without Wheels, Project I, The 'Pusher'</description>
+        <year>1997</year>
+    </senior>
+    <senior>
+        <name>Smallwood, B.</name>
+        <link></link>
+        <description>Union's First Virtual Design Project: To Design a Vehicle Without Wheels, or Wheel-Like Motion</description>
+        <year>1997</year>
+    </senior>
+    <senior>
+        <name>Schnepel, M.</name>
+        <link></link>
+        <description>Design Methodology for a Down Hill Mountain Bike</description>
+        <year>1997</year>
+    </senior>
+    <senior>
+        <name>Sobczak, K.</name>
+        <link></link>
+        <description>International Virtual Design Studio: Design of a Vehicle Without Wheels, Project I, The 'Pusher'</description>
+        <year>1997</year>
+    </senior>
+    <senior>
+        <name>Frye, J.</name>
+        <link></link>
+        <description>Design of the Formula SAE Frame</description>
+        <year>1996</year>
+    </senior>
+    <senior>
+        <name>Robertson, D.</name>
+        <link></link>
+        <description>Design of Instrumentation for Measuring the Force Exerted by a Crew Team</description>
+        <year>1996</year>
+    </senior>
+    <senior>
+        <name>Sadd, D.L.</name>
+        <link></link>
+        <description>Design and Building of a Quasi-Static Impact Pendulum</description>
+        <year>1996</year>
+    </senior>
+    <senior>
+        <name>Crayon, D.</name>
+        <link></link>
+        <description>Design and Fabrication of Suspension System for the 1995 Mini Baja Competition Vehicle</description>
+        <year>1995</year>
+    </senior>
+    <senior>
+        <name>Julicher, B.</name>
+        <link></link>
+        <description>Design and Construction of the Formula SAE Frame</description>
+        <year>1995</year>
+    </senior>
+    <senior>
+        <name>Miller, J.R.</name>
+        <link></link>
+        <description>The Design of an Airgun Facility to Test Dynamic Impacts on Composite Materials</description>
+        <year>1995</year>
+    </senior>
+    <senior>
+        <name>Pierson, J.A.</name>
+        <link></link>
+        <description>Design of a Carbon Fiber Composite Mast</description>
+        <year>1995</year>
+    </senior>
+    <senior>
+        <name>Rice, W.</name>
+        <link></link>
+        <description>Microgravity Countermeasures Device</description>
+        <year>1995</year>
+    </senior>
+    <senior>
+        <name>Schell, B.W.</name>
+        <link></link>
+        <description>Design and Construction of SAE Mini Baja</description>
+        <year>1995</year>
+    </senior>
+    <senior>
+        <name>Troy, J.</name>
+        <link></link>
+        <description>Design and Construction for the Suspension for the Formula SAE Car</description>
+        <year>1995</year>
+    </senior>
+    <senior>
+        <name>Weaver S.A.</name>
+        <link></link>
+        <description>The Design and Construction of a Torsional Load Cell</description>
+        <year>1995</year>
+    </senior>
+</seniormasters>
