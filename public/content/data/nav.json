@@ -48,7 +48,7 @@
             {"name":"Publications"         	,"slug": "bucpub"},
             {"name":"Select Reports"        ,"slug": "selectreports"},
             {"name":"Select Presentations"  ,"slug": "selectpresentations"},
-            {"name":"AddressesSpeeches"     ,"slug": "bucaddress"},
+            {"name":"Addresses & Speeches"  ,"slug": "bucaddress"},
             {"name":"In The News"         	,"slug": "bucNews"}
         ]
     },
