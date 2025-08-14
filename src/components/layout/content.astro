@@ -1,14 +1,17 @@
 ---
 const { name, href, transform, courseId} = Astro.props;
-console.log( 'Content', name, href, transform, courseId );
 ---
-<article class="flex flex-col p-4 max-w-6xl lg:text-lg prose prose-headings:my-2 
+<article class="z-0 flex flex-col p-4 max-w-6xl lg:text-lg 
+            
+            prose prose-headings:my-2 
             prose-headings:text-rbb-gray-950 prose-headings:font-normal prose-headings:text-larger 
-            prose-a:text-union-red prose-ul:list-none prose-p:m-4 dark:prose-a:text-union-blue 
-            dark:prose-invert z-0">
+            prose-a:text-union-red prose-ul:list-none prose-p:m-4 
+
+            dark:prose-headings:text-garnet-600 dark:prose-a:text-garnet-500 dark:prose-invert 
+            dark:prose-strong:text-garnet-600">
     <div id="external_content"></div>
     <slot />
-    <section class="updated text-garnet italic self-end fw-light"></section>
+    <section class="updated text-garnet dark:text-garnet-300 italic self-end fw-light"></section>
 </article>
 
 <script defer is:inline define:vars={{ name, href, transform, courseId }}>

@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@plugin "daisyui";
-
+@plugin "daisyui" {
+   themes: corporate --default, business --prefersdark;
+ }
 @theme {
     --color-garnet-50: #fdf3f3;
     --color-garnet-100: #fbeae8;
