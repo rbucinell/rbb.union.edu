@@ -11,7 +11,7 @@ const { slug = "#", category, name, courseId, courseName } = Astro.props;
             <h1 class="text-2xl font-bold">{name}</h1>
             <div id="breadcrumbs" aria-label="breadcrumb" class="hidden md:flex w-full">
                 <div class="flex gap-2 items-center h-8">
-                    <Icon name="fa6-solid:house" class='my-auto h-4'/>
+                    <a href="/"><Icon name="fa6-solid:house" class='my-auto h-4'/></a>
                     <BreadCrumbSeperator/>
                     {courseId &&
                         <a rel="noopener noreferrer" href="/courselisting" class="flex items-center px-1 text-garnet">Courses</a>

@@ -7,33 +7,24 @@ import Head from 	'@components/layout/head.astro';
 import Sidebar from '@components/sidebar/sidebar.astro';
 import Content from '@components/layout/content.astro';
 
-interface Props {
-    category?:string;
-	slug: string;
-	name: string;
-	description?: string;
-    courseId: string;
-    courseName: string;
-    nav: JSON;
-}
-
-const { category, slug, name, description, courseId, courseName, nav } = Astro.props;
+const { course, page, slug, created, images, nav } = Astro.props.coursePage as CoursePage;
+console.log( 'nav', nav );
 ---
 <!doctype html>
 <html lang="en">
-	<Head name={name} description={description} />
+	<Head name={`${course.id}: ${page.name}`} description={`Course ${course.id}: ${course.name}`} />
 	<body class="min-h-screen grid grid-rows-[auto,1fr,auto]">
 		<Sidebar>
 			<!-- https://www.transparenttextures.com/ -->
 			<main class="flex w-full h-screen bg-gray-200 dark:bg-rbb-gray-800 bg-[url('/img/texture/otis-redding.png')]">
 				<div class="flex flex-col flex-1 overflow-y-auto">
-					<Header slug={slug} category={category} name={name} courseId={courseId} courseName={courseName}/>
-					<Content name={name} href={slug} courseId={courseId} >
+					<Header slug={slug} category={page.category} name={page.name} courseId={course.id} courseName={course.name}/>
+					<Content name={page.name} href={page.path} courseId={course.id} >
 						<slot/>
 					</Content>
 				</div>
 			</main>
-			<CourseNav id={courseId} json={nav} slot="nav"/>
+			<CourseNav id={course.id} nav={nav} slot="nav"/>
 		</Sidebar>
 	</body>
 </html>

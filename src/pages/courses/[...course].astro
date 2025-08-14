@@ -1,40 +1,48 @@
 ---
 import CourseLayout from '@/layouts/courselayout.astro';
 import type { GetStaticPaths } from "astro";
+import { undefined } from 'astro:schema';
 
 export const getStaticPaths = ( () => {
 
     const courseManifests = Object.values(import.meta.glob('@public/courses/**/manifest.json', { eager: true }))
-        .map( _ => JSON.parse(JSON.stringify(_)).default );
+        .map( _ => JSON.parse(JSON.stringify(_)).default as CourseManifest );
 
-    const filtered = courseManifests.map( course => {
-        const{ id, name, created, sections, images } = course;
+    const filtered = courseManifests.map( (manifest) => {
+        const { created, sections  } = manifest;
+        const course:Course = { id:manifest.id, name:manifest.name };
+
         return sections.map( s => {
-            return s.pages.filter( p => !p.externalLink).map( p =>{
-                const url = (p.url === 'index' || p.url === 'index.html') ? '' : p.url?.substring(0, p.url.indexOf( "." ));
-                return {
-                    id, 
-                    category: name,
-                    name: s.name,
-                    url,
+            return s.pages.filter( p => !p.externalLink).map( p => {
+                
+                const page:Page = {
+                    name: p.name,
+                    category: s.name,
+                    path: (p.url === 'index' || p.url === 'index.html') ? null: p.url?.substring(0, p.url.indexOf( "." ))
+                };
+
+                const coursePage:CoursePage ={
+                    course,
+                    page,
                     created,
-                    images,
-                    slug: `${course.id}/${url}`,
-                    nav: JSON.parse(JSON.stringify(sections))
-                }
+                    images: [],
+                    slug: page.path ? `${course.id}/${page.path}` : course.id,
+                    nav: sections
+                };
+
+                return coursePage;
             });
         }).flat();
     }).flat();
 
-    return filtered.map( course => {
+    return filtered.map( coursePage => {
         return { 
-            params: { course: course.slug },
-            props: course,
+            params: { course: coursePage.slug },
+            props: {...coursePage},
         } 
     });
 }) satisfies GetStaticPaths;
 
-const { slug, category, name, id, nav } = Astro.props;
+const { course, page, created, images, slug, nav } = Astro.props;
 ---
-<CourseLayout slug={slug} category={category} name={name} courseId={id} courseName={name} nav={nav}/>
-
+<CourseLayout coursePage={Astro.props as CoursePage}/>

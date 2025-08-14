@@ -1,7 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
-const{ id, json } = Astro.props;
-console.log( json );
+const{ id, nav } = Astro.props;
+const json = nav as ManifestSection[];
+console.log( 'nav', id, nav, json);
+
 ---
 <div class="flex flex-col flex-1 overflow-y-auto">
     <nav class="flex-1 px-2 py-4 bg-rbb-light-gray)] dark:bg-[var(--rbb-gray-950)]">
@@ -10,9 +12,10 @@ console.log( json );
             <span class="text-lg">{id}</span>
         </div>
         { json && json.map( category => {
-            let isOpen = category.pages?.some( i => i.slug === Astro.url.pathname.replace("/", ""));
+            console.log( 'Category: ', category );
+            let isOpen = category.pages?.some( i => i.url === Astro.url.pathname.replace("/", ""));
             const escapedCategoryName = category.name.replace(/[^a-zA-Z ]/g, "");
-
+            console.log( 'escaped', escapedCategoryName);
             return <div class="mb-2 relative group">
                 <input type="checkbox" id={`${escapedCategoryName}-toggle`} class="hidden peer" { ...(isOpen ? { checked:true} : {}) } >
             
@@ -25,8 +28,10 @@ console.log( json );
                 
                 <div class="hidden peer-checked:flex flex-col bg-rbb-gray-800 text-gray-200 mt-1 transition-all duration-300">
                     { category.pages.map( page =>{
-                        const url = (page.url === 'index' || page.url === 'index.html') ? './' : page.url?.substring(0, page.url.indexOf( "." ));
-                        return <a href={page.externalLink? page.url : url} target={page.externalLink ? "_blank": "_self" } class="flex px-4 py-2 hover:bg-rbb-gray-600">
+                        console.log( 'Category page: ', page );
+                        const url = (page.url === 'index' || page.url === 'index.html') ? './' : `./${page.url}`;
+                        console.log('\t',page.url, url);
+                        return <a href={page.externalLink ? page.url : url} target={page.externalLink ? "_blank": "_self" } class="flex px-4 py-2 hover:bg-rbb-gray-600">
                             <span>{page.name}</span>
                             { page.externalLink && <Icon name="fa6-solid:up-right-from-square" class="h-4 w-4 ml-auto right-4" />}
                         </a>

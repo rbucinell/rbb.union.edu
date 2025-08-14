@@ -1,5 +1,6 @@
 ---
 const { name, href, transform, courseId} = Astro.props;
+console.log( 'Content', name, href, transform, courseId );
 ---
 <article class="flex flex-col p-4 max-w-6xl lg:text-lg prose prose-headings:my-2 
             prose-headings:text-rbb-gray-950 prose-headings:font-normal prose-headings:text-larger 
@@ -30,18 +31,17 @@ const { name, href, transform, courseId} = Astro.props;
         document.querySelector('.updated').innerText = `Updated ${new Date(xmlLastMod).toDateString()}`;
     }
 
-    (async()=> {
+    (async ()=> {
 
         const externalContent = document.querySelector('#external_content');
-
+        console.log( name, href, transform, courseId );
         if( !transform ) {
-            let contentPath = href === '/' ? 'index' : href;
+            let contentPath = href === '/' || href === null ? 'index' : href;
             let contentUrl = `/content/${contentPath.toLowerCase()}.html`;
             if( courseId ) {
-                let [ id, page ] = contentPath.split('/');
-                contentUrl = `/courses/${id}/content/${page}.html`
+                contentUrl = `/courses/${courseId}/content/${href??'index'}.html`
             }
-            console.log( contentUrl );
+            console.log( 'contentUrl', contentUrl );
             const content = await fetch( contentUrl );
             const content_body = await content.text();
             externalContent.innerHTML = content_body;
