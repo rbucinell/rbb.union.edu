@@ -6,7 +6,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 // https://docs.astro.build/en/reference/configuration-reference/
 export default defineConfig({
-  output: 'static',
+  site: 'https://rbucinell.github.io/rbb.union.edu/',
   vite: {
     plugins: [ tailwindcss() ],
   },
