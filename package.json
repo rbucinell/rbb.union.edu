@@ -38,12 +38,9 @@
     "@iconify-json/fa6-brands": "^1.2.5",
     "@iconify-json/fa6-solid": "^1.2.3",
     "@tailwindcss/typography": "^0.5.16",
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.25.9"
   },
   "volta": {
     "node": "22.16.0"
-  },
-  "overrides": {
-    "esbuild": "0.24.0"
   }
 }
