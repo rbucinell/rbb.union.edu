@@ -16,12 +16,12 @@ import { Icon } from 'astro-icon/components';
                     <input  id="courseName"  type="text" class="input" placeholder="Introduction to Mechanics" />
                 </fieldset>
                 <fieldset class="fieldset ml-auto">
-                    <legend class="fieldset-legend">Import <em>nav.json</em>?</legend>
-                    <input id="navpicker" type="file" class="file-input file-input-neutral p-1 border border-gray-50"  onchange="importNavXML()" />
+                    <legend class="fieldset-legend">Import <em>nav.xml</em>?</legend>
+                    <input id="navpicker" type="file" class="file-input file-input-neutral p-1 border border-gray-50"  onchange="importNavXML(event)" />
                 </fieldset>
             </div>
             <h2 class="text-2xl mt-2">Rotation Images</h2>
-            <input id="rotateImages" type="file" class="file-input file-input-secondary p-1 border border-gray-50">
+            <input id="rotateImages" multiple="multiple" type="file" class="file-input file-input-secondary p-1 border border-gray-50">
             <div class="flex justify-between">
                 <h2 class="text-2xl mt-2">Sections</h2>
                 <button id="addSectionButton" class="btn btn-success" type="button" onclick='addSection()'><Icon name="fa6-solid:plus" class='my-auto h-4'/>Add Section</button>
@@ -38,15 +38,13 @@ import { Icon } from 'astro-icon/components';
     <button id="launchModal" class="btn" onclick="createdModal.showModal()">Launch modal</button>
     <dialog id="createdModal" class="modal">
         <div class="modal-box">
-            <h3 id="myModalLabel" class="text-lg font-bold">Modal title</h3>
-            <div class="modal-body py-4"></p>
-            <div class="modal-action">
-            <form method="dialog">
-                <!-- if there is a button in form, it will close the modal -->
-                 <p>Press ESC key or click the button below to close</p>
-                <button class="btn">Close</button>
-            </form>
+            <div class="flex flex-row items-center flex-shrink justify-between">
+                <h3 id="myModalLabel" class="modal-title text-lg font-bold inline-block">Modal title</h3>
+                <button class="btn btn-outline btn-sm btn-square" type="button"  onclick="createdModal.close()">
+                    <Icon name="fa6-solid:x" class="my-auto h-4"/>
+                </button>
             </div>
+            <div class="modal-body py-4"></div>
         </div>
     </dialog>
 
@@ -59,10 +57,11 @@ import { Icon } from 'astro-icon/components';
                     </button>
                     <span>Section</span>
                     <input id="sectionName" class="input w-full" type="text" placeholder="Section Name" />
-                    <button class="btn btn-outline btn-sm btn-success" type="button" onclick="addPage(this)">
+                    <button id="addPageBtn" class="btn btn-outline btn-sm btn-success" type="button" onclick="addPageToSection(this)">
                         <Icon name="fa6-solid:plus" class='my-auto h-4'/>Add Page
                     </button>
                 </div>
+                <div class="pages"></div>
             </div>
         </div>
     </template>
@@ -71,15 +70,31 @@ import { Icon } from 'astro-icon/components';
             <span class="self-center text-lg mr-4">Page</span>
             <input required="required" id="pageName" class="input w-full" type="text" placeholder="Page Name" />
             <input required="required" id="pageURL" class="input w-full" type="text" placeholder="Page URL (generator.html)" />
-            <label class="label px-4"><input type="checkbox" checked="checked" class="checkbox" />External Link</label>
+            <label class="label px-4">
+                <input id="externalLink" type="checkbox" class="checkbox" />
+                External Link
+            </label>
             <button class="btn btn-outline btn-sm btn-square btn-error self-center" type="button" onclick="removePage(this)">
                 <Icon name="fa6-solid:trash" class='my-auto h-4'/>
             </button>
         </div>
     </template>
     <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js" is:inline />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script is:inline>
-              /**
+        
+        /**
+          * @param {String} HTML representing a single element
+          * @return {Element} a DOM element
+          */
+        function htmlToElement(html) {
+              var template = document.createElement('template');
+              html = html.trim(); // Never return a text node of whitespace as the result
+              template.innerHTML = html;
+              return template.content.firstChild;
+          }
+
+        /**
         *   Reads the given nav.xml and imports it into the existing pages
         **/
         function importNavXML( event )
@@ -96,8 +111,8 @@ import { Icon } from 'astro-icon/components';
                     section = document.querySelector(`#sections .section:nth-child(${i+1})`);
                     section.querySelector('#sectionName').value = item.getAttribute('name');
                     section.querySelector('.pages').innerHTML = null;
-                    item.querySelectorAll( 'subitem' ).forEach( (si,j)=>{
-                        addPage( section.querySelector('#addPageBtn') );
+                    item.querySelectorAll( 'subitem' ).forEach( (si,j)=> {
+                        addPageToSection( section.querySelector('#addPageBtn') );
                         let page = section.querySelector(`.newpage:nth-child(${j+1})`);
                         page.querySelector('#pageName').value = si.getAttribute('name');
                         page.querySelector('#pageURL').value = si.getAttribute('target');
@@ -132,7 +147,7 @@ import { Icon } from 'astro-icon/components';
         {
             let clone = document.querySelector('#sectionTemplate').content.cloneNode(true);
             let page = document.querySelector('#pageTemplate').content.cloneNode(true);
-            clone.querySelector('.card-body').appendChild(page);
+            clone.querySelector('.pages').appendChild(page);
             document.querySelector('#sections').appendChild(clone);
             return clone;
         }
@@ -148,11 +163,10 @@ import { Icon } from 'astro-icon/components';
         /**
         *   Adds a .newpage DOM element to the page
         **/
-        function addPage( btn )
+        function addPageToSection( btn )
         {
-            console.log( 'add apge!')
             let page = document.querySelector('#pageTemplate').content.cloneNode(true);
-            let sectionBody = btn.closest('.section').querySelector('.card-body');
+            let sectionBody = btn.closest('.section').querySelector('.pages');
             sectionBody.appendChild(page);
         }
 
@@ -160,14 +174,16 @@ import { Icon } from 'astro-icon/components';
         {
             //clear any old warnings
             let errors = document.querySelector('#errors');
-            console.log( 'validateForm');
             errors.innerHTML = '';
             const alertElement = (title, msg ) =>
                 errors.appendChild( htmlToElement(
-                    `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    `<div role="alert" class="alert alert-error">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
                         <strong>${title}</strong>${msg}
-                    </div>`));
+                    </div>
+                    `));
             if(!manifestJSON.id) 
             {
                 alertElement('Incomplete Form!', 'Missing Course ID');
@@ -228,9 +244,9 @@ import { Icon } from 'astro-icon/components';
         /**
         *   Generate button click handler. Creates files from the current DOM confuration on the page
         **/
-        async function generateButtonClick(e)
+        async function generateButtonClick()
         {
-            e.preventDefault();
+            //e.preventDefault();
             let manifest = {
                 id: document.querySelector('#courseID').value,
                 name: document.querySelector('#courseName').value,
@@ -275,7 +291,6 @@ import { Icon } from 'astro-icon/components';
 
             //add pages, the respective content pages, and layouts
             for( let section of manifestJSON.sections ) {
-                let template = pageTemplate.slice().replace('template_menu', section.name );
                 let item = xml.createElement('item');
                 item.setAttribute('name', section.name );
 
@@ -285,10 +300,9 @@ import { Icon } from 'astro-icon/components';
                     subitem.setAttribute('target', page.url);
                     if( !page.externalLink)
                     {
-                        let layoutURL = page.url.substring( 0, page.url.lastIndexOf('.')) + '.pug';
-                        //  zip.file( `${manifestJSON.id}/${page.url}`, '' );
-                        zip.file( `${manifestJSON.id}/content/${page.url}`, `<div class="alert alert-warning" role="alert"><strong>Default File</strong><p>The content of this file (content/${page.url}) needs to be populated</p></div>` );
-                        zip.file( `${manifestJSON.id}/layouts/${layoutURL}`, template.replace('template_name', page.name) );
+                        zip.file( `${manifestJSON.id}/content/${page.url}`, `<div class="alert alert-warning" role="alert"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+  </svg><span><strong class="text-rbb-gray-950 mr-2">Default File</strong>The content of this file (/courses/${manifestJSON.id}/content/${page.url}) needs to be populated</span></div>` );
                     }
                     else 
                     {
@@ -332,15 +346,17 @@ import { Icon } from 'astro-icon/components';
                 <ul>
                     <li>The ${courseID} folder should be moved into your <code>./courses/</code> directory.
                     <li>Make sure you populate the files in the <code>content/</code>.</li>
-                    <li>Give Ryan the zip file so he can update the site process the layouts for you</li>
+                    <li>Inform Ryan when new course is in place so he can reload the site/li>
                 </ul>
 
                 Don't forget to update the <code>./content/courselisting.html</code> page with the new link:
-                <div class="well">
-                &lt;li&gt;&lt;a href=&quot;courses/${courseID.toUpperCase()}/&quot;&gt;${manifestJSON.name}&lt;/a&gt;&lt;/li&gt;
+                <div>
+                    <code>
+                        &lt;li&gt;&lt;a href=&quot;/courses/${courseID.toUpperCase()}/&quot;&gt;${manifestJSON.name}&lt;/a&gt;&lt;/li&gt;
+                    </code>
                 </div>
                 `;
-            document.querySelector('#launchModal').click();
+            modal.showModal();
         }
 
         function clearForm(event=null)
@@ -348,9 +364,17 @@ import { Icon } from 'astro-icon/components';
             document.querySelector('#courseID').value = '';
             document.querySelector('#courseName').value = '';
             document.querySelector('#navpicker').value = ''; //clear file caching
+            document.querySelector('#rotateImages').value= '';
             document.querySelector('#sections').innerHTML = '';
             document.querySelector('#addSectionButton').click();
         }
+
+        const dialog = document.querySelector('dialog');
+        dialog.addEventListener('click', event => {
+            if( event.target === dialog ){
+                dialog.close();
+            }
+        });
 
         document.addEventListener('DadContentLoaded', ()=>{
             document.querySelector("#dadcontent").innerHTML = "";

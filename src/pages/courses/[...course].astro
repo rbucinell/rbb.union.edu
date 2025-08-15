@@ -29,7 +29,6 @@ export const getStaticPaths = ( () => {
                     slug: page.path ? `${course.id}/${page.path}` : course.id,
                     nav: sections
                 };
-
                 return coursePage;
             });
         }).flat();
