@@ -7,3 +7,6 @@ noupload/
 node_modules/
 docs/
 dist/
+src/content/data
+public/content
+public/courses/**/content/

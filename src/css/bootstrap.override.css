@@ -1,3 +1,5 @@
+@import "root.css";
+
 .breadcrumb{
     background-color: #ccc;
     margin-bottom: 0px;
@@ -13,24 +15,22 @@
     background-color: transparent;
 }
 .page-header {
-    border-bottom: 1px solid #923338;
+    border-bottom: 1px solid var(--union-red);
 }
 .page-header > h1 {
     font-weight: 400;
 }
 
 main h2 {
-    color: #923338;
+    color: var(--union-red);
 }
 
 main section.updated {
-    color: #923338;
+    color: var(--union-red);
     font-style: italic;
     font-family: Georgia, Serif;
     font-size: 16px;
     font-weight: normal;
-    position: absolute;
-    right: 5px;
     height: 20px;
     margin: 20px 0 15px 0;
 }

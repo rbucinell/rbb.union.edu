@@ -1,0 +1,29 @@
+:root{
+	/*Primary Palette*/
+	--union-red: #923338; 
+	--union-garnet: #822438;
+	--union-stone: #b3b38c;
+	--union-light-stone: #e4e2d2;
+	--union-gray: #6c6f70;
+	--union-white: #eeeeee;
+
+	/*Secondary Palette*/
+	--union-gold: #D7941D;	
+	--union-metallic-gold: #85714D;
+	--union-navy: #003261;
+	--union-blue: #237FA4;
+	--union-blue-light: #5ABCE1;
+	--union-green: #5C8827;	
+	--union-green-light: #AEBC21;
+	--union-orange: #F58F20;
+	--union-orange-light: #FCB54D;
+
+	/*RBB Colors*/
+	--rbb-black: #111;
+	--rbb-dark-gray: #2b2b2b;
+	--rbb-gray: #484848;
+	--rbb-light-gray: #303030;
+	--rbb-light-gray-hover: #363636;
+	--rbb-lightest-gray: #aaa;
+	--rbb-white: #f7f7f7;
+}

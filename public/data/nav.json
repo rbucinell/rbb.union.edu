@@ -1,0 +1,58 @@
+[
+    {
+        "category": "Main",
+        "items": [
+            {"name": "Homepage",        "path": "/" },
+            {"name": "Union College",   "path": "/http://www.union.edu", "external": true },
+            {"name": "Downloads",       "path": "/downloads" }
+        ]
+    },
+    {
+        "category": "Credentials & Experience",
+        "items": [
+            {"name": "Credentials",     "path": "/credentials" },
+            {"name": "Funding History", "path": "/funding" },
+            {"name": "Experience",      "path": "/experience" },
+            {"name": "Activities",      "path": "/activities" }
+        ]
+    },
+    {
+        "category": "Course Listing",
+        "items": [
+            {"name": "Course Links", "path": "/courselisting" },
+            {"name": "Videos",       "path": "/video" },
+            {"name": "Format",       "path": "/homeworkformat" }
+        ]
+    },
+    {
+        "category": "Student Collaborations",
+        "items": [
+            {"name":"Resources"          	,"path": "/resources" },
+            {"name":"Senior Projects"    	,"path": "/seniormasters" },
+            {"name":"Summer Fellowship"  	,"path": "/summerfellowship" },
+            {"name":"Steinmetz Symposium"	,"path": "/steinmetz" },
+            {"name":"NCUR"          		,"path": "/ncur" },
+            {"name":"Other Forums"       	,"path": "/otherforum" },
+            {"name":"Scholars Soph Project"	,"path": "/unionscholars" },
+            {"name":"Masters and Outside"	,"path": "/masterandoutside" }
+        ]
+    },
+    {
+        "category": "Scholarship",
+        "items": [
+            {"name":"Publications"         	,"path": "/bucpub"},
+            {"name":"Select Reports"        ,"path": "/selectreports"},
+            {"name":"Select Presentations"  ,"path": "/selectpresentations"},
+            {"name":"Addresses/Speeches"    ,"path": "/bucaddress"},
+            {"name":"In The News"         	,"path": "/bucNews"}
+        ]
+    },
+    {
+        "category": "Lab",
+        "items": [
+            {"name": "Engineering Mechanics",   "path": "/mechengineerlab" },
+            {"name": "Composite Mfg",           "path": "/compositelab" },
+            {"name": "Projects",                "path": "/labprojects" }
+        ]
+    }    
+]

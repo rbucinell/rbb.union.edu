@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "upload": "node ./upload/upload.js"
   },
   "repository": {
@@ -34,6 +36,8 @@
   },
   "homepage": "https://github.com/rbucinell/rbb.union.edu#readme",
   "dependencies": {
+    "@astrojs/sitemap": "^3.1.2",
+    "astro": "^4.5.14",
     "chalk": "^5.0.1",
     "jszip": "^3.7.1"
   }

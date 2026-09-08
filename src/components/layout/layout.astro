@@ -1,0 +1,55 @@
+---
+import Head from './head.astro';
+import Nav from './nav.astro';
+import Scripts from './scripts.astro';
+import '../../css/style.css';
+
+//Add these into style.css if we need em. otherwise phase em out
+//import '../../css/bootstrap.override.css';
+// import '../../css/rbb.css'; //dont use
+
+
+const { name, menu, course, courseName, href } = Astro.props;
+console.log( 'layout', name, menu, course, courseName, href );
+---
+<!doctype html>
+<html lang="en">
+    <!-- 
+    //                                                                                                      
+    // Do not modify this file! It was automatically generated. To change it's content go to content folder 
+    // 
+    -->
+    <slot name="config" />
+    <Head title={name} />
+    <slot name="head" />
+    <body class="d-flex flex-column vh-100 overflow-hidden">
+        <div class="d-flex flex-column flex-sm-row overflow-auto h-100">
+            <div class="row">
+                <Nav course={course} name={name} href={href}/>
+                <main id="main" class="col overflow-auto h-100">
+                    <header class="page-header sticky-top mt-4 mb-2">
+                        {course ? <h1 id="pageheader" class="display-5">
+                            {course}&nbsp;<small class="text-muted fs-3">{courseName}</small>
+                        </h1>
+                        : <h1 id="pageheader" class="display-5">{name}</h1>
+                        }                        
+                        <ul class="breadcrumb bg-light p-2">
+                            { course && <li class="breadcrumb-item"><a href="/courselisting.html">Courses</a></li>}
+                            { course && <li class="breadcrumb-item"><a href="./">{course}</a></li>}
+
+                            <li class="breadcrumb-item">{menu}</li>
+                            <li class="breadcrumb-item active"><a href={href}>{name}</a></li>
+                        </ul>
+                    </header>
+                    <div class="px-3">
+                        <section id="dadcontent"></section>
+                        <slot name="content" />
+                        <section class="updated text-garnet fst-italic pull-right fw-light"></section>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <Scripts name={name} href={href} />
+        <slot name="scripts" />
+    </body>
+</html>

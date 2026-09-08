@@ -1,0 +1,63 @@
+---
+const { name, href } = Astro.props;
+---
+<script is:inline src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- <script is:inline type="text/javascript" src="/js/lib.min.js"></script>
+<script is:inline type="text/javascript" src="/js/rbb.min.js"></script> -->
+<script is:inline >
+    const event = new Event( 'DadContentLoaded' );
+    /**
+     * String helper function to see if input string 'str' ends with the string 'suffix'
+     **/
+    const endsWith = (str, suffix) => str.indexOf(suffix, str.length - suffix.length) !== -1;
+    
+    /**
+     *   Function to format the html list after it is loaded
+     **/
+    function formatListGroup(headerText) {
+        let listOfLI = [...document.querySelectorAll(`.list-group > li`)];
+        console.log(listOfLI)
+        listOfLI.forEach( n => n.classList +='list-group-item')
+        document.querySelector( 'header > h1' ).innerText = `${headerText} (${listOfLI.length})`;
+    }
+  
+    // /**
+    //  *  On DOM LOAD fetch the respective content file to populate the page
+    //  **/
+    // document.addEventListener('DOMContentLoaded', async ()=> {
+    
+    //     let path = window.location.pathname.split('/').pop() || 'index.html';
+    //     let contentPath =  `content/${path}`;
+    //     let response = await fetch(contentPath);
+    //     if( response.status === 404)
+    //     {
+    //         response = await fetch(`/content/data/404.html`);
+    //     }
+    //     else {
+    //         let updateDate = new Date(response.headers.get('Last-Modified')).toDateString();
+    //         document.querySelector('.updated').innerText = `Updated: ${updateDate}`;
+    //     }
+    //     let data = await response.text();
+    //     document.querySelector('#dadcontent').innerHTML = data;
+    //     document.dispatchEvent( event );
+    // });
+</script>
+
+<script defer is:inline define:vars={{ name }}>
+    (async()=> {
+
+        let contentPath = window.location.href.substring( window.location.href.lastIndexOf('/') +1);
+        console.log( 'contentPath',contentPath)
+        contentPath = contentPath.endsWith('.html') ? contentPath : `${contentPath}.html`
+        let content = '';
+        try{
+            content = await fetch( `/content/${contentPath.toLowerCase()}`);
+        }catch( e ){
+            content = await fetch( `/content/data/404.html`);
+        }
+        const content_body = await content.text();
+        document.querySelector('#dadcontent').innerHTML = content_body;
+        let updateDate = new Date(content.headers.get('Last-Modified')).toDateString();
+        document.querySelector('.updated').innerText = `Updated: ${updateDate}`;
+    })();
+</script>
